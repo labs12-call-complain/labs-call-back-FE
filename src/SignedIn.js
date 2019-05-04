@@ -1,13 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Navigation from './components/Navigation.js';
+import {Router, Route} from 'react-router-dom';
+
+
+
 
 const Signedin = () => {
 
 
     return (
         <div>
-
-            <p>asdasdas</p>
+            <Navigation />
+            {/* <Router>
+                <Route />
+            </Router> */}
         </div>
     )
 }
-export default Signedin
+export default Signedin 
