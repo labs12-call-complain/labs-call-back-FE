@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import "./App.css";
 import * as firebase from "firebase";
-import fire from "./fire";
+import fire from "./config/fire.js";
 import Signedin from './SignedIn'
 import LandingPage from './LandingPage'
 
