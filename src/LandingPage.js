@@ -2,7 +2,7 @@ import "./LandingPage.css";
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import firebase from 'firebase'
 import React, { Component } from "react";
-import fire from './fire'
+import fire from './config/fire'
 
 
 
