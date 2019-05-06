@@ -1,8 +1,8 @@
 import "./LandingPage.css";
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
-import firebase from 'firebase'
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import firebase from 'firebase';
 import React, { Component } from "react";
-import fire from './config/fire.js'
+import fire from './config/fire.js';
 
 
 
@@ -99,14 +99,14 @@ class LandidngPage extends Component {
             </section>
 
             <section class="lowpage">
-                <div data-aos="fade-up" class="lower-content-fade">
+              <div data-aos="fade-up" class="lower-content-fade">
                 <h3>No more calling customer service</h3>
 
                 <p>With a single click of a button, CallComplain will 
                 send a text translated version of your complaint directly
                 to the company email and corperate twitter so your voice can be heard worldwide</p>
-                </div>
-                </section>
+              </div>
+            </section>
 
             <footer>
 
