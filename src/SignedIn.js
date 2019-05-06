@@ -1,4 +1,5 @@
 import React from 'react'
+import firebase from 'firebase'
 
 const Signedin = () => {
 
@@ -7,6 +8,7 @@ const Signedin = () => {
         <div>
 
             <p>asdasdas</p>
+            <button onClick={() => firebase.auth().signOut()}> Sign Out </button>
         </div>
     )
 }
