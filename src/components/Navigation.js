@@ -14,8 +14,10 @@ import {
 import 'bootstrap/dist/css/bootstrap.css';
 import {Icon} from '@blueprintjs/core'
 import {home, phone, comment, cog} from '@blueprintjs/icons'
-import './Navigation.css';
+import './Home.css';
 
+
+//adding some changes
 class Navigation extends React.Component {
     toggle = this.toggle.bind(this);
     state = {

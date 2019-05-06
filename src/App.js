@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 // import "./App.css";
 import * as firebase from "firebase";
-import fire from "./fire";
-import Signedin from './SignedIn'
+import fire from "./config/fire.js";
+import Home from './components/Home.js'
 import LandingPage from './LandingPage'
 
 
@@ -23,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <>
-        {this.state.isSignedIn ? <Signedin /> : 
+        {this.state.isSignedIn ? <Home /> : 
           <LandingPage />}
       </>
       );
