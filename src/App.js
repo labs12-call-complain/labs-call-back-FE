@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import * as firebase from "firebase";
 import fire from "./config/fire.js";
 import Home from './components/Home.js'
+import Signedin from './SignedIn'
 import LandingPage from './LandingPage'
 
 
