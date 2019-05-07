@@ -22,23 +22,23 @@ class LandidngPage extends Component {
       firebase.auth.TwitterAuthProvider.PROVIDER_ID,
       firebase.auth.EmailAuthProvider.PROVIDER_ID
     ],
-    callbacks: {
-      signInSuccess: () => false,
-      signInSuccessWithAuthResult: (authResult, redirectURL) => {
-        console.log(authResult);
-        console.log(fire.firestore());
+    // callbacks: {
+    //   signInSuccess: () => false,
+    //   signInSuccessWithAuthResult: (authResult, redirectURL) => {
+    //     console.log(authResult);
+    //     console.log(fire.firestore());
 
-        fire.firestore().collection('users').doc(authResult.user.uid)
-        .get().then(user => {if (user.exists) {console.log(`user logging in: ${user}`)} else {
-          console.log(user)
-          fire.firestore().collection('users').doc(authResult.user.uid).set({
-            name: authResult.user.displayName,
-            email: authResult.user.email
-          })
-        }})
-        .catch(err => {console.log(err)})
-      }
-    }
+    //     fire.firestore().collection('users').doc(authResult.user.uid)
+    //     .get().then(user => {if (user.exists) {console.log(`user logging in: ${user}`)} else {
+    //       console.log(user)
+    //       fire.firestore().collection('users').doc(authResult.user.uid).set({
+    //         name: authResult.user.displayName,
+    //         email: authResult.user.email
+    //       })
+    //     }})
+    //     .catch(err => {console.log(err)})
+    //   }
+    // }
   }
 
   render() {
