@@ -9,24 +9,10 @@ import fire from './fire'
 class LandidngPage extends Component {
 
   state = {
-
+    docid: null
   };
 
-
-
-
-//   componentDidMount() {
-
-     
-
-//     firebase.auth().onAuthStateChanged(user => {
-      
-//       this.setState({isSignedIn: !!user})
-//       console.log("user", user)
-
-//     })
-//   }
-
+    docid = this.state.docid //may have to move back to app
 
     uiConfig = {
 
@@ -41,6 +27,8 @@ class LandidngPage extends Component {
       signInSuccessWithAuthResult: (authResult, redirectURL) => {
         console.log(authResult);
         console.log(fire.firestore());
+
+        this.setState({docid: authResult.user.uid})
 
         fire.firestore().collection('users').doc(authResult.user.uid)
         .get().then(user => {if (user.exists) {console.log(`user logging in: ${user}`)} else {
