@@ -6,6 +6,7 @@ import Signedin from './SignedIn'
 import LandingPage from './LandingPage'
 
 
+
 class App extends Component {
 
   state = {
@@ -16,11 +17,16 @@ class App extends Component {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({isSignedIn: !!user})
       console.log("user", user)
-
     })
   }
 
+
+
+
+
+
   render() {
+    
     return (
       <>
         {this.state.isSignedIn ? <Signedin /> : 
