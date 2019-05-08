@@ -1,0 +1,19 @@
+.profilePic {
+    width: 100px
+}
+
+.profileText {
+    font-size: 1.5rem;
+}
+
+.profileContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid grey;
+    width: 50%;
+}
+
+button {
+   width: 130px;
+}

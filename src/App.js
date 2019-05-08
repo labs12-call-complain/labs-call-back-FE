@@ -5,6 +5,7 @@ import fire from "./config/fire.js";
 
 import Home from "../src/components/Home.js";
 import RecordForm from '../src/components/Forms/RecordForm.js'
+import Profile from './components/Users/Profile'
 
 import "./App.css";
 import LandingPage from "./LandingPage";
@@ -51,6 +52,7 @@ class App extends Component {
       <Router>
         <Route exact path="/" component={Home} />
         <Route path="/record-complaint" component={RecordForm} />
+        <Route path="/profile" component={Profile}/>
       </Router>
     </>
     )
