@@ -10,6 +10,8 @@ import "./App.css";
 import LandingPage from "./LandingPage";
 import { Spinner } from 'reactstrap';
 
+import FormContainer from "./components/Forms/FormContainer"
+
 
 class App extends Component {
   state = {
@@ -44,13 +46,14 @@ class App extends Component {
     return (
     <>
       {this.state.isSignedIn ? 
-      <Link to="/" />
+      <Link exact to="/" />
       : <LandingPage />
       }
 
       <Router>
         <Route exact path="/" component={Home} />
         <Route path="/record-complaint" component={RecordForm} />
+        <Route path="/form" component={FormContainer} />
       </Router>
     </>
     )
