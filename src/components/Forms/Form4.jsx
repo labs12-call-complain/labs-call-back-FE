@@ -5,7 +5,7 @@ import AppBar from "material-ui/AppBar";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 
-class Form1 extends Component {
+class Form4 extends Component {
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
@@ -22,10 +22,16 @@ class Form1 extends Component {
     return (
       <MuiThemeProvider>
         <>
-          <h1>Form1</h1>
+          <h1>Confirmation</h1>
 
-          <TextField hintText="enter business name" />
           <br />
+          <RaisedButton
+            label="Back"
+            primary={false}
+            style={styles.button}
+            onClick={this.back}
+          />
+
           <RaisedButton
             label="Continue"
             primary={true}
@@ -44,4 +50,4 @@ const styles = {
   }
 };
 
-export default Form1;
+export default Form4;
