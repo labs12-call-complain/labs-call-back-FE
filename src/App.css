@@ -31,3 +31,18 @@
     transform: rotate(360deg);
   }
 }
+
+.loading-container {
+  width: 50%;
+  margin: 10% auto;
+}
+
+.home-loading-header{
+  margin: 0 auto;
+  text-align: center;
+  line-height: inherit;
+}
+
+.spinner-container {
+  margin: 2rem 13rem;
+}
