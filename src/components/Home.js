@@ -49,7 +49,7 @@ export default class SignedIn extends Component {
     render() {
         return (
             <>
-                {/* <Router> */}
+                
                     <Navigation />
                     <div className='Homepage Container'>
                     <Link to='/record-complaint'>
@@ -67,9 +67,7 @@ export default class SignedIn extends Component {
                             })}
                         </div>
                     </div>
-                    {/* <Route exact path="/" component={Home} /> */}
-                    {/* <Route path="/record-complaint" component={RecordForm} />
-                </Router> */}
+                 
             </>
         )
     }
