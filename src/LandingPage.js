@@ -9,9 +9,10 @@ import fire from './config/fire'
 class LandidngPage extends Component {
 
   state = {
-
+    docid: null
   };
 
+    docid = this.state.docid //may have to move back to app
 
     uiConfig = {
 
