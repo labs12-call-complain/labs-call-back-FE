@@ -8,7 +8,7 @@ const Home = () => {
     <div>
       <button onClick={() => firebase.auth().signOut()}> Sign Out </button>
       
-      
+      <FormContainer />
       
     </div>
   );
