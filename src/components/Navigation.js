@@ -12,32 +12,48 @@ import {
     DropdownMenu,
     DropdownItem } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-import {Icon} from '@blueprintjs/core'
-import {home, phone, comment, cog} from '@blueprintjs/icons'
 import './Navigation.css';
+import firebase from 'firebase'
 
-class Navigation extends React.Component {
+export default class Navigation extends Component {
     toggle = this.toggle.bind(this);
     state = {
-        isOpen: false
-    }
-      toggle() {
-        this.setState({
-          isOpen: !this.state.isOpen
-        });
-      }
-    render() {
-        return (
-            <div>
-            <Navbar color="light" light expand="md" className='fixed-bottom navbar-dark bg-dark'>
-                <Icon icon='home' color='red'/>
-                <Icon icon='phone' color='red'/>
-                <Icon icon='comment' color='red'/>
-                <Icon icon='cog' color='red'/>
-            </Navbar>
-          </div>
-          );
-        }
+      isOpen: false
+    };
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+  render() {
+    return (
+      <div>
+        <Navbar color="light" light expand="md">
+          <NavbarBrand href="/">Call Complain</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  Options
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>
+                    View Complaint History
+                  </DropdownItem>
+                  <DropdownItem>
+                    Edit Profile
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem onClick={() => firebase.auth().signOut()}>
+                    Logout
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </div>
+    );
+  }
 }
-
-export default Navigation;

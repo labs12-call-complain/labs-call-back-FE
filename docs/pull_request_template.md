@@ -4,7 +4,6 @@ A description of the changes proposed in the pull request:
 -
 -
 
-Feature Added, Fixed, Changed, Deleted: 
 
 Fixes # .
 
