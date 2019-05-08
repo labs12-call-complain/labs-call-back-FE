@@ -13,10 +13,10 @@ class App extends Component {
   };
 
   componentDidMount() {
-    firebase.auth().onAuthStateChanged(user => {
-      this.setState({isSignedIn: !!user})
-      console.log("user", user)
-
+    firebase.auth()
+      .onAuthStateChanged(user => {
+        this.setState({isSignedIn: !!user})
+        console.log("user", user)
     })
   }
 
@@ -28,6 +28,7 @@ class App extends Component {
       </>
       );
     }
-  }
+
+}
 
 export default App;
