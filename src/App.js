@@ -1,34 +1,26 @@
 import React, { Component } from "react";
 // import "./App.css";
 import * as firebase from "firebase";
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import fire from "./config/fire.js";
-import Signedin from './SignedIn'
-import LandingPage from './LandingPage'
-
+import Home from "./Home";
+import LandingPage from "./LandingPage";
 
 class App extends Component {
-
   state = {
     isSignedIn: false
   };
 
   componentDidMount() {
-    firebase.auth()
-      .onAuthStateChanged(user => {
-        this.setState({isSignedIn: !!user})
-        console.log("user", user)
-    })
+    firebase.auth().onAuthStateChanged(user => {
+      this.setState({ isSignedIn: !!user });
+      console.log("user", user);
+    });
   }
 
   render() {
-    return (
-      <>
-        {this.state.isSignedIn ? <Signedin /> : 
-          <LandingPage />}
-      </>
-      );
-    }
-
+    return <>{this.state.isSignedIn ? <Home /> : <LandingPage />}</>;
+  }
 }
 
 export default App;
