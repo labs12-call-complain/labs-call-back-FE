@@ -14,6 +14,7 @@ import {
 import 'bootstrap/dist/css/bootstrap.css';
 import './Navigation.css';
 import firebase from 'firebase'
+import {Link} from 'react-router-dom';
 
 export default class Navigation extends Component {
     toggle = this.toggle.bind(this);
@@ -41,9 +42,11 @@ export default class Navigation extends Component {
                   <DropdownItem>
                     View Complaint History
                   </DropdownItem>
-                  <DropdownItem>
-                    Edit Profile
-                  </DropdownItem>
+                  <Link to="/profile">
+                    <DropdownItem>
+                      Edit Profile
+                    </DropdownItem>
+                  </Link>
                   <DropdownItem divider />
                   <DropdownItem onClick={() => firebase.auth().signOut()}>
                     Logout
