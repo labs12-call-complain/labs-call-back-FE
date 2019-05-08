@@ -29,14 +29,12 @@ class Profile extends Component {
           });
     }
 
-    // function(userCredential) {
-    //     userCredential.user.updateEmail('newyou@domain.com')
-    // }
+
 
 
     updateProf = (e) => {
 
-        e.preventDefault()
+        // e.preventDefault()
 
         this.user.updateProfile({
         displayName: this.state.displayName,
@@ -48,7 +46,6 @@ class Profile extends Component {
         console.log(error)
       }) 
     
-      this.updateEmailz()
     
     }
 
@@ -77,16 +74,9 @@ class Profile extends Component {
         
         <div class="profileContainer">
 
-
-
-            
-            <p>--- profile ---</p>
-
             <p>{this.state.showInput}</p>
 
-            
-
-            <img class="profilePic" src={`${this.user.photoURL}`}/>
+           <img class="profilePic" src={`${this.user.photoURL}`}/>
            <p class="profileText">{`Name: ${this.user.displayName}`}</p>
            <p class="profileText">{`Phone Number: ${this.user.phoneNumber}`}</p>
            <p class="profileText">{`Email: ${this.user.email}`}</p>
@@ -98,9 +88,6 @@ class Profile extends Component {
             })}> delete account </button>
 
             <button onClick={this.inputToggle}> Edit Profile </button>
-
-
-            {/* <form onSubmit={this.updateProf}> */}
 
             {this.state.showInput ? 
             <form onSubmit={this.updateProf}>
@@ -116,16 +103,15 @@ class Profile extends Component {
             onChange={this.changeHandler}
             name="photoURL"
             />
-            <input 
+            {/* <input 
             placeholder={"Email..."}
             value={this.state.email}
             onChange={this.changeHandler}
             name="email"
-            />
+            /> */}
             <button> UPDATE </button>
             </form> 
             : null}
-
             
         </div>
     )}

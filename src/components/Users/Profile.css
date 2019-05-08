@@ -7,13 +7,13 @@
 }
 
 .profileContainer {
-    /* display: flex;
-    align-items: center; */
+    display: flex;
+    align-items: center;
     flex-direction: column;
     border: 1px solid grey;
     width: 50%;
 }
 
 button {
-   width: 120px;
+   width: 130px;
 }
