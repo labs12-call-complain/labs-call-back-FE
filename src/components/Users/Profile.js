@@ -4,6 +4,7 @@ import "./Profile.css";
 import React, { Component } from "react";
 import firebase from 'firebase'
 
+import {withAuthorization} from '../Session/session.js'
 
 
 
@@ -116,4 +117,4 @@ class Profile extends Component {
         </div>
     )}
 }
-export default Profile 
+export default withAuthorization(Profile); 
