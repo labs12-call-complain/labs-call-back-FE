@@ -8,6 +8,7 @@ import RaisedButton from "material-ui/RaisedButton";
 class Form4 extends Component {
   continue = e => {
     e.preventDefault();
+    //process form here
     this.props.nextStep();
   };
 
