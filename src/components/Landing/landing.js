@@ -2,11 +2,13 @@ import "./LandingPage.css";
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import firebase from 'firebase'
 import React, { Component } from "react";
-import fire from './config/fire'
+// import firebase from '../Firebase/index.js'
+// import { LANDING } from "./config/routes";
+import {withAuthentication} from '../Session/session.js';
 
 
 
-class LandidngPage extends Component {
+class LandingPage extends Component {
 
   state = {
     docid: null
@@ -15,30 +17,14 @@ class LandidngPage extends Component {
     docid = this.state.docid //may have to move back to app
 
     uiConfig = {
-
-    signInFlow: "popup",
-    signInOptions: [
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-      firebase.auth.EmailAuthProvider.PROVIDER_ID
-    ],
-    // callbacks: {
-    //   signInSuccess: () => false,
-    //   signInSuccessWithAuthResult: (authResult, redirectURL) => {
-    //     console.log(authResult);
-    //     console.log(fire.firestore());
-
-    //     fire.firestore().collection('users').doc(authResult.user.uid)
-    //     .get().then(user => {if (user.exists) {console.log(`user logging in: ${user}`)} else {
-    //       console.log(user)
-    //       fire.firestore().collection('users').doc(authResult.user.uid).set({
-    //         name: authResult.user.displayName,
-    //         email: authResult.user.email
-    //       })
-    //     }})
-    //     .catch(err => {console.log(err)})
-    //   }
-    // }
+        
+        signInFlow: "popup",
+        signInOptions: [
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+            firebase.auth.EmailAuthProvider.PROVIDER_ID
+        ],
+        signInSuccessUrl: "/home"
   }
 
   render() {
@@ -61,7 +47,7 @@ class LandidngPage extends Component {
                 <h2>Sign In</h2>
                 <StyledFirebaseAuth 
                 uiConfig={this.uiConfig} 
-                firebaseAuth={fire.auth()} />
+                firebaseAuth={firebase.auth()} />
                 </div>
             </section>
 
@@ -116,4 +102,4 @@ class LandidngPage extends Component {
     )
   }
 }
-export default LandidngPage
+export default withAuthentication(LandingPage);
