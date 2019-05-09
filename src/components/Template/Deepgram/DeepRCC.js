@@ -5,6 +5,10 @@ const micStream = new MicrophoneStream();
 
 
 export default class DeepRCC extends Component {
+    state = {
+        recording: null
+    }
+
     handleStart = () => {
 
         try {
@@ -16,6 +20,9 @@ export default class DeepRCC extends Component {
 
         micStream.on('format', format => {
             console.log(format);
+            this.setState({
+                recording: format
+            })
         })
 
         // micStream.pipe()
