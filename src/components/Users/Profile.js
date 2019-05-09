@@ -117,4 +117,4 @@ class Profile extends Component {
         </div>
     )}
 }
-export default withAuthorization(Profile); 
+export default Profile; 
