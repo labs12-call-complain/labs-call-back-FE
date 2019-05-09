@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-
+import * as firebase from "firebase";
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import fire from "../Firebase/firebase";
 import Form1 from "./Form1.jsx";
 import Form2 from "./Form2.jsx";
 import Form3 from "./Form3.jsx";
@@ -9,9 +11,7 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
-
-import {withAuthorization} from '../Session/session.js';
-
+import Navigation from "../Navigation/navigation";
 
 class FormContainer extends Component {
   state = {
@@ -48,6 +48,7 @@ class FormContainer extends Component {
       case 1:
         return (
           <>
+            
             <Form1
               nextStep={this.nextStep}
               prevStep={this.prevStep}
@@ -59,6 +60,7 @@ class FormContainer extends Component {
       case 2:
         return (
           <>
+            
             <Form2
               nextStep={this.nextStep}
               prevStep={this.prevStep}
@@ -70,6 +72,7 @@ class FormContainer extends Component {
       case 3:
         return (
           <>
+            
             <Form3
               nextStep={this.nextStep}
               prevStep={this.prevStep}
@@ -81,6 +84,7 @@ class FormContainer extends Component {
       case 4:
         return (
           <>
+            
             <Form4
               nextStep={this.nextStep}
               prevStep={this.prevStep}
@@ -92,7 +96,6 @@ class FormContainer extends Component {
         case 5:
         return (
           <>
-            <Navigation />
             <Success />
           </>
         );
@@ -102,6 +105,4 @@ class FormContainer extends Component {
   }
 }
 
-const condition = authUser => !!authUser;
-
-export default withAuthorization(condition)(FormContainer);
+export default FormContainer;
