@@ -75,7 +75,6 @@ class LandingPage extends Component {
                     <i class="fas fa-microphone-alt fa-3x"></i>
                     <p class="three-steps">2. Record your voice message</p>
                     </div>
-                   
                     <div class="step-container">
                     <i class="fas fa-globe-americas fa-3x"></i>
                     <p class="three-steps">3. Press send</p>
