@@ -11,6 +11,7 @@ import AccountPage from '../Account/account.js';
 import AdminPage from '../Admin/admin.js';
 import FormContainer from '../Forms/FormContainer';
 import Profile from '../Users/Profile.js';
+import TweetForm from '../Forms/TweetForm.js'
 
 import * as ROUTES from '../constants/routes.js';
 
@@ -20,7 +21,7 @@ const App = () => (
     <Router>
     <div>
     <Navigation />
-        <hr />
+        
         <Route exact path={ROUTES.LANDING} component={LandingPage} />
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
         <Route path={ROUTES.SIGN_IN} component={SignInPage} />
@@ -28,6 +29,7 @@ const App = () => (
         <Route path={ROUTES.HOME} component={HomePage} />
         <Route path={ROUTES.ACCOUNT} component={AccountPage} />
         <Route path={ROUTES.FORM_CONTAINER} component={FormContainer} />
+        <Route path={ROUTES.TWEET_FORM} component={TweetForm} />
     </div>
     </Router>
 );

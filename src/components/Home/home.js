@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import './home.css'
 
 import { withAuthorization } from '../Session/session.js';
 
@@ -48,19 +49,23 @@ class HomePage extends Component {
       return (
           <>
               <div className='Homepage Container'>
-              <Link to='/complaint-form'>
-                  <button>
+                <div class="button-container">
+              <Link class="centered" to='/complaint-form'>
+                  <button class="complaintButton">
+                      
+                      Call and Complain 
                       <MaterialIcon icon="phone" />
-                      Call and Complain
                   </button>
               </Link>
-                  <h1>
-                      Chart of Worst Companies Goes Here
+                </div>
+                 
+                  <h1 class="worstReviewed">
+                      Lowest Reviewed Companies
                   </h1>
                   <div>
                       {this.state.cards.map((card, i) => {
                           return <ComplaintCard card={card} key={this.state.id}/> 
-                      })}
+                      })} 
                   </div>
               </div>
                

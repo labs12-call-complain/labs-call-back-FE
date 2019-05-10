@@ -1,0 +1,47 @@
+.worstReviewed {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.complaintButton {
+    position: relative;
+    width: 300px;
+    height: 40px;
+    /* margin-bottom: 20px;
+    margin-top: 20px; */
+    border-radius: 5px;
+    background-color: #ff471a;
+    color: white;
+    border: 1px solid #FFD6D6;
+    text-decoration: none;
+    z-index: 5;
+    /* top: -80px; */
+}
+
+h1 {
+    font-family: Lato,sans-serif;
+    font-weight: 700;
+    color: #343434
+}
+
+.centered {
+    margin: 1px;
+    position: relative;
+    width: 302px;
+    z-index: 4;
+    top: -60px;
+    
+}
+
+.button-container {
+    
+    display: flex;
+    justify-content: center;
+    length: 40px;
+}
+
+/* background: linear-gradient(#ff471a, red); */
+
+.Homepage {
+    background-color: #F6F6F6;
+}

@@ -1,4 +1,21 @@
 .card-container{
     width: 40rem;
-    margin: 2rem auto;
+    margin: 13px auto;
+    border-radius: 10px;
+}
+
+.playbuttons {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid lightgrey;
+    background: linear-gradient(#ff471a, red);;
+    padding-top: 5px;
+    border-radius: 5px;
+}
+
+.card-body {
+    
+    
 }
