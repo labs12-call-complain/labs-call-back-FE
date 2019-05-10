@@ -73,47 +73,70 @@ class Profile extends Component {
     render() {
     return (
         
+        <div class="containerCenter">
+        
         <div class="profileContainer">
+        <h2>Edit Profile</h2>
 
             <p>{this.state.showInput}</p>
 
+            
+            <div class="profile-div">
             <img class="profilePic" src={`${this.user.photoURL}`}/>
+            
+
+            <div class="textContainer">
             <p class="profileText">{`Name: ${this.user.displayName}`}</p>
             <p class="profileText">{`Phone Number: ${this.user.phoneNumber}`}</p>
             <p class="profileText">{`Email: ${this.user.email}`}</p>
 
-            <button onClick={() => this.user.delete().then(function() {
-                console.log("user deleted")
-            }).catch(function(error) {
-                console.log(error)
-            })}> delete account </button>
+
 
             <button onClick={this.inputToggle}> Edit Profile </button>
 
+
+            </div>
+
+            </div>
+
+            
+            
+
             {this.state.showInput ? 
+            <div class="hidden">
             <form onSubmit={this.updateProf}>
-            <input 
+            <p class="text-centers">Display Name:</p> <input 
             placeholder='Display Name...'
             value={this.state.displayName}
             onChange={this.changeHandler}
             name="displayName"
-            />
+            /> 
+            <p class="text-centers">URL:</p>
             <input 
             placeholder={"Photo URL..."}
             value={this.state.photoURL}
             onChange={this.changeHandler}
             name="photoURL"
-            />
-            {/* <input 
-            placeholder={"Email..."}
-            value={this.state.email}
-            onChange={this.changeHandler}
-            name="email"
-            /> */}
-            <button> UPDATE </button>
-            </form> 
+            /> 
+            <button class="text-centers"> UPDATE </button>
+            </form>
+            </div> 
             : null}
-            
+
+            <div class="deleteContainer">
+
+              <h3>Danger Zone</h3>
+              <p>WARNING</p>
+              <p>Once you delete your account you can not go back</p>
+            <button onClick={() => this.user.delete().then(function() {
+                console.log("user deleted")
+            }).catch(function(error) {
+                console.log(error)
+            })}> Delete Account </button>
+
+            </div>
+
+        </div>
         </div>
     )}
 }
