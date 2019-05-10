@@ -13,10 +13,14 @@ import {
   DropdownMenu,
   DropdownItem } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
+import './navigation.css'
 
 import SignOutButton from '../SignOut/signout.js';
 import * as ROUTES from '../constants/routes.js';
 import { AuthUserContext } from '../Session/session.js';
+
+
+
 
 const Navigation = () => (
     <AuthUserContext.Consumer>
@@ -39,9 +43,10 @@ const Navigation = () => (
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
+        <Navbar light expand="md">
           <NavbarBrand href="/home">Call Complain</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
+          
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <UncontrolledDropdown nav inNavbar>
@@ -74,14 +79,14 @@ const Navigation = () => (
 const NavigationNonAuth = () => {
   return (
     <div>
-      <Navbar color="light" light expand="md">
+      {/* <Navbar color="light" light expand="md">
         <NavbarBrand href="/">Call Complain</NavbarBrand>
         <NavbarToggler />
         <Collapse navbar>
           <Nav className="ml-auto" navbar>
           </Nav>
         </Collapse>
-      </Navbar>
+      </Navbar> */}
     </div>
   );
 }

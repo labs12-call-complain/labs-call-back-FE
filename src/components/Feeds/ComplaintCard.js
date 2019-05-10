@@ -10,11 +10,13 @@ import MaterialIcon, {colorPalette} from 'material-icons-react';
             <div>
                 <Card className="card-container">
                     <CardBody>
+                        <div class="playbuttons">
                         <MaterialIcon icon="fast_rewind" />
                         <MaterialIcon icon="pause" />
                         <MaterialIcon icon="play_arrow" />
                         <MaterialIcon icon="fast_forward" />
-                        <CardText>{this.props.card.complaint}</CardText>
+                        </div>
+                        <CardText class="complaintText">{this.props.card.complaint}</CardText>
                     </CardBody>
                 </Card>
             </div>
