@@ -4,6 +4,10 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
+import PlacesAutocomplete from 'react-places-autocomplete';
+import LocationSearch from './LocationSearchInput';
+
+
 
 class Form1 extends Component {
   continue = e => {
@@ -15,16 +19,21 @@ class Form1 extends Component {
     e.preventDefault();
     this.props.prevStep();
   };
-  state = {};
+
+  
+
+  
+
+
 
   render() {
-    const { values, handleChange } = this.props;
+    
+    
     return (
       <MuiThemeProvider>
         <>
           <h1>Form1</h1>
-
-          <TextField hintText="enter business name" />
+            <LocationSearch />
           <br />
           <RaisedButton
             label="Continue"

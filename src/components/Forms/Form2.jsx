@@ -5,6 +5,7 @@ import AppBar from "material-ui/AppBar";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 
+
 class Form2 extends Component {
   continue = e => {
     e.preventDefault();
@@ -23,7 +24,6 @@ class Form2 extends Component {
       <MuiThemeProvider>
         <>
           <h1>Record Complaint</h1>
-
           
           <br />
 
