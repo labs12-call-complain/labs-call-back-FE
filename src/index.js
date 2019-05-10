@@ -6,6 +6,8 @@ import * as serviceWorker from './serviceWorker';
 
 import App from './components/App/app.js';
 import Firebase, { FirebaseContext } from './components/Firebase';
+// import DeepRCC from "./components/Template/Deepgram/DeepRCC";
+// import DeepRFC from "./components/Template/Deepgram/DeepRFC";
 
 ReactDOM.render(
     <FirebaseContext.Provider value={new Firebase()}>
@@ -13,5 +15,11 @@ ReactDOM.render(
     </FirebaseContext.Provider>,
     document.getElementById('root'),
   );
+
+// ReactDOM.render( 
+//   <div>
+//     <DeepRCC />
+//     <DeepRFC />
+//   </div>, document.getElementById("root"));
 
 serviceWorker.unregister();

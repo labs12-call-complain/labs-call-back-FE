@@ -77,12 +77,12 @@ class Profile extends Component {
 
             <p>{this.state.showInput}</p>
 
-           <img class="profilePic" src={`${this.user.photoURL}`}/>
-           <p class="profileText">{`Name: ${this.user.displayName}`}</p>
-           <p class="profileText">{`Phone Number: ${this.user.phoneNumber}`}</p>
-           <p class="profileText">{`Email: ${this.user.email}`}</p>
+            <img class="profilePic" src={`${this.user.photoURL}`}/>
+            <p class="profileText">{`Name: ${this.user.displayName}`}</p>
+            <p class="profileText">{`Phone Number: ${this.user.phoneNumber}`}</p>
+            <p class="profileText">{`Email: ${this.user.email}`}</p>
 
-           <button onClick={() => this.user.delete().then(function() {
+            <button onClick={() => this.user.delete().then(function() {
                 console.log("user deleted")
             }).catch(function(error) {
                 console.log(error)
@@ -117,4 +117,7 @@ class Profile extends Component {
         </div>
     )}
 }
-export default Profile; 
+
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(Profile); 
