@@ -8,3 +8,4 @@ export const PASSWORD_FORGET = '/pw-forget';
 export const FORM_CONTAINER = '/complaint-form';
 export const EDIT_PROFILE = '/edit-profile';
 export const TWITTER_TEST = '/twitter-test';
+export const TWEET_FORM = '/tweet';

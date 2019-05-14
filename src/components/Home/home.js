@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import './home.css'
 
 import { withAuthorization } from '../Session/session.js';
 
@@ -44,6 +45,7 @@ class HomePage extends Component {
         ]
     }
 
+<<<<<<< HEAD
     render() {
         return (
             <>
@@ -67,6 +69,35 @@ class HomePage extends Component {
             </>
         )
     }
+=======
+  render() {
+      return (
+          <>
+              <div className='Homepage Container'>
+                <div class="button-container">
+              <Link class="centered" to='/complaint-form'>
+                  <button class="complaintButton">
+                      
+                      Call and Complain 
+                      <MaterialIcon icon="phone" />
+                  </button>
+              </Link>
+                </div>
+                 
+                  <h1 class="worstReviewed">
+                      Lowest Reviewed Companies
+                  </h1>
+                  <div>
+                      {this.state.cards.map((card, i) => {
+                          return <ComplaintCard card={card} key={this.state.id}/> 
+                      })} 
+                  </div>
+              </div>
+               
+          </>
+      )
+  }
+>>>>>>> 000acc6ebae3bbac810db8f9948e7006c630e82c
 }
 
 const condition = authUser => !!authUser;
