@@ -4,6 +4,7 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
+import Recording from "./Recording/Recording.js";
 
 
 class Form2 extends Component {
@@ -26,6 +27,8 @@ class Form2 extends Component {
           <h1>Record Complaint</h1>
           
           <br />
+
+          <Recording />
 
           <RaisedButton
             label="Back"
