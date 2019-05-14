@@ -46,8 +46,9 @@ class LandingPage extends Component {
                 <div class="signin">
                 <h2>Sign In</h2>
                 <StyledFirebaseAuth 
-                uiConfig={this.uiConfig} 
-                firebaseAuth={firebase.auth()} />
+                    uiConfig={this.uiConfig} 
+                    firebaseAuth={firebase.auth()} 
+                />
                 </div>
             </section>
 
