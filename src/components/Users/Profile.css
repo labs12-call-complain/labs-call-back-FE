@@ -2,15 +2,23 @@
     display: flex;
     justify-content: center;
     background-color: #F6F6F6;
+<<<<<<< HEAD
    
  }
  
  .profilePic {
+=======
+    
+}
+
+.profilePic {
+>>>>>>> 8a941cacff1cad0959a5b7758f18cb6aca454cb6
     width: 200px;
     height: 200px;
     object-fit: cover;
     border: 5px solid grey;
     border-radius: 15px;
+<<<<<<< HEAD
  }
  
  .profileText {
@@ -125,4 +133,97 @@
         text-align: center;
     }
 
+=======
+}
+
+.profileText {
+    font-size: 1.5rem;
+}
+
+.profileContainer {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+
+    margin-top: 50px;
+    border: 1px solid grey;
+    border-radius: 15px;
+    width: 50%;
+    height: 100%;
+    margin-bottom: 50px;
+    background-color: white;
+}
+
+.deleteContainer button, .hidden button, .profile-div button {
+   width: 200px;
+   height: 35px;
+   border-radius: 5px;
+   background: lightgreen;
+   border: 1px solid lightgreen;
+}
+
+.profile-div {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+    
+}
+
+.hidden {
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid lightgrey;
+    
+    width: 100%;
+    height: 250px;
+}
+
+.text-centers {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+form input {
+    margin-bottom: 20px
+}
+
+.deleteContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-top: 1px solid red;
+    
+}
+
+.deleteContainer p {
+    font-size: 1.5rem;
+}
+
+.profileContainer h2 {
+    text-align: center;
+}
+
+.deleteContainer button {
+    margin-bottom: 40px;
+    background: red;
+    color: white;
+    border: 1px solid red;
+}
+
+h2, h3 {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    /* text-decoration: underline; */
+}
+
+h3 {
+    color: red;
+    
+>>>>>>> 8a941cacff1cad0959a5b7758f18cb6aca454cb6
 }
