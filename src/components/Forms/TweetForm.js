@@ -12,17 +12,24 @@ var client = new Twitter ({
   access_token_secret: 'COJaCzuJC9KZQw286hHifGohUAGHXxHntgoTZq47myAOR'
 });
 
-var params = {status: "twitter is working with react!!"}
+// var params = {status: "twitter is working with react!!"}
 
+
+var params = { screen_name: 'testacc64141173' }
     
-function postreq(){ client.post("https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/statuses/update.json?status=testest2", params)
-    .then(function (tweet) {
-      console.log(tweet);
-})
-    .catch(function (error) {
-      throw error;
+// function postreq(){ client.post("https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/statuses/update.json?status=testest2", params)
+//     .then(function (tweet) {
+//       console.log(tweet);
+// })
+//     .catch(function (error) {
+//       throw error;
+// }) }
+    
+function getreq() { client.get('statuses/user_timeline', params, function(error, tweets, response) {
+  if (!error) {
+    console.log(tweets);
+  }
 }) }
-    
 
 
 // function axiospost() {
@@ -54,9 +61,8 @@ function postreq(){ client.post("https://cors-anywhere.herokuapp.com/https://api
       return (
         <div>
             <p>---- twitter form ----</p>
-        
 
-            <button onClick={postreq}> Tweet </button>
+            <button onClick={getreq}> Tweet </button>
         
         </div>
       )
