@@ -5,8 +5,18 @@ import AppBar from "material-ui/AppBar";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 
-
 class Form2 extends Component {
+  constructor() {
+    super();
+    this.state = {
+      audioChunks: [],
+      audioUrl: ""
+    };
+  }
+
+  
+
+
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
@@ -16,16 +26,17 @@ class Form2 extends Component {
     e.preventDefault();
     this.props.prevStep();
   };
-  state = {};
 
   render() {
     const { values, handleChange } = this.props;
+
     return (
       <MuiThemeProvider>
         <>
           <h1>Record Complaint</h1>
-          
+
           <br />
+
 
           <RaisedButton
             label="Back"
@@ -40,8 +51,6 @@ class Form2 extends Component {
             style={styles.button}
             onClick={this.continue}
           />
-
-
         </>
       </MuiThemeProvider>
     );
