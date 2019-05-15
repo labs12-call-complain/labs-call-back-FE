@@ -5,6 +5,7 @@ import AppBar from "material-ui/AppBar";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import Recording from "./Recording/Recording.js";
+import Axios from "axios";
 
 
 class Form2 extends Component {
@@ -17,7 +18,6 @@ class Form2 extends Component {
     e.preventDefault();
     this.props.prevStep();
   };
-  state = {};
 
   render() {
     const { values, handleChange } = this.props;
