@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AudioAnalyser from './AudioAnalyser';
+import axios from "axios";
 
 const audioType = 'audio/wav';
 
@@ -41,6 +42,7 @@ class Recording extends Component {
 
     // this.mediaRecorder.stop();
     this.setState({recording: false});
+    // save audio is working
     this.saveAudio();
   }
 
@@ -52,7 +54,23 @@ class Recording extends Component {
     // append videoURL to list of saved videos for rendering
     const audios = this.state.audios.concat([audioURL]);
     this.setState({audios});
+    // acutal working axios call
     console.log(this.state.audios)
+    console.log(blob)
+    let data = blob
+    let contentType = 'audio/wav';
+    let authHeaders = 'Basic Y2FsbGFuZGNvbXBsYWluQGdtYWlsLmNvbTpjYWxsY29tcGxhaW4xMjM0NTY3ODk='
+    let dgheaders = {
+        "Content-Type": contentType,
+        "Authorization": authHeaders
+    }
+    console.log(data, dgheaders)
+    axios
+        .post(`https://brain.deepgram.com/v2/listen`, data, {headers: dgheaders})
+        .then(res => {
+            console.log("response:", res)
+            })
+        .catch(err => console.log(err));
   }
 
   deleteAudio(audioURL) {
@@ -68,6 +86,24 @@ class Recording extends Component {
       this.getMicrophone();
     }
   }
+
+  transcribe = (e) => {
+    e.preventDefault();
+    // let data = this.state.audios
+    // let contentType = 'audio/wav';
+    // let authHeaders = 'Basic Y2FsbGFuZGNvbXBsYWluQGdtYWlsLmNvbTpjYWxsY29tcGxhaW4xMjM0NTY3ODk='
+    // let dgheaders = {
+    //     "Content-Type": contentType,
+    //     "Authorization": authHeaders
+    // }
+    // console.log(data, dgheaders)
+    // axios
+    //     .post(`https://brain.deepgram.com/v2/listen`, data, {headers: dgheaders})
+    //     .then(res => {
+    //         console.log("response:", res)
+    //         })
+    //     .catch(err => console.log(err));
+  } 
 
   render() {
     return (
@@ -86,6 +122,7 @@ class Recording extends Component {
               <div>
                 <button onClick={() => this.deleteAudio(audioURL)}>Delete Recording</button>
               </div>
+              <button onClick={this.transcribe}>Send to Deepgram</button>
             </div>
           ))}
         </div>

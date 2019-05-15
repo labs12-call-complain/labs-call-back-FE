@@ -15,7 +15,6 @@ class Form3 extends Component {
     e.preventDefault();
     this.props.prevStep();
   };
-  state = {};
 
   render() {
     const { values, handleChange } = this.props;
