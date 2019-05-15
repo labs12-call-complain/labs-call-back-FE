@@ -10,7 +10,7 @@
     padding-bottom: 5px;
     margin-bottom: 10px;
     border-bottom: 1px solid lightgrey;
-    background: linear-gradient(#ff471a, red);;
+    background: linear-gradient(#ff471a, red);
     padding-top: 5px;
     border-radius: 5px;
 }
@@ -19,3 +19,17 @@
     
     
 }
+
+@media (max-width: 700px) {
+    .card-container{
+        width: 90%;
+        margin: 13px auto;
+        border-radius: 10px;
+    }
+
+    .textContainer {
+        text-align: center;
+        margin-top: 20px;
+    }
+}
+
