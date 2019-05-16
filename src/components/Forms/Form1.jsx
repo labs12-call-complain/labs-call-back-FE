@@ -10,9 +10,13 @@ import LocationSearch from './LocationSearchInput';
 
 
 class Form1 extends Component {
+  state = {
+    StoreName: ""
+  }
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
+    this.someFn();
   };
 
   back = e => {
@@ -21,7 +25,16 @@ class Form1 extends Component {
   };
 
   
+  someFn = () => {
+    // let name = 'kabanas'
+    this.props.triggerStoreUpdate(this.state.StoreName);
+  }
 
+  updateGooglePlaces = (StoreNameFromPlaces) => {
+    this.setState({
+      StoreName: StoreNameFromPlaces
+    })
+  }
   
 
 
@@ -33,7 +46,7 @@ class Form1 extends Component {
       <MuiThemeProvider>
         <>
           <h1>Form1</h1>
-            <LocationSearch />
+            <LocationSearch triggerUpdatePlaces={this.updateGooglePlaces}/>
           <br />
           <RaisedButton
             label="Continue"
