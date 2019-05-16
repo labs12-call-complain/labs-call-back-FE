@@ -10,7 +10,7 @@ import HomePage from '../Home/home.js';
 import AccountPage from '../Account/account.js';
 import AdminPage from '../Admin/admin.js';
 import FormContainer from '../Forms/FormContainer';
-import Profile from '../Users/Profile.js';
+import Profile from '../Users/profile.js'
 import TweetForm from '../Forms/TweetForm.js'
 
 import * as ROUTES from '../constants/routes.js';
