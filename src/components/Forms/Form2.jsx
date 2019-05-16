@@ -18,7 +18,8 @@ class Form2 extends Component {
       audioUrl: "",
       audio: null,
       recording: false,
-      audios: []
+      audios: [],
+      transcription: ''
     };
     this.toggleMicrophone = this.toggleMicrophone.bind(this);
   }
@@ -68,6 +69,10 @@ class Form2 extends Component {
     const blob = await new Blob(this.chunks, { type: audioType });
     // generate video url from blob
     const audioURL = window.URL.createObjectURL(blob);
+
+    this.setState({
+      audioUrl: audioURL
+    })
     // const file = blobToFile(blob, "my-recording.wav")
     // append videoURL to list of saved videos for rendering
     const audios = this.state.audios.concat([audioURL]);
@@ -89,7 +94,10 @@ class Form2 extends Component {
         headers: dgheaders
       })
       .then(res => {
-        console.log("response:", res);
+        console.log("response:", res.data.results.channels[0].alternatives[0].transcript);
+        this.setState({
+          transcription: res.data.results.channels[0].alternatives[0].transcript
+        })
       })
       .catch(err => console.log(err));
   }
@@ -148,6 +156,7 @@ class Form2 extends Component {
               {this.state.audios.map((audioURL, i) => (
                 <div key={i}>
                   <audio controls style={{ width: 200 }} src={audioURL} />
+                  {this.state.transcription}
                   <div>
                     <button onClick={() => this.deleteAudio(audioURL)}>
                       Delete Recording
