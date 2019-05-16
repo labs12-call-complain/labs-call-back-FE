@@ -16,7 +16,10 @@ import MaterialIcon, {colorPalette} from 'material-icons-react';
                         <MaterialIcon icon="play_arrow" />
                         <MaterialIcon icon="fast_forward" />
                         </div>
-                        <CardText class="complaintText">{this.props.card.complaint}</CardText>
+                        <CardText class="complaintText">{`Posted By: ${this.props.card.DisplayName}`}</CardText>
+                        <CardText class="complaintText">{`Business: ${this.props.card.StoreName} - ${this.props.card.StoreLocation}`}</CardText>
+                        <CardText class="complaintText">{this.props.card.text}</CardText>
+                        
                     </CardBody>
                 </Card>
             </div>
