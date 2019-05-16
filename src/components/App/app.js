@@ -10,8 +10,8 @@ import HomePage from '../Home/home.js';
 import AccountPage from '../Account/account.js';
 import AdminPage from '../Admin/admin.js';
 import FormContainer from '../Forms/FormContainer';
-import Profile from '../Users/Profile.js';
-import TweetForm from '../Forms/TweetForm.js'
+import EditProfile from '../Users/EditProfile.js';
+import Profile from '../Users/Profile.js'
 
 import * as ROUTES from '../constants/routes.js';
 
@@ -25,11 +25,11 @@ const App = () => (
         <Route exact path={ROUTES.LANDING} component={LandingPage} />
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
         <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-        <Route path={ROUTES.EDIT_PROFILE} component={Profile} />
+        <Route path={ROUTES.EDIT_PROFILE} component={EditProfile} />
         <Route path={ROUTES.HOME} component={HomePage} />
         <Route path={ROUTES.ACCOUNT} component={AccountPage} />
         <Route path={ROUTES.FORM_CONTAINER} component={FormContainer} />
-        <Route path={ROUTES.TWEET_FORM} component={TweetForm} />
+        <Route path={ROUTES.PROFILE} component={Profile} />
     </div>
     </Router>
 );
