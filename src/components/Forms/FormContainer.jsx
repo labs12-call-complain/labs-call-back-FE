@@ -17,19 +17,22 @@ import axios from "axios";
 const audioType = "audio/wav";
 
 class FormContainer extends Component {
-  state = {
-    step: 1,
-    username: firebase.auth().currentUser,
-    email: "",
-    UID: null,
-    StoreName: "",
-    StoreLocation: false,
-    StorePhoneNumber: [],
-    StoreGoogleRating: "",
-    StoreWebsite: "",
-    transcript: "",
-    audiofile: ""
-  };
+  constructor() {
+    super();
+    this.state = {
+      step: 1,
+      username: "jay",
+      email: "",
+      icon: null,
+      audio: null,
+      recording: false,
+      audios: [],
+      transcription: "",
+      audioUrl: "",
+      audioChunks: [],
+      StoreName: ""
+    };
+  }
 
   nextStep = () => {
     const { step } = this.state;
@@ -49,11 +52,47 @@ class FormContainer extends Component {
     this.setState({ [input]: e.target.value });
   };
 
-  updateStoreInfo = (StoreNameFromPlaces) => {
+  updateTranscription = transcription => {
+    this.setState({
+      text: transcription
+    });
+  };
+
+  recording = recording => {
+    this.setState({
+      recording: recording
+    });
+  };
+
+  audio = audio => {
+    this.setState({
+      audio: audio
+    });
+  };
+
+  setAudioUrl = url => {
+    this.setState({
+      audioUrl: url
+    });
+  };
+
+  setAudios = audios => {
+    this.setState({
+      audios: audios
+    });
+  };
+
+  setTranscription = transcript => {
+    this.setState({
+      transcription: transcript
+    });
+  };
+
+  updateStoreInfo = StoreNameFromPlaces => {
     this.setState({
       StoreName: StoreNameFromPlaces
-    })
-  }
+    });
+  };
 
   // updateTranscription = (transcript) => {
   //   this.setState({
@@ -61,7 +100,6 @@ class FormContainer extends Component {
   //   })
   // }
 
-  
   render() {
     const { step } = this.state;
     const { username, email } = this.state;
@@ -86,7 +124,15 @@ class FormContainer extends Component {
         return (
           <>
             <Form2
-            saveAudio = {this.saveAudio}
+              stateTranscription={this.state.transcription}
+              setTranscriptionProps={this.setTranscription}
+              setAudiosProp={this.setAudios}
+              setUrl={this.setAudioUrl}
+              audioState={this.audio}
+              recordingState={this.recording}
+              updateTranscriptionProp={this.updateTranscription}
+              transcription={this.state.transcription}
+              saveAudio={this.saveAudio}
               transcribe={this.transcribe}
               deleteAudio={this.deleteAudio}
               audios={this.state.audios}
