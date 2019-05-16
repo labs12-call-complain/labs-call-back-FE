@@ -46,6 +46,7 @@ class LocationSearchInput extends Component {
         <Script url={this.state.url} onLoad={this.handleScriptLoad} />
         <SearchBar
           id="autocomplete"
+          onRequestSearch={console.log('searching')}
           placeholder=""
           hintText="Search Establishment"
           value={this.state.query}
