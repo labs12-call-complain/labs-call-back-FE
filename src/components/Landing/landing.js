@@ -24,10 +24,17 @@ class LandingPage extends Component {
             firebase.auth.TwitterAuthProvider.PROVIDER_ID,
             firebase.auth.EmailAuthProvider.PROVIDER_ID
         ],
+        // signInSuccessUrl: function(currentUser, credential, redirectUrl) {
+        //     const userId = currentUser.uid;
+        //     window.location.assign(`/home/${userId}`);
+        //     return true;
+        //     // "/home"
+        // }
         signInSuccessUrl: "/home"
   }
 
   render() {
+      console.log(this.state)
     return (
         <>
         <div class="topcontainer">

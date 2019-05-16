@@ -12,14 +12,27 @@ import AppBar from "material-ui/AppBar";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import Navigation from "../Navigation/navigation";
+import axios from "axios";
+
+const audioType = "audio/wav";
 
 class FormContainer extends Component {
-  state = {
-    step: 1,
-    username: "jay",
-    email: "",
-    icon: null
-  };
+  constructor() {
+    super();
+    this.state = {
+      step: 1,
+      username: "jay",
+      email: "",
+      icon: null,
+      audio: null,
+      recording: false,
+      audios: [],
+      transcription: "",
+      audioUrl: "",
+      audioChunks: [],
+      StoreName: ""
+    };
+  }
 
   nextStep = () => {
     const { step } = this.state;
@@ -39,40 +52,103 @@ class FormContainer extends Component {
     this.setState({ [input]: e.target.value });
   };
 
+  updateTranscription = transcription => {
+    this.setState({
+      text: transcription
+    });
+  };
+
+  recording = recording => {
+    this.setState({
+      recording: recording
+    });
+  };
+
+  audio = audio => {
+    this.setState({
+      audio: audio
+    });
+  };
+
+  setAudioUrl = url => {
+    this.setState({
+      audioUrl: url
+    });
+  };
+
+  setAudios = audios => {
+    this.setState({
+      audios: audios
+    });
+  };
+
+  setTranscription = transcript => {
+    this.setState({
+      transcription: transcript
+    });
+  };
+
+  updateStoreInfo = StoreNameFromPlaces => {
+    this.setState({
+      StoreName: StoreNameFromPlaces
+    });
+  };
+
+  // updateTranscription = (transcript) => {
+  //   this.setState({
+  //     text: transcript
+  //   })
+  // }
+
   render() {
     const { step } = this.state;
     const { username, email } = this.state;
     const values = { username, email };
+    // console.log(firebase.auth().currentUser);
+    console.log(this.state.StoreName);
 
     switch (step) {
       case 1:
         return (
           <>
-            
             <Form1
               nextStep={this.nextStep}
               prevStep={this.prevStep}
               handleChange={this.handleChange}
               values={values}
+              triggerStoreUpdate={this.updateStoreInfo}
             />
           </>
         );
       case 2:
         return (
           <>
-            
             <Form2
+              stateTranscription={this.state.transcription}
+              setTranscriptionProps={this.setTranscription}
+              setAudiosProp={this.setAudios}
+              setUrl={this.setAudioUrl}
+              audioState={this.audio}
+              recordingState={this.recording}
+              updateTranscriptionProp={this.updateTranscription}
+              transcription={this.state.transcription}
+              saveAudio={this.saveAudio}
+              transcribe={this.transcribe}
+              deleteAudio={this.deleteAudio}
+              audios={this.state.audios}
+              audio={this.state.audio}
+              toggleMicrophone={this.toggleMicrophone}
               nextStep={this.nextStep}
               prevStep={this.prevStep}
               handleChange={this.handleChange}
               values={values}
+              // updateTranscription={this.updateTranscription}
             />
           </>
         );
       case 3:
         return (
           <>
-            
             <Form3
               nextStep={this.nextStep}
               prevStep={this.prevStep}
@@ -84,7 +160,6 @@ class FormContainer extends Component {
       case 4:
         return (
           <>
-            
             <Form4
               nextStep={this.nextStep}
               prevStep={this.prevStep}
@@ -93,7 +168,7 @@ class FormContainer extends Component {
             />
           </>
         );
-        case 5:
+      case 5:
         return (
           <>
             <Success />

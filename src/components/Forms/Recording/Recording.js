@@ -11,6 +11,7 @@ class Recording extends Component {
       audio: null,
       recording: false,
       audios: [],
+      blob: []
     };
     this.toggleMicrophone = this.toggleMicrophone.bind(this);
   }
@@ -68,7 +69,10 @@ class Recording extends Component {
     axios
         .post(`https://brain.deepgram.com/v2/listen`, data, {headers: dgheaders})
         .then(res => {
-            console.log("response:", res)
+                console.log("response:", res)
+                this.setState({
+                    blob: res.data.results[0].alternatives[0].transcript
+                })
             })
         .catch(err => console.log(err));
   }
