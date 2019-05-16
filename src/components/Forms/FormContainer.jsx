@@ -30,7 +30,11 @@ class FormContainer extends Component {
       transcription: "",
       audioUrl: "",
       audioChunks: [],
-      StoreName: ""
+      StoreName: "",
+      StoreAddress: "",
+      StorePhone: "",
+      StoreWebsite: "",
+      StoreGoogleRating: ""
     };
   }
 
@@ -88,24 +92,20 @@ class FormContainer extends Component {
     });
   };
 
-  updateStoreInfo = StoreNameFromPlaces => {
+  updateStoreInfo = (StoreNameFromPlaces, StoreAddressFromPlaces, StorePhoneFromPlaces, StoreWebsiteFromPlaces, StoreRatingFromPlaces) => {
     this.setState({
-      StoreName: StoreNameFromPlaces
+      StoreName: StoreNameFromPlaces,
+      StoreAddress: StoreAddressFromPlaces,
+      StorePhone: StorePhoneFromPlaces,
+      StoreWebsite: StoreWebsiteFromPlaces,
+      StoreGoogleRating: StoreRatingFromPlaces
     });
   };
-
-  // updateTranscription = (transcript) => {
-  //   this.setState({
-  //     text: transcript
-  //   })
-  // }
 
   render() {
     const { step } = this.state;
     const { username, email } = this.state;
     const values = { username, email };
-    // console.log(firebase.auth().currentUser);
-    console.log(this.state.StoreName);
 
     switch (step) {
       case 1:
@@ -165,6 +165,13 @@ class FormContainer extends Component {
               prevStep={this.prevStep}
               handleChange={this.handleChange}
               values={values}
+              confirmationTranscription={this.state.transcription}
+              StoreName={this.state.StoreName}
+              StoreAddress={this.state.StoreAddress}
+              StorePhone={this.state.StorePhone}
+              StoreWebsite={this.state.StoreWebsite}
+              StoreGoogleRating={this.state.StoreGoogleRating}
+              audioBlobs={this.state.audios}
             />
           </>
         );
