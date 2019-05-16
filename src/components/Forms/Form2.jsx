@@ -5,16 +5,15 @@ import AppBar from "material-ui/AppBar";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 
-import AudioAnalyser from './Recording/AudioAnalyser';
+import AudioAnalyser from "./Recording/AudioAnalyser";
 import axios from "axios";
 
-const audioType = 'audio/wav';
+const audioType = "audio/wav";
 
 class Form2 extends Component {
   constructor(props) {
     super(props);
   }
-
 
   continue = e => {
     e.preventDefault();
@@ -26,13 +25,13 @@ class Form2 extends Component {
     this.props.prevStep();
   };
 
-   getMicrophone = async () => {
+  getMicrophone = async () => {
     const audio = await navigator.mediaDevices.getUserMedia({
       audio: true,
       video: false
     });
 
-    this.props.audioState(audio)
+    this.props.audioState(audio);
     // this.setState({ audio });
 
     let mediaRecorder = new MediaRecorder(audio);
@@ -47,22 +46,22 @@ class Form2 extends Component {
     console.log("right console log?", this.chunks);
     mediaRecorder.start(10);
 
-    this.props.recordingState(true)
+    this.props.recordingState(true);
     // this.setState({ recording: true });
-  }
+  };
 
   stopMicrophone = () => {
     this.props.audio.getTracks().forEach(track => track.stop());
 
-    this.props.audioState(null)
+    this.props.audioState(null);
     // this.setState({ audio: null });
 
     // this.mediaRecorder.stop();
-    this.props.recordingState(false)
+    this.props.recordingState(false);
     // this.setState({ recording: false });
     // save audio is working
     this.saveAudio();
-  }
+  };
 
   saveAudio = async () => {
     const blob = await new Blob(this.chunks, { type: audioType });
@@ -71,7 +70,7 @@ class Form2 extends Component {
     // const file = blobToFile(blob, "my-recording.wav")
     // append videoURL to list of saved videos for rendering
     const audios = this.props.audios.concat([audioURL]);
-    this.props.setAudiosProp( audios )
+    this.props.setAudiosProp(audios);
 
     // this.setState({ audios });
     // acutal working axios call
@@ -92,16 +91,17 @@ class Form2 extends Component {
       })
       .then(res => {
         console.log("response:", res);
-        this.props.setTranscriptionProps(res.data.results.channels[0].alternatives[0].transcript)
+        this.props.setTranscriptionProps(
+          res.data.results.channels[0].alternatives[0].transcript
+        );
       })
       .catch(err => console.log(err));
-  }
+  };
 
   deleteAudio(audioURL) {
     // filter out current videoURL from the list of saved videos
     const audios = this.props.audios.filter(a => a !== audioURL);
-    this.props.setAudiosProp( audios )
-    
+    this.props.setAudiosProp(audios);
   }
 
   toggleMicrophone = () => {
@@ -110,7 +110,7 @@ class Form2 extends Component {
     } else {
       this.getMicrophone();
     }
-  }
+  };
 
   transcribe = e => {
     e.preventDefault();
@@ -147,7 +147,7 @@ class Form2 extends Component {
               </button>
             </div>
             {this.props.audio ? <AudioAnalyser audio={this.props.audio} /> : ""}
-            <br/>
+            <br />
             {this.props.stateTranscription}
             <div>
               <h3>Recordings</h3>
@@ -164,8 +164,6 @@ class Form2 extends Component {
               ))}
             </div>
           </div>
-
-          
 
           <RaisedButton
             label="Back"

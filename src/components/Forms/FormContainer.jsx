@@ -29,126 +29,10 @@ class FormContainer extends Component {
       audios: [],
       transcription: "",
       audioUrl: "",
-      audioChunks: []
+      audioChunks: [],
+      StoreName: ""
     };
-    
   }
-
-
-  
-
-  continue = e => {
-    e.preventDefault();
-    this.props.nextStep();
-  };
-
-  back = e => {
-    e.preventDefault();
-    this.props.prevStep();
-  };
-
-  // async getMicrophone() {
-  //   const audio = await navigator.mediaDevices.getUserMedia({
-  //     audio: true,
-  //     video: false
-  //   });
-  //   this.setState({ audio });
-
-  //   let mediaRecorder = new MediaRecorder(audio);
-  //   // init data storage for video chunks
-  //   this.chunks = [];
-  //   // listen for data from media recorder
-  //   mediaRecorder.ondataavailable = e => {
-  //     if (e.data && e.data.size > 0) {
-  //       this.chunks.push(e.data);
-  //     }
-  //   };
-  //   console.log("right console log?", this.chunks);
-  //   mediaRecorder.start(10);
-  //   this.setState({ recording: true });
-  // }
-
-  // stopMicrophone() {
-  //   this.state.audio.getTracks().forEach(track => track.stop());
-  //   this.setState({ audio: null });
-
-  //   // this.mediaRecorder.stop();
-  //   this.setState({ recording: false });
-  //   // save audio is working
-  //   this.saveAudio();
-  // }
-
-  async saveAudio() {
-    const blob = await new Blob(this.chunks, { type: audioType });
-    // generate video url from blob
-    const audioURL = window.URL.createObjectURL(blob);
-
-    this.setState({
-      audioUrl: audioURL
-    });
-    // const file = blobToFile(blob, "my-recording.wav")
-    // append videoURL to list of saved videos for rendering
-    const audios = this.state.audios.concat([audioURL]);
-    this.setState({ audios });
-    // acutal working axios call
-    console.log(this.state.audios);
-    console.log(blob);
-    let data = blob;
-    let contentType = "audio/wav";
-    let authHeaders =
-      "Basic Y2FsbGFuZGNvbXBsYWluQGdtYWlsLmNvbTpjYWxsY29tcGxhaW4xMjM0NTY3ODk=";
-    let dgheaders = {
-      "Content-Type": contentType,
-      Authorization: authHeaders
-    };
-    console.log(data, dgheaders);
-    axios
-      .post(`https://brain.deepgram.com/v2/listen`, data, {
-        headers: dgheaders
-      })
-      .then(res => {
-        console.log(
-          "response:",
-          res.data.results.channels[0].alternatives[0].transcript
-        );
-        this.setState({
-          transcription: res.data.results.channels[0].alternatives[0].transcript
-        });
-      })
-      .catch(err => console.log(err));
-  }
-
-  deleteAudio(audioURL) {
-    // filter out current videoURL from the list of saved videos
-    const audios = this.state.audios.filter(a => a !== audioURL);
-    this.setState({ audios });
-  }
-
-  toggleMicrophone() {
-    if (this.state.audio) {
-      this.stopMicrophone();
-    } else {
-      this.getMicrophone();
-    }
-  }
-
-  transcribe = e => {
-    e.preventDefault();
-    // let data = this.state.audios
-    // let contentType = 'audio/wav';
-    // let authHeaders = 'Basic Y2FsbGFuZGNvbXBsYWluQGdtYWlsLmNvbTpjYWxsY29tcGxhaW4xMjM0NTY3ODk='
-    // let dgheaders = {
-    //     "Content-Type": contentType,
-    //     "Authorization": authHeaders
-    // }
-    // console.log(data, dgheaders)
-    // axios
-    //     .post(`https://brain.deepgram.com/v2/listen`, data, {headers: dgheaders})
-    //     .then(res => {
-    //         console.log("response:", res)
-    //         })
-    //     .catch(err => console.log(err));
-  };
 
   nextStep = () => {
     const { step } = this.state;
@@ -168,49 +52,60 @@ class FormContainer extends Component {
     this.setState({ [input]: e.target.value });
   };
 
-  updateTranscription = (transcription) => {
+  updateTranscription = transcription => {
     this.setState({
-      text: transcription 
-    })
-  }
+      text: transcription
+    });
+  };
 
-  recording = (recording) => {
+  recording = recording => {
     this.setState({
-      recording: recording 
-    })
-  }
+      recording: recording
+    });
+  };
 
-  audio = (audio) => {
+  audio = audio => {
     this.setState({
-      audio: audio 
-    })
-  }
+      audio: audio
+    });
+  };
 
-  setAudioUrl = (url) => {
+  setAudioUrl = url => {
     this.setState({
       audioUrl: url
-    })
-  }
+    });
+  };
 
-  setAudios = (audios) => {
+  setAudios = audios => {
     this.setState({
       audios: audios
-    })
-  }
+    });
+  };
 
-  setTranscription = (transcript) => {
+  setTranscription = transcript => {
     this.setState({
       transcription: transcript
-    })
-    
-  }
+    });
+  };
 
+  updateStoreInfo = StoreNameFromPlaces => {
+    this.setState({
+      StoreName: StoreNameFromPlaces
+    });
+  };
 
+  // updateTranscription = (transcript) => {
+  //   this.setState({
+  //     text: transcript
+  //   })
+  // }
 
   render() {
     const { step } = this.state;
     const { username, email } = this.state;
     const values = { username, email };
+    // console.log(firebase.auth().currentUser);
+    console.log(this.state.StoreName);
 
     switch (step) {
       case 1:
@@ -221,6 +116,7 @@ class FormContainer extends Component {
               prevStep={this.prevStep}
               handleChange={this.handleChange}
               values={values}
+              triggerStoreUpdate={this.updateStoreInfo}
             />
           </>
         );
@@ -228,14 +124,14 @@ class FormContainer extends Component {
         return (
           <>
             <Form2
-            stateTranscription={this.state.transcription}
-            setTranscriptionProps={this.setTranscription}
-            setAudiosProp={this.setAudios}
-            setUrl={this.setAudioUrl}
-            audioState={this.audio}
-            recordingState={this.recording}
-            updateTranscriptionProp={this.updateTranscription}
-            transcription={this.state.transcription}
+              stateTranscription={this.state.transcription}
+              setTranscriptionProps={this.setTranscription}
+              setAudiosProp={this.setAudios}
+              setUrl={this.setAudioUrl}
+              audioState={this.audio}
+              recordingState={this.recording}
+              updateTranscriptionProp={this.updateTranscription}
+              transcription={this.state.transcription}
               saveAudio={this.saveAudio}
               transcribe={this.transcribe}
               deleteAudio={this.deleteAudio}
@@ -246,6 +142,7 @@ class FormContainer extends Component {
               prevStep={this.prevStep}
               handleChange={this.handleChange}
               values={values}
+              // updateTranscription={this.updateTranscription}
             />
           </>
         );

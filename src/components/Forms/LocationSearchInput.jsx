@@ -32,13 +32,18 @@ class LocationSearchInput extends Component {
     let establishmentName = addressObject.name;
 
     console.log(addressObject);
+    console.log(establishmentName)
     if (address) {
       this.setState({
         city: address[0].long_name,
         query: addressObject.formatted_address
       });
     }
+    this.props.triggerUpdatePlaces(establishmentName)
+    // console.log(this.props.updateGooglePlaces)
   };
+
+
 
   render() {
     return (
