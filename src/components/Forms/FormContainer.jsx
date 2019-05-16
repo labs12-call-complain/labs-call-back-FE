@@ -19,12 +19,16 @@ const audioType = "audio/wav";
 class FormContainer extends Component {
   state = {
     step: 1,
-    username: "jay",
+    username: firebase.auth().currentUser,
     email: "",
-    icon: null,
-    audio: null,
-    recording: false,
-    audios: []
+    UID: null,
+    StoreName: "",
+    StoreLocation: false,
+    StorePhoneNumber: [],
+    StoreGoogleRating: "",
+    StoreWebsite: "",
+    transcript: "",
+    audiofile: ""
   };
 
   nextStep = () => {
@@ -45,13 +49,25 @@ class FormContainer extends Component {
     this.setState({ [input]: e.target.value });
   };
 
+  updateStoreInfo = (StoreNameFromPlaces) => {
+    this.setState({
+      StoreName: StoreNameFromPlaces
+    })
+  }
 
+  // updateTranscription = (transcript) => {
+  //   this.setState({
+  //     text: transcript
+  //   })
+  // }
 
   
   render() {
     const { step } = this.state;
     const { username, email } = this.state;
     const values = { username, email };
+    // console.log(firebase.auth().currentUser);
+    console.log(this.state.StoreName);
 
     switch (step) {
       case 1:
@@ -62,6 +78,7 @@ class FormContainer extends Component {
               prevStep={this.prevStep}
               handleChange={this.handleChange}
               values={values}
+              triggerStoreUpdate={this.updateStoreInfo}
             />
           </>
         );
@@ -79,6 +96,7 @@ class FormContainer extends Component {
               prevStep={this.prevStep}
               handleChange={this.handleChange}
               values={values}
+              // updateTranscription={this.updateTranscription}
             />
           </>
         );
