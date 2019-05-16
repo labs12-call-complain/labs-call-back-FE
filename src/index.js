@@ -6,10 +6,11 @@ import * as serviceWorker from './serviceWorker';
 
 // import App from './components/App/app.js';
 // import Firebase, { FirebaseContext } from './components/Firebase';
-// import DeepRCC from "./components/Template/Deepgram/DeepRCC";
+import DeepRCC2 from "./components/Template/Deepgram/DeepRCC2";
 // import DeepRFC from "./components/Template/Deepgram/DeepRFC";
 // import DeepRFC2 from "./components/Template/Deepgram/DeepRFC2";
-import TwitterTemp from './components/Template/Twitter/TwitterTemp';
+import DeepRFC3 from './components/Template/Deepgram/DeepRFC3';
+// import TwitterTemp from './components/Template/Twitter/TwitterTemp';
 
 // ReactDOM.render(
 //     <FirebaseContext.Provider value={new Firebase()}>
@@ -20,10 +21,11 @@ import TwitterTemp from './components/Template/Twitter/TwitterTemp';
 
 ReactDOM.render( 
   <div>
-    {/* <DeepRCC /> */}
+    <DeepRCC2 />
     {/* <DeepRFC /> */}
     {/* <DeepRFC2 /> */}
-    <TwitterTemp />
+    {/* <DeepRFC3 /> */}
+    {/* <TwitterTemp /> */}
   </div>, document.getElementById("root"));
 
 serviceWorker.unregister();
