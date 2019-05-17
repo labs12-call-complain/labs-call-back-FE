@@ -22,26 +22,15 @@ class Form3 extends Component {
     this.props.prevStep();
   };
 
-  // handleChange = e => {
-  //   e.preventDefault()
-  //   this.setState({ transcription: e.target.value });
-  //   // this.props.setTranscriptionProps(this.state.transcription);
-  // };
-
   addTranscript = e => {
-    e.preventDefault()
+    e.preventDefault();
     this.props.setTranscriptionProps(this.state.transcription);
     this.props.nextStep();
-  }
+  };
 
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   this.setState({ transcription: e.target.value });
-  // }
-
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({ transcription: e.target.value });
-  }
+  };
 
   render() {
     const { values, handleChange } = this.props;
@@ -50,18 +39,17 @@ class Form3 extends Component {
         <>
           <h1>Transcription</h1>
 
-          {this.props.transcription}
+          {/* {this.props.transcription}
 
           <br />
 
           {this.state.transcription}
-          <br />
+          <br /> */}
           <form onSubmit={this.addTranscript}>
             <input
               type="text"
               value={this.state.transcription}
               onChange={this.handleChange}
-
             />
             <button type="submit">Submit</button>
           </form>
