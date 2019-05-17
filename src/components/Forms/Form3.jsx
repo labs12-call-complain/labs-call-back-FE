@@ -6,6 +6,12 @@ import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 
 class Form3 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      transcription: this.props.transcription
+    };
+  }
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
@@ -16,12 +22,49 @@ class Form3 extends Component {
     this.props.prevStep();
   };
 
+  // handleChange = e => {
+  //   e.preventDefault()
+  //   this.setState({ transcription: e.target.value });
+  //   // this.props.setTranscriptionProps(this.state.transcription);
+  // };
+
+  addTranscript = e => {
+    e.preventDefault()
+    this.props.setTranscriptionProps(this.state.transcription);
+    this.props.nextStep();
+  }
+
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   this.setState({ transcription: e.target.value });
+  // }
+
+  handleChange = (e) => {
+    this.setState({ transcription: e.target.value });
+  }
+
   render() {
     const { values, handleChange } = this.props;
     return (
       <MuiThemeProvider>
         <>
           <h1>Transcription</h1>
+
+          {this.props.transcription}
+
+          <br />
+
+          {this.state.transcription}
+          <br />
+          <form onSubmit={this.addTranscript}>
+            <input
+              type="text"
+              value={this.state.transcription}
+              onChange={this.handleChange}
+
+            />
+            <button type="submit">Submit</button>
+          </form>
 
           <br />
           <RaisedButton

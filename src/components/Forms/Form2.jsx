@@ -148,7 +148,7 @@ class Form2 extends Component {
             </div>
             {this.props.audio ? <AudioAnalyser audio={this.props.audio} /> : ""}
             <br />
-            {this.props.stateTranscription}
+            
             <div>
               <h3>Recordings</h3>
               {this.props.audios.map((audioURL, i) => (
