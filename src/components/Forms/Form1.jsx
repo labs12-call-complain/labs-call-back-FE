@@ -11,7 +11,11 @@ import LocationSearch from './LocationSearchInput';
 
 class Form1 extends Component {
   state = {
-    StoreName: ""
+    StoreName: "",
+    StoreAddress: "",
+    StorePhone: "",
+    StoreWebsite: "",
+    StoreGoogleRating: ""
   }
   continue = e => {
     e.preventDefault();
@@ -27,12 +31,22 @@ class Form1 extends Component {
   
   someFn = () => {
     // let name = 'kabanas'
-    this.props.triggerStoreUpdate(this.state.StoreName);
+    this.props.triggerStoreUpdate(
+      this.state.StoreName, 
+      this.state.StoreAddress, 
+      this.state.StorePhone,
+      this.state.StoreWebsite,
+      this.state.StoreGoogleRating
+      );
   }
 
-  updateGooglePlaces = (StoreNameFromPlaces) => {
+  updateGooglePlaces = (StoreNameFromPlaces, StoreAddressFromPlaces, StorePhoneFromPlaces, StoreWebsiteFromPlaces, StoreRatingFromPlaces) => {
     this.setState({
-      StoreName: StoreNameFromPlaces
+      StoreName: StoreNameFromPlaces,
+      StoreAddress: StoreAddressFromPlaces,
+      StorePhone: StorePhoneFromPlaces,
+      StoreWebsite: StoreWebsiteFromPlaces,
+      StoreGoogleRating: StoreRatingFromPlaces
     })
   }
   
@@ -40,7 +54,8 @@ class Form1 extends Component {
 
 
   render() {
-    
+    console.log(this.props)
+    console.log(this.state)
     
     return (
       <MuiThemeProvider>
