@@ -85,6 +85,7 @@ class FormContainer extends Component {
       audios: audios
     });
   };
+  
 
   setTranscription = transcript => {
     this.setState({
