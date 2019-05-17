@@ -150,6 +150,8 @@ class FormContainer extends Component {
         return (
           <>
             <Form3
+              transcription={this.state.transcription}
+              setTranscriptionProps={ this.setTranscription}
               nextStep={this.nextStep}
               prevStep={this.prevStep}
               handleChange={this.handleChange}
