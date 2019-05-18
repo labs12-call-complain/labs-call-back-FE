@@ -1,4 +1,6 @@
-import "./profile.css";
+
+
+import "./EditProfile.css";
 import React, { Component } from "react";
 import firebase from 'firebase'
 
@@ -6,7 +8,7 @@ import {withAuthorization} from '../Session/session.js'
 
 
 
-class Profile extends Component {
+class EditProfile extends Component {
 
     user = firebase.auth().currentUser
 
@@ -143,4 +145,4 @@ class Profile extends Component {
 
 const condition = authUser => !!authUser;
 
-export default withAuthorization(condition)(Profile); 
+export default withAuthorization(condition)(EditProfile); 

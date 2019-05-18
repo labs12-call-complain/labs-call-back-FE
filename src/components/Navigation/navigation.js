@@ -54,9 +54,11 @@ const Navigation = () => (
                   Options
                 </DropdownToggle>
                 <DropdownMenu right>
+                <Link to="/profile">
                   <DropdownItem>
                     View Complaint History
                   </DropdownItem>
+                  </Link>
                   <Link to="/edit-profile">
                     <DropdownItem>
                       Edit Profile

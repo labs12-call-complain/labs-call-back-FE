@@ -5,23 +5,14 @@ import AppBar from "material-ui/AppBar";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 
-import AudioAnalyser from './Recording/AudioAnalyser';
+import AudioAnalyser from "./Recording/AudioAnalyser";
 import axios from "axios";
 
-const audioType = 'audio/wav';
+const audioType = "audio/wav";
 
 class Form2 extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      audioChunks: [],
-      audioUrl: "",
-      audio: null,
-      recording: false,
-      audios: [],
-      transcription: ''
-    };
-    this.toggleMicrophone = this.toggleMicrophone.bind(this);
   }
 
   continue = e => {
@@ -34,12 +25,14 @@ class Form2 extends Component {
     this.props.prevStep();
   };
 
-  async getMicrophone() {
+  getMicrophone = async () => {
     const audio = await navigator.mediaDevices.getUserMedia({
       audio: true,
       video: false
     });
-    this.setState({ audio });
+
+    this.props.audioState(audio);
+    // this.setState({ audio });
 
     let mediaRecorder = new MediaRecorder(audio);
     // init data storage for video chunks
@@ -52,33 +45,36 @@ class Form2 extends Component {
     };
     console.log("right console log?", this.chunks);
     mediaRecorder.start(10);
-    this.setState({ recording: true });
-  }
 
-  stopMicrophone() {
-    this.state.audio.getTracks().forEach(track => track.stop());
-    this.setState({ audio: null });
+    this.props.recordingState(true);
+    // this.setState({ recording: true });
+  };
+
+  stopMicrophone = () => {
+    this.props.audio.getTracks().forEach(track => track.stop());
+
+    this.props.audioState(null);
+    // this.setState({ audio: null });
 
     // this.mediaRecorder.stop();
-    this.setState({ recording: false });
+    this.props.recordingState(false);
+    // this.setState({ recording: false });
     // save audio is working
     this.saveAudio();
-  }
+  };
 
-  async saveAudio() {
+  saveAudio = async () => {
     const blob = await new Blob(this.chunks, { type: audioType });
     // generate video url from blob
     const audioURL = window.URL.createObjectURL(blob);
-
-    this.setState({
-      audioUrl: audioURL
-    })
     // const file = blobToFile(blob, "my-recording.wav")
     // append videoURL to list of saved videos for rendering
-    const audios = this.state.audios.concat([audioURL]);
-    this.setState({ audios });
+    const audios = this.props.audios.concat([audioURL]);
+    this.props.setAudiosProp(audios);
+
+    // this.setState({ audios });
     // acutal working axios call
-    console.log(this.state.audios);
+    console.log(this.props.audios);
     console.log(blob);
     let data = blob;
     let contentType = "audio/wav";
@@ -94,27 +90,27 @@ class Form2 extends Component {
         headers: dgheaders
       })
       .then(res => {
-        console.log("response:", res.data.results.channels[0].alternatives[0].transcript);
-        this.setState({
-          transcription: res.data.results.channels[0].alternatives[0].transcript
-        })
+        console.log("response:", res);
+        this.props.setTranscriptionProps(
+          res.data.results.channels[0].alternatives[0].transcript
+        );
       })
       .catch(err => console.log(err));
-  }
+  };
 
   deleteAudio(audioURL) {
     // filter out current videoURL from the list of saved videos
-    const audios = this.state.audios.filter(a => a !== audioURL);
-    this.setState({ audios });
+    const audios = this.props.audios.filter(a => a !== audioURL);
+    this.props.setAudiosProp(audios);
   }
 
-  toggleMicrophone() {
-    if (this.state.audio) {
+  toggleMicrophone = () => {
+    if (this.props.audio) {
       this.stopMicrophone();
     } else {
       this.getMicrophone();
     }
-  }
+  };
 
   transcribe = e => {
     e.preventDefault();
@@ -147,16 +143,17 @@ class Form2 extends Component {
           <div className="App">
             <div className="controls">
               <button onClick={this.toggleMicrophone}>
-                {this.state.audio ? "Stop Recording" : "Start Recording"}
+                {this.props.audio ? "Stop Recording" : "Start Recording"}
               </button>
             </div>
-            {this.state.audio ? <AudioAnalyser audio={this.state.audio} /> : ""}
+            {this.props.audio ? <AudioAnalyser audio={this.props.audio} /> : ""}
+            <br />
+            
             <div>
               <h3>Recordings</h3>
-              {this.state.audios.map((audioURL, i) => (
+              {this.props.audios.map((audioURL, i) => (
                 <div key={i}>
                   <audio controls style={{ width: 200 }} src={audioURL} />
-                  {this.state.transcription}
                   <div>
                     <button onClick={() => this.deleteAudio(audioURL)}>
                       Delete Recording
@@ -167,8 +164,6 @@ class Form2 extends Component {
               ))}
             </div>
           </div>
-
-          
 
           <RaisedButton
             label="Back"

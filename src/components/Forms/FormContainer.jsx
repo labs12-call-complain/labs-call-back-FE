@@ -17,19 +17,26 @@ import axios from "axios";
 const audioType = "audio/wav";
 
 class FormContainer extends Component {
-  state = {
-    step: 1,
-    username: firebase.auth().currentUser,
-    email: "",
-    UID: null,
-    StoreName: "",
-    StoreLocation: false,
-    StorePhoneNumber: [],
-    StoreGoogleRating: "",
-    StoreWebsite: "",
-    transcript: "",
-    audiofile: ""
-  };
+  constructor() {
+    super();
+    this.state = {
+      step: 1,
+      username: "jay",
+      email: "",
+      icon: null,
+      audio: null,
+      recording: false,
+      audios: [],
+      transcription: "",
+      audioUrl: "",
+      audioChunks: [],
+      StoreName: "",
+      StoreAddress: "",
+      StorePhone: "",
+      StoreWebsite: "",
+      StoreGoogleRating: ""
+    };
+  }
 
   nextStep = () => {
     const { step } = this.state;
@@ -49,25 +56,57 @@ class FormContainer extends Component {
     this.setState({ [input]: e.target.value });
   };
 
-  updateStoreInfo = (StoreNameFromPlaces) => {
+  updateTranscription = transcription => {
     this.setState({
-      StoreName: StoreNameFromPlaces
-    })
-  }
+      text: transcription
+    });
+  };
 
-  // updateTranscription = (transcript) => {
-  //   this.setState({
-  //     text: transcript
-  //   })
-  // }
+  recording = recording => {
+    this.setState({
+      recording: recording
+    });
+  };
 
+  audio = audio => {
+    this.setState({
+      audio: audio
+    });
+  };
+
+  setAudioUrl = url => {
+    this.setState({
+      audioUrl: url
+    });
+  };
+
+  setAudios = audios => {
+    this.setState({
+      audios: audios
+    });
+  };
   
+
+  setTranscription = transcript => {
+    this.setState({
+      transcription: transcript
+    });
+  };
+
+  updateStoreInfo = (StoreNameFromPlaces, StoreAddressFromPlaces, StorePhoneFromPlaces, StoreWebsiteFromPlaces, StoreRatingFromPlaces) => {
+    this.setState({
+      StoreName: StoreNameFromPlaces,
+      StoreAddress: StoreAddressFromPlaces,
+      StorePhone: StorePhoneFromPlaces,
+      StoreWebsite: StoreWebsiteFromPlaces,
+      StoreGoogleRating: StoreRatingFromPlaces
+    });
+  };
+
   render() {
     const { step } = this.state;
     const { username, email } = this.state;
     const values = { username, email };
-    // console.log(firebase.auth().currentUser);
-    console.log(this.state.StoreName);
 
     switch (step) {
       case 1:
@@ -86,7 +125,15 @@ class FormContainer extends Component {
         return (
           <>
             <Form2
-            saveAudio = {this.saveAudio}
+              stateTranscription={this.state.transcription}
+              setTranscriptionProps={this.setTranscription}
+              setAudiosProp={this.setAudios}
+              setUrl={this.setAudioUrl}
+              audioState={this.audio}
+              recordingState={this.recording}
+              updateTranscriptionProp={this.updateTranscription}
+              transcription={this.state.transcription}
+              saveAudio={this.saveAudio}
               transcribe={this.transcribe}
               deleteAudio={this.deleteAudio}
               audios={this.state.audios}
@@ -104,6 +151,8 @@ class FormContainer extends Component {
         return (
           <>
             <Form3
+              transcription={this.state.transcription}
+              setTranscriptionProps={ this.setTranscription}
               nextStep={this.nextStep}
               prevStep={this.prevStep}
               handleChange={this.handleChange}
@@ -119,6 +168,13 @@ class FormContainer extends Component {
               prevStep={this.prevStep}
               handleChange={this.handleChange}
               values={values}
+              confirmationTranscription={this.state.transcription}
+              StoreName={this.state.StoreName}
+              StoreAddress={this.state.StoreAddress}
+              StorePhone={this.state.StorePhone}
+              StoreWebsite={this.state.StoreWebsite}
+              StoreGoogleRating={this.state.StoreGoogleRating}
+              audioBlobs={this.state.audios}
             />
           </>
         );
