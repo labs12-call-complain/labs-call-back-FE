@@ -6,7 +6,7 @@ import React, { Component } from "react";
 // import { LANDING } from "./config/routes";
 import {withAuthentication} from '../Session/session.js';
 
-
+// about to add loader/spinner
 
 class LandingPage extends Component {
 
