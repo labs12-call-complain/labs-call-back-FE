@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import './home.css'
 import axios from 'axios'
 
-import { withAuthorization } from '../Session/session.js';
+// import { withAuthorization } from '../Session/session.js';
 
 import ComplaintCard from '../Feeds/ComplaintCard.js';
 
@@ -113,7 +113,7 @@ class HomePage extends Component {
   componentDidMount() {
     
     this.complaints();
-
+    console.log('is this working?')
   }
 
 
@@ -122,7 +122,7 @@ class HomePage extends Component {
       axios
       .get("https://call-complain.herokuapp.com/api/routes/posts")
       .then(response => {
-        this.setState(() => ({ complaintFeed: response.data }));
+        this.setState({ complaintFeed: response.data });
       })
       .catch(error => {
         console.error(error);
@@ -133,6 +133,7 @@ class HomePage extends Component {
 
 // >>>>>>> ef6ac5c97f12ef0314ff9a5fcf34b7d4c4232cdd
   render() {
+      
       return (
           <>
               <div className='Homepage Container'>
@@ -155,7 +156,7 @@ class HomePage extends Component {
                       })}  */}
                       {this.state.complaintFeed.map((card, i) => {
                         //   return <ComplaintCard card={card} key={this.state.id}/> 
-                          return <ComplaintCard card={card}/> 
+                          return <ComplaintCard key={i} card={card}/> 
                       })}
                   </div>
               </div>
@@ -166,6 +167,7 @@ class HomePage extends Component {
 // >>>>>>> 000acc6ebae3bbac810db8f9948e7006c630e82c
 }
 
-const condition = authUser => !!authUser;
+// const condition = authUser => !!authUser;
 
-export default withAuthorization(condition)(HomePage);
+// export default withAuthorization(condition)(HomePage);
+export default HomePage;

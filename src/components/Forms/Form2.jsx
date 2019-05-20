@@ -72,19 +72,16 @@ class Form2 extends Component {
     const audios = this.props.audios.concat([audioURL]);
     this.props.setAudiosProp(audios);
 
-    // this.setState({ audios });
-    // acutal working axios call
-    console.log(this.props.audios);
-    console.log(blob);
+    // console.log(this.props.audios);
+    // console.log(blob);
     let data = blob;
     let contentType = "audio/wav";
-    let authHeaders =
-      "Basic Y2FsbGFuZGNvbXBsYWluQGdtYWlsLmNvbTpjYWxsY29tcGxhaW4xMjM0NTY3ODk=";
+    let authHeaders = "Basic Y2FsbGFuZGNvbXBsYWluQGdtYWlsLmNvbTpjYWxsY29tcGxhaW4xMjM0NTY3ODk=";
     let dgheaders = {
       "Content-Type": contentType,
       Authorization: authHeaders
     };
-    console.log(data, dgheaders);
+    
     axios
       .post(`https://brain.deepgram.com/v2/listen`, data, {
         headers: dgheaders
