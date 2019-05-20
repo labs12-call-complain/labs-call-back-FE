@@ -1,33 +1,5 @@
-// import React, { useState, useEffect} from 'react';
-// import SearchBar from "material-ui-search-bar";
-// import Script from "react-load-script";
 
-// export default function LocationSearchInput() {
-//   // const [city, setCity] = useState('');
-//   // const [query, setQuery] = useState('');
-//   // const [url, setUrl] = useState(process.env.GOOGLE_PLACES_URL)
-  
-//   return (
-//     <div>
-//       <Script  />
-//       <SearchBar
-//         // id="autocomplete"
-//         // onRequestSearch={console.log('searching')}
-//         // placeholder=""
-//         // hintText="Search Establishment"
-//         // value={this.state.query}
-//         // style={{
-//         //   margin: "0 auto",
-//         //   maxWidth: 800
-//         // }}
-//         // onChange={() => this.handlePlaceSelect}
-//     />
-//     </div>
-//   )
-// }
-
-
-import React, { Component, useState, useEffect } from "react";
+import React, { Component } from "react";
 import SearchBar from "material-ui-search-bar";
 import Script from "react-load-script";
 
@@ -103,6 +75,3 @@ class LocationSearchInput extends Component {
 }
 
 export default LocationSearchInput;
-
-
-url={this.state.url} onLoad={this.handleScriptLoad}
