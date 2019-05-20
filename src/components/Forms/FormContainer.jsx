@@ -181,7 +181,19 @@ class FormContainer extends Component {
       case 5:
         return (
           <>
-            <Success />
+            <Success 
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            handleChange={this.handleChange}
+            values={values}
+            confirmationTranscription={this.state.transcription}
+            StoreName={this.state.StoreName}
+            StoreAddress={this.state.StoreAddress}
+            StorePhone={this.state.StorePhone}
+            StoreWebsite={this.state.StoreWebsite}
+            StoreGoogleRating={this.state.StoreGoogleRating}
+            audioBlobs={this.state.audios}
+            />
           </>
         );
     }

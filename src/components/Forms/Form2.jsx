@@ -76,7 +76,7 @@ class Form2 extends Component {
     // console.log(blob);
     let data = blob;
     let contentType = "audio/wav";
-    let authHeaders = process.env.DEEPGRAM_API;
+    let authHeaders = "Basic Y2FsbGFuZGNvbXBsYWluQGdtYWlsLmNvbTpjYWxsY29tcGxhaW4xMjM0NTY3ODk=";
     let dgheaders = {
       "Content-Type": contentType,
       Authorization: authHeaders
