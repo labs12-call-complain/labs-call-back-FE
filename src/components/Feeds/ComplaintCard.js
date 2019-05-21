@@ -9,16 +9,29 @@ import MaterialIcon, {colorPalette} from 'material-icons-react';
         return (
             <div>
                 <Card className="card-container">
-                    <CardBody>
-                        <div class="playbuttons">
-                        <MaterialIcon icon="fast_rewind" />
-                        <MaterialIcon icon="pause" />
-                        <MaterialIcon icon="play_arrow" />
-                        <MaterialIcon icon="fast_forward" />
+
+                        <div class="upvote-container">
+                            <div>
+                            <i class="fas fa-chevron-up"></i>
+                        <p class="upvote">0</p>
+                            <i class="fas fa-chevron-down"></i>
+                            </div>
                         </div>
-                        <CardText class="complaintText">{`Posted By: ${this.props.card.DisplayName}`}</CardText>
-                        <CardText class="complaintText">{`Business: ${this.props.card.StoreName} - ${this.props.card.StoreLocation}`}</CardText>
-                        <CardText class="complaintText">{this.props.card.text}</CardText>
+
+                    <CardBody>
+                       
+                        
+                        
+                        
+                        <div>
+                        <CardText className="cardTitle">{` ${this.props.card.StoreName}`}</CardText>
+
+                        <CardText className="cardAddress">{`${this.props.card.StoreLocation}`}</CardText>
+
+                        <CardText className="complaintText"><strong>{`${this.props.card.DisplayName}:`}</strong>{` ${this.props.card.text}`}</CardText>
+                        
+                        
+                        </div>
                         
                     </CardBody>
                 </Card>

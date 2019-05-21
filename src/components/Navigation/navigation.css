@@ -1,8 +1,10 @@
 .navbar {
     display: flex;
+    width: 100%;
     justify-content: space-evenly;
-    background: linear-gradient(#ff471a, red);
+    background: #DA2C38;
     padding: 20px 10px;
+    
 }
 
 .centered {

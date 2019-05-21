@@ -1,7 +1,15 @@
-.card-container{
+.card-container {
+    display: flex;
+    flex-direction: row;
     width: 40rem;
-    margin: 13px auto;
-    border-radius: 10px;
+    margin: 10px auto;
+    border-radius: 3;
+    box-sizing: border-box;
+}
+
+.card {
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .playbuttons {
@@ -10,15 +18,53 @@
     padding-bottom: 5px;
     margin-bottom: 10px;
     border-bottom: 1px solid lightgrey;
-    background: linear-gradient(#ff471a, red);
+    background: #DA2C38;
     padding-top: 5px;
     border-radius: 5px;
 }
 
-.card-body {
+.upvote {
+    margin: 0px;
+}
+
+.upvote-container {
+    display: flex;
     
+    justify-content: center;
+    width: 50px;
+    background: #DA2C38;
     
 }
+
+.upvote-container div p {
+    text-align: center;
+    font-weight: bold;
+}
+
+.upvote-container div {
+    margin-top: 20px;
+}
+
+.card-body {
+    width: 100%;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.cardTitle {
+    border-bottom: 1px solid lightgrey;
+    font-size: 1.2rem;
+}
+
+.cardAddress {
+    font-size: .8rem;
+}
+
+.complaintWrapper {
+    display: flex;
+}
+
+
 
 @media (max-width: 700px) {
     .card-container{
