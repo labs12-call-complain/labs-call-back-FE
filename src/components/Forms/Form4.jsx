@@ -8,12 +8,14 @@ import MaterialIcon, {colorPalette} from 'material-icons-react';
 import * as firebase from "firebase";
 import axios from 'axios';
 
+// import SimpleModal from './SignIn';
+
 class Form4 extends Component {
   continue = e => {
     e.preventDefault();
     //process form here
     this.props.nextStep();
-    this.formsubmit();
+    // this.formsubmit();
   };
 
   back = e => {
@@ -109,6 +111,7 @@ class Form4 extends Component {
             style={styles.button}
             onClick={this.continue}
           />
+          {/* <SimpleModal /> */}
         </>
       </MuiThemeProvider>
     );

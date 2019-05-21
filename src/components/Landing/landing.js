@@ -10,29 +10,6 @@ import {withAuthentication} from '../Session/session.js';
 
 class LandingPage extends Component {
 
-  state = {
-    docid: null
-  };
-
-    docid = this.state.docid //may have to move back to app
-
-    uiConfig = {
-        
-        signInFlow: "popup",
-        signInOptions: [
-            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-            firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-            firebase.auth.EmailAuthProvider.PROVIDER_ID
-        ],
-        // signInSuccessUrl: function(currentUser, credential, redirectUrl) {
-        //     const userId = currentUser.uid;
-        //     window.location.assign(`/home/${userId}`);
-        //     return true;
-        //     // "/home"
-        // }
-        signInSuccessUrl: "/home"
-  }
-
   render() {
       console.log(this.state)
     return (
@@ -51,11 +28,10 @@ class LandingPage extends Component {
                 <h1 class="slogan">A bad experience should never go unchecked</h1>
 
                 <div class="signin">
-                <h2>Sign In</h2>
-                <StyledFirebaseAuth 
-                    uiConfig={this.uiConfig} 
-                    firebaseAuth={firebase.auth()} 
-                />
+                    <h2>Make A Complaint</h2>
+                    <a href='/complaint-form'>
+                        <button>Get Started</button>
+                    </a>
                 </div>
             </section>
 

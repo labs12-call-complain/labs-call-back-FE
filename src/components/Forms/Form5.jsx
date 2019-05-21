@@ -9,32 +9,7 @@ import * as firebase from "firebase";
 import axios from 'axios';
 
 class Success extends Component {
-  // state = {
-  //   docid: null
-  // };
-
-  //   docid = this.state.docid //may have to move back to app
-
-  //   uiConfig = {
-        
-  //       signInFlow: "popup",
-  //       signInOptions: [
-  //           firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-  //           firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-  //           firebase.auth.EmailAuthProvider.PROVIDER_ID
-  //       ],
-  //       // signInSuccessUrl: function(currentUser, credential, redirectUrl) {
-  //       //     const userId = currentUser.uid;
-  //       //     window.location.assign(`/home/${userId}`);
-  //       //     return true;
-  //       //     // "/home"
-  //       // }
-  //       signInSuccessUrl: "/home"
-  // }
-
-
-
-  continue = e => {
+    continue = e => {
     e.preventDefault();
     //process form here
     this.props.nextStep();
