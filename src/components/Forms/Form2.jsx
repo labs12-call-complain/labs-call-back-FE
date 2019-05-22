@@ -4,6 +4,7 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
+import { Spinner, Fade } from 'reactstrap';
 
 import AudioAnalyser from "./Recording/AudioAnalyser";
 import axios from "axios";
@@ -13,6 +14,16 @@ const audioType = "audio/wav";
 class Form2 extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isLoading: true,
+      // isRecordingLoading: false,
+      // fadeIn: true,
+      // nullifyRecordButton: false
+    }
+  }
+
+  componentDidMount() {
+    setTimeout(() => this.setState({isLoading: false}), 1000);
   }
 
   continue = e => {
@@ -125,14 +136,22 @@ class Form2 extends Component {
     //         console.log("response:", res)
     //         })
     //     .catch(err => console.log(err));
+    
   };
 
   render() {
     const { values, handleChange } = this.props;
-
+    if(this.state.isLoading===true) {
+      return (
+      <div className="recording-loader loader">
+        <h1>CALL COMPLAIN</h1>
+        <br />
+        <Spinner style={{ width: '3rem', height: '3rem' }} />
+      </div>)
+    };
     return (
       <MuiThemeProvider>
-        <>
+        <Fade in={this.state.fadeIn} tag="h5" className="mt-3" className="form-container">
           <h1>Record Complaint</h1>
 
           <br />
@@ -175,7 +194,7 @@ class Form2 extends Component {
             style={styles.button}
             onClick={this.continue}
           />
-        </>
+        </Fade>
       </MuiThemeProvider>
     );
   }

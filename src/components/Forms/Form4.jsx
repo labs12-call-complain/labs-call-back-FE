@@ -7,8 +7,19 @@ import RaisedButton from "material-ui/RaisedButton";
 import MaterialIcon, {colorPalette} from 'material-icons-react';
 import * as firebase from "firebase";
 import axios from 'axios';
+import { Spinner, Fade } from 'reactstrap';
+
 
 class Form4 extends Component {
+  state = {
+    isLoading: true,
+  }
+
+  componentDidMount() {
+    setTimeout(() => this.setState({isLoading: false}), 1000);
+  }
+
+
   continue = e => {
     e.preventDefault();
     //process form here
@@ -68,10 +79,18 @@ class Form4 extends Component {
       "text": this.props.confirmationTranscription,
       "audioFile": this.props.audioBlobs
       });
+      if(this.state.isLoading===true) {
+        return (
+        <div className="recording-loader loader">
+          <h1>CALL COMPLAIN</h1>
+          <br />
+          <Spinner style={{ width: '3rem', height: '3rem' }} />
+        </div>)
+      };
 
     return (
       <MuiThemeProvider>
-        <>
+        <Fade tag="h5" className="mt-3 form-container" >
           <h1>Confirmation</h1>
           <div>
             <MaterialIcon icon="done_outline" />
@@ -109,7 +128,7 @@ class Form4 extends Component {
             style={styles.button}
             onClick={this.continue}
           />
-        </>
+        </Fade>
       </MuiThemeProvider>
     );
   }

@@ -6,6 +6,7 @@ import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import PlacesAutocomplete from 'react-places-autocomplete';
 import LocationSearch from './LocationSearchInput';
+import { Spinner, Fade } from 'reactstrap';
 
 
 
@@ -15,8 +16,14 @@ class Form1 extends Component {
     StoreAddress: "",
     StorePhone: "",
     StoreWebsite: "",
-    StoreGoogleRating: ""
+    StoreGoogleRating: "",
+    isLoading: true,
   }
+
+  componentDidMount() {
+    setTimeout(() => this.setState({isLoading: false}), 1000);
+  }
+
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
@@ -56,10 +63,17 @@ class Form1 extends Component {
   render() {
     console.log(this.props)
     console.log(this.state)
-    
+    if(this.state.isLoading===true) {
+      return (
+      <div className="recording-loader loader">
+        <h1>CALL COMPLAIN</h1>
+        <br />
+        <Spinner style={{ width: '3rem', height: '3rem' }} />
+      </div>)
+    };
     return (
       <MuiThemeProvider>
-        <>
+        <Fade tag="h5" className="mt-3">
           <h1>Form1</h1>
             <LocationSearch triggerUpdatePlaces={this.updateGooglePlaces}/>
           <br />
@@ -69,7 +83,7 @@ class Form1 extends Component {
             style={styles.button}
             onClick={this.continue}
           />
-        </>
+        </Fade>
       </MuiThemeProvider>
     );
   }
