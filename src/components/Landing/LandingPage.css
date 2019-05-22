@@ -3,148 +3,142 @@
     height: 100%;
   } */
 
-  .main-cont {
-    
+.main-cont {
+  height: 100vh;
+}
 
-        height: 100vh;
-    
+.topcontainer {
+  background-image: url(./imgs/angry-customer2.jpg);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.topcontainer-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color:rgba(255,0,0,0.3); */
+  background-color: rgba(255, 248, 232, 0.9);
+  border: 15px solid rgba(45, 42, 50, 1);
+  box-shadow: 10px 10px 8px #888888;
+  height: 100%;
+}
+
+header {
+  /* background: #F2441A; */
+  width: 10%;
+
+  background-color: rgba(55, 29, 42, 0.55);
+  height: 89px;
+}
+
+.toppage {
+  /* background-image: linear-gradient(#ff471a, red); */
+  position: relative;
+  display: flex;
+  justify-content: left;
+  height: 10%;
+}
+.logo {
+  position: absolute;
+  width: 6%;
+  height: auto;
+  margin-top: -6px;
+  margin-left: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.logo-two {
+  position: absolute;
+  background: #da2c38;
+  width: 110px;
+  height: 100px;
+  padding: 5px 9px 9px 6px;
+  margin-left: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 0 0 5px 5px;
+}
+
+.logo-two img {
+  margin-bottom: 25px;
+}
+
+.startBox-container {
+  width: 25%;
+  height: 50%;
+}
+
+.startBox {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* background: url(./imgs/Group10003.png); */
+
+  background-repeat: no-repeat;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.start-content {
+  position: absolute;
+  text-align: center;
+  color: #fff8e8;
+  top: 30%;
+  left: 62%;
+  /* transform: translate(-50%, -50%); */
+  height: auto;
+}
+
+.vl {
+  border-left: 1px solid rgba(42, 42, 50, 0.3);
+  margin: 0 130px;
+  height: 500px;
+}
+
+.slogan {
+  font-size: 3.8rem;
+  font-family: Lato, sans-serif;
+  font-weight: 400;
+  width: 40%;
+  text-align: center;
+  margin-right: 10%;
+  color: white;
+  text-shadow: 1px 1px grey;
+  z-index: 2;
+}
+
+@media (max-width: 860px) {
+  .step-container p {
+    margin-left: 60px;
   }
-  
-  .topcontainer {
-      
-    background-image: url(./imgs/angry-customer2.jpg);
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  
-  .topcontainer-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color:rgba(255,0,0,0.3); */
-    background-color: rgba(255, 248, 232, 0.9);
-    border: 15px solid rgba(45, 42, 50, 1);
-    box-shadow: 10px 10px 8px #888888;
-    height: 100%;
-  }
-  
-  header {
-    /* background: #F2441A; */
-    width: 10%;
-  
-    background-color: rgba(55, 29, 42, 0.55);
-    height: 89px;
-  }
-  
+}
+
+@media (max-width: 775px) {
   .toppage {
-    /* background-image: linear-gradient(#ff471a, red); */
-    position: relative;
-    display: flex;
-    justify-content: left;
-    height: 10%;
-  }
-  .logo {
-    position: absolute;
-    width: 6%;
-    height: auto;
-    margin-top: -6px;
-    margin-left: 15px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-  
-  .logo-two {
-      position: absolute;
-      background: #DA2C38;
-      width: 110px;
-      height: 100px;
-      padding: 0 9px 9px 5px;
-      margin-left: 25px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      border-radius: 0 0 5px 5px;
-    }
-  
-    .logo-two img {
-        margin-bottom: 25px;
-    }
-    
-  
-  .startBox-container {
-    width: 25%;
-    height: 50%;
-  }
-  
-  .startBox {
-    display: flex;
     flex-direction: column;
-    position: relative;
-    /* background: url(./imgs/Group10003.png); */
-  
-    background-repeat: no-repeat;
-    max-width: 100%;
-    max-height: 100%;
+    align-items: center;
+    padding-top: 30px;
   }
-  
-  .start-content {
-    position: absolute;
-    text-align: center;
-    color: #FFF8E8;
-    top: 30%;
-    left: 62%;
-    /* transform: translate(-50%, -50%); */
-    height: auto;
-  }
-  
-  .vl {
-    border-left: 1px solid rgba(42, 42, 50, 0.3);
-    margin: 0 130px;
-    height: 500px;
-  }
-  
+
   .slogan {
-    font-size: 3.8rem;
-    font-family: Lato, sans-serif;
-    font-weight: 400;
-    width: 40%;
+    margin: 0px;
+    width: 80%;
+    margin-bottom: 40px;
+  }
+
+  .step-container {
+    flex-direction: column;
+    margin-top: 40px;
+  }
+
+  .step-container p {
+    margin: 0px;
+    margin-top: 60px;
+  }
+
+  .lower-content-fade h3 {
     text-align: center;
-    margin-right: 10%;
-    color: white;
-    text-shadow: 1px 1px grey;
-    z-index: 2;
   }
-  
-  @media (max-width: 860px) {
-    .step-container p {
-      margin-left: 60px;
-    }
-  }
-  
-  @media (max-width: 775px) {
-    .toppage {
-      flex-direction: column;
-      align-items: center;
-      padding-top: 30px;
-    }
-  
-    .slogan {
-      margin: 0px;
-      width: 80%;
-      margin-bottom: 40px;
-    }
-  
-    .step-container {
-      flex-direction: column;
-      margin-top: 40px;
-    }
-  
-    .step-container p {
-      margin: 0px;
-      margin-top: 60px;
-    }
-  
-    .lower-content-fade h3 {
-      text-align: center;
-    }
-  }
-  
+}

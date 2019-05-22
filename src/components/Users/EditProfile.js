@@ -32,28 +32,39 @@ class EditProfile extends Component {
     this.user
       .updateProfile({
         displayName: this.state.displayName,
-        photoURL: this.state.photoURL
-      })
-      .then(function() {
-        console.log("Profile Successfully Updated");
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  };
+        photoURL: this.state.photoURL,
 
-  inputToggle = e => {
-    e.preventDefault();
-    this.setState({ showInput: !this.state.showInput });
-  };
+      }).then(function() {
+        console.log('Profile Successfully Updated')
+      }).catch(function(error) {
+        console.log(error)
+      }) 
+    
+    
+    }
 
-  changeHandler = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
 
-  render() {
+
+
+
+
+
+    inputToggle = (e) => {
+        e.preventDefault()
+        this.setState({ showInput: !this.state.showInput })
+    }
+
+
+
+    changeHandler = e => {
+        this.setState({
+          [e.target.name] : e.target.value,
+        })
+      }
+
+
+    render() {
+      console.log(this.user)
     return (
       <>
         <Navigation />
