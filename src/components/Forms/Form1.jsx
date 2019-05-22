@@ -9,7 +9,6 @@ import LocationSearch from './LocationSearchInput';
 import { Spinner, Fade } from 'reactstrap';
 
 
-
 class Form1 extends Component {
   state = {
     StoreName: "",
@@ -63,6 +62,7 @@ class Form1 extends Component {
   render() {
     console.log(this.props)
     console.log(this.state)
+    const { values, handleChange } = this.props;
     if(this.state.isLoading===true) {
       return (
       <div className="recording-loader loader">
@@ -71,6 +71,7 @@ class Form1 extends Component {
         <Spinner style={{ width: '3rem', height: '3rem' }} />
       </div>)
     };
+    
     return (
       <MuiThemeProvider>
         <Fade tag="h5" className="mt-3">
