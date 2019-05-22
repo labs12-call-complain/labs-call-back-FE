@@ -2,6 +2,8 @@ import "./LandingPage.css";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "firebase";
 import React, { Component } from "react";
+import {Link} from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 // import firebase from '../Firebase/index.js'
 // import { LANDING } from "./config/routes";
 import { withAuthentication } from "../Session/session.js";
@@ -68,10 +70,13 @@ class LandingPage extends Component {
               <div className="start-content">
                 <h2>Sign In</h2>
                 <br />
-                <StyledFirebaseAuth
+                {/* <StyledFirebaseAuth
                   uiConfig={this.uiConfig}
                   firebaseAuth={firebase.auth()}
-                />
+                /> */}
+                <Link to="/complaint-form">
+                  <Button>Get Started</Button>
+                </Link>
               </div>
             </div>
           </div>

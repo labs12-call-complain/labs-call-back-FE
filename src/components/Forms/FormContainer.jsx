@@ -6,6 +6,7 @@ import Form1 from "./Form1.jsx";
 import Form2 from "./Form2.jsx";
 import Form3 from "./Form3.jsx";
 import Form4 from "./Form4.jsx";
+import Form5 from "./SignIn.jsx";
 import Success from "./Form5.jsx";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
@@ -145,7 +146,7 @@ class FormContainer extends Component {
               prevStep={this.prevStep}
               handleChange={this.handleChange}
               values={values}
-              // updateTranscription={this.updateTranscription}
+              storeName={this.state.StoreName}
             />
           </>
         );
@@ -182,7 +183,25 @@ class FormContainer extends Component {
             />
           </>
         );
-      case 5:
+        case 5:
+          return (
+            <>
+              <Form5
+                nextStep={this.nextStep}
+                prevStep={this.prevStep}
+                handleChange={this.handleChange}
+                values={values}
+                confirmationTranscription={this.state.transcription}
+                StoreName={this.state.StoreName}
+                StoreAddress={this.state.StoreAddress}
+                StorePhone={this.state.StorePhone}
+                StoreWebsite={this.state.StoreWebsite}
+                StoreGoogleRating={this.state.StoreGoogleRating}
+                audioBlobs={this.state.audios}
+              />
+            </>
+          );
+      case 6:
         return (
           <>
           <Navigation />
