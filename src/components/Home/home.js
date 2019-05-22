@@ -1,6 +1,9 @@
 
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+
+
+import Navigation from "../Navigation/navigation";
 import firebase from 'firebase';
 import './home.css';
 import axios from 'axios';
@@ -58,6 +61,7 @@ class HomePage extends Component {
       console.log("ssdfsdf")
       return (
           <>
+          <Navigation />
               <div className='Homepage Container'>
                 <div class="button-container">
               <Link class="centered" to='/complaint-form'>

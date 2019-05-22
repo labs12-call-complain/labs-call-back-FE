@@ -39,7 +39,7 @@ h1 {
     
     display: flex;
     justify-content: center;
-    length: 40px;
+    /* length: 40px; */
 }
 
 /* background: linear-gradient(#ff471a, red); */
