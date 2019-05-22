@@ -8,77 +8,37 @@ import MaterialIcon, {colorPalette} from 'material-icons-react';
 import * as firebase from "firebase";
 import axios from 'axios';
 import { Spinner, Fade } from 'reactstrap';
+import CloudDoneIcon from '@material-ui/icons/CloudDone';
+import { AuthUserContext } from '../Session/session.js';
+import Form4WithAuth from './Form4WithAuth'
 
+const Form4 = (props) => (
+  <AuthUserContext.Consumer>
+    {authUser =>
+      authUser ? 
+      <Form4WithAuth {...props} /> 
+      : <Form4WithoutAuth {...props} />
+    }
+  </AuthUserContext.Consumer>
+);
 
-class Form4 extends Component {
+class Form4WithoutAuth extends Component {
   state = {
     isLoading: true,
+
   }
 
   componentDidMount() {
     setTimeout(() => this.setState({isLoading: false}), 1000);
   }
 
-
   continue = e => {
     e.preventDefault();
-    //process form here
     this.props.nextStep();
-    this.formsubmit();
   };
-
-  back = e => {
-    e.preventDefault();
-    this.props.prevStep();
-  };
-
-  formsubmit = () => {
-  let data = {
-    DisplayName: firebase.auth().currentUser.displayName,
-    Email: firebase.auth().currentUser.email,
-    UID: firebase.auth().currentUser.uid,
-    StoreName: this.props.StoreName,
-    StoreLocation: this.props.StoreAddress,
-    StorePhoneNumber: this.props.StorePhone,
-    StoreGoogleRating: this.props.StoreGoogleRating,
-    StoreWebsite: this.props.StoreWebsite,
-    text: this.props.confirmationTranscription,
-    audioFile: ""
-    }
-    let tweetdata = {
-      status: `${this.props.StoreName}, your customer just complained about you on callandcomplain.com. We added you to our #worstcustomerservice leaderboard.`
-    }
-    console.log(tweetdata)
-    axios
-      .post(`https://call-complain.herokuapp.com/api/routes/makepost`, data)
-      .then(res => {
-        console.log("response:", res);
-        axios
-          .post(`https://call-complain.herokuapp.com/api/routes/makeatweet`, tweetdata)
-          .then(res => {
-            console.log("response:", res);
-          })
-          .catch(err => console.log(err));
-      })
-      .catch(err => console.log(err));
-  }
-
-  
 
   render() {
     const { values, handleChange } = this.props;
-    console.log({
-      "DisplayName": firebase.auth().currentUser.displayName,
-      "Email": firebase.auth().currentUser.email,
-      "UID": firebase.auth().currentUser.uid,
-      "StoreName": this.props.StoreName,
-      "StoreLocation": this.props.StoreAddress,
-      "StorePhoneNumber": this.props.StorePhone,
-      "StoreGoogleRating": parseInt(this.props.StoreGoogleRating),
-      "StoreWebsite": this.props.StoreWebsite,
-      "text": this.props.confirmationTranscription,
-      "audioFile": this.props.audioBlobs
-      });
       if(this.state.isLoading===true) {
         return (
         <div className="recording-loader loader">
@@ -92,36 +52,18 @@ class Form4 extends Component {
       <MuiThemeProvider>
         <Fade tag="h5" className="mt-3 form-container" >
           <h1>Confirmation</h1>
-          <div>
-            <MaterialIcon icon="done_outline" />
-            <p>{firebase.auth().currentUser.displayName}</p>
-            <p>{firebase.auth().currentUser.email}</p>
-            <p>{firebase.auth().currentUser.uid}</p>
-          </div>
-          <div>
-            <MaterialIcon icon="done_outline" />
+          <div className="confirmation-container">
+          <CloudDoneIcon />
             <p>{this.props.StoreName}</p>
-            <p>{this.props.StoreAddress}</p>
-            <p>{this.props.StorePhone}</p>
-            <p>{this.props.StoreWebsite}</p>
-            <p>{this.props.StoreGoogleRating}</p>
           </div>
-          <div>
-            <MaterialIcon icon="done_outline" />
+          <div className="confirmation-container">
+          <CloudDoneIcon />            
+            <p>{this.props.StoreAddress}</p>
+          </div>
+          <div className="confirmation-container">
+          <CloudDoneIcon />          
             <p>{this.props.confirmationTranscription}</p>
           </div>
-          <div>
-            <MaterialIcon icon="done_outline" />
-            <p>Profile Info</p>
-          </div>
-          <br />
-          <RaisedButton
-            label="Back"
-            primary={false}
-            style={styles.button}
-            onClick={this.back}
-          />
-
           <RaisedButton
             label="Send Tweet"
             primary={true}

@@ -54,20 +54,13 @@ class Form3 extends Component {
       <MuiThemeProvider>
         <Fade in={this.state.fadeIn} tag="h5" className="mt-3">
           <h1>Transcription</h1>
-
-          {/* {this.props.transcription}
-
-          <br />
-
-          {this.state.transcription}
-          <br /> */}
-          <form onSubmit={this.addTranscript}>
+          <form onSubmit={this.addTranscript} >
             <input
+              className="form-input"
               type="text"
               value={this.state.transcription}
               onChange={this.handleChange}
             />
-            <button type="submit">Submit</button>
           </form>
 
           <br />

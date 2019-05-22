@@ -82,7 +82,7 @@ const Navigation = () => (
 const NavigationNonAuth = () => {
   return (
     <div>
-      <Navbar color="light" light expand="md">
+      <Navbar color="light" light expand="md" className="navbar">
         <NavbarBrand href="/">Call Complain</NavbarBrand>
         <NavbarToggler />
         <Collapse navbar>

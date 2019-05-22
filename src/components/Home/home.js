@@ -1,14 +1,12 @@
 
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import './home.css'
+import axios from 'axios'
+import * as firebase from 'firebase';
 
-
-import Navigation from "../Navigation/navigation";
-import firebase from 'firebase';
-import './home.css';
-import axios from 'axios';
-import {withAuthorization} from '../Session/session.js'
-
+import { withAuthorization } from '../Session/session.js';
+import Navigation from '../Navigation/navigation.js';
 
 import ComplaintCard from '../Feeds/ComplaintCard.js';
 

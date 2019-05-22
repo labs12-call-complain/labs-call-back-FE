@@ -17,7 +17,7 @@ import { withAuthentication } from '../Session/session.js';
 const App = () => (
     <Router>
         <div className="App">
-            <Navigation />
+            {/* <Navigation /> */}
             
             <Route exact path={ROUTES.LANDING} component={LandingPage} />
             <Route path={ROUTES.EDIT_PROFILE} component={EditProfile} />
