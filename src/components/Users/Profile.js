@@ -1,7 +1,7 @@
 import "./Profile.css";
 import React, { Component } from "react";
 import firebase from 'firebase'
-
+import Navigation from "../Navigation/navigation";
 import {Link} from 'react-router-dom';
 import axios from 'axios'
 import { withAuthorization } from '../Session/session.js';
@@ -40,7 +40,7 @@ class Profile extends Component {
     return (
         
       <div>
-      
+      <Navigation />
       <h2>Your Complaint History</h2>
       {this.state.complaintById.map((card, i) => {
       //   return <ComplaintCard card={card} key={this.state.id}/> 
