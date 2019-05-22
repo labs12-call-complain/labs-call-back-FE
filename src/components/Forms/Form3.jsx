@@ -55,7 +55,7 @@ class Form3 extends Component {
         <Fade in={this.state.fadeIn} tag="h5" className="mt-3">
           <h1>Transcription</h1>
           <form onSubmit={this.addTranscript} >
-            <input
+            <textarea
               className="form-input"
               type="text"
               value={this.state.transcription}
