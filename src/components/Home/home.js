@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import './home.css'
 import axios from 'axios'
 
-// import { withAuthorization } from '../Session/session.js';
+import { withAuthorization } from '../Session/session.js';
 
 import ComplaintCard from '../Feeds/ComplaintCard.js';
 
@@ -103,7 +103,7 @@ class HomePage extends Component {
   }
 }
 
-// const condition = authUser => !!authUser;
+const condition = authUser => !!authUser;
 
-// export default withAuthorization(condition)(HomePage);
-export default HomePage;
+export default withAuthorization(condition)(HomePage);
+// export default HomePage;

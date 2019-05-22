@@ -71,6 +71,7 @@ class EditProfile extends Component {
 
 
     render() {
+      console.log('current user:', this.user);
     return (
         
       <div class="containerCenter">
@@ -146,3 +147,5 @@ class EditProfile extends Component {
 const condition = authUser => !!authUser;
 
 export default withAuthorization(condition)(EditProfile); 
+// export default EditProfile; 
+
