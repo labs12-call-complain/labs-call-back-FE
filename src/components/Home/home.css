@@ -12,7 +12,7 @@
     /* margin-bottom: 20px;
     margin-top: 20px; */
     border-radius: 5px;
-    background-color: #ff471a;
+    background-color: #DA2C38;
     color: white;
     border: 1px solid #FFD6D6;
     text-decoration: none;
@@ -39,14 +39,73 @@ h1 {
     
     display: flex;
     justify-content: center;
-    length: 40px;
+    /* length: 40px; */
 }
 
 /* background: linear-gradient(#ff471a, red); */
 
 
 .Homepage {
-    background-color: #F6F6F6;
+    background-color: #FFF8E8;
+}
+
+.profileCard {
+    box-sizing: border-box;
+    width: 210px;
+    height: 320px;
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-right: 20px;
+    overflow: hidden;
+}
+
+.profileCard img {
+    width: 208px;
+    height: 150px;
+    object-fit: cover;
+    margin-top: 20px;
+}
+
+.profileCard p {
+    font-size: 1rem;
+    font-family: Lato,sans-serif; 
+    font-weight: 700;
+}
+
+.CardImg {
+
+    width: 100%;
+
+}
+
+.imgdiv {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid lightgrey;
+    margin-bottom: 10px;
+    background: #DA2C38;
+}
+
+.EditBtn {
+    background: #DA2C38;
+    border: 1px solid #DA2C38;
+    width: 80%;
+    height: 35px;
+    border-radius: 2px;
+}
+
+.EditBtn:hover {
+    background: #c12631;
+}
+
+.HomeWrapper {
+    display: flex;
+    justify-content: center;
 }
 
 
