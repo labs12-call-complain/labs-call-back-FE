@@ -47,29 +47,27 @@ class LandingPage extends Component {
             <div className="startBox-container">
               <div className="startBox">
                 {" "}
-                <h2> A Bad Experience Should Never Go Unchecked </h2> 
+                <h1> A Bad Experience Should Never Go Unchecked </h1>
                 <br />
                 <br />
-                <p>
+                <h5>
                   With a single click of a button, CallComplain will send a text
                   translated version of your complaint directly to the company
                   email and corperate twitter so your voice can be heard
                   worldwide
-                </p>{" "}
+                </h5>{" "}
               </div>
             </div>
 
             <div class="vl" />
 
             <div className="startBox-container">
-              <img
-                className="startBox"
-                src={require("./imgs/Group10003.png")}
-                alt="start cont"
-              />
+              <div className="startBox-two">
+                <img src={require("./imgs/Group10002.svg")} />
+              </div>
               <div className="start-content">
                 <h2>Sign In</h2>
-                <br/>
+                <br />
                 <StyledFirebaseAuth
                   uiConfig={this.uiConfig}
                   firebaseAuth={firebase.auth()}
