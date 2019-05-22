@@ -71,6 +71,7 @@ class EditProfile extends Component {
 
 
     render() {
+      console.log(this.user)
     return (
         
       <div class="containerCenter">
