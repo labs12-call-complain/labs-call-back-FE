@@ -112,6 +112,7 @@ class FormContainer extends Component {
       case 1:
         return (
           <>
+          <Navigation />
             <Form1
               nextStep={this.nextStep}
               prevStep={this.prevStep}
@@ -124,6 +125,7 @@ class FormContainer extends Component {
       case 2:
         return (
           <>
+          <Navigation />
             <Form2
               stateTranscription={this.state.transcription}
               setTranscriptionProps={this.setTranscription}
@@ -150,6 +152,7 @@ class FormContainer extends Component {
       case 3:
         return (
           <>
+          <Navigation />
             <Form3
               transcription={this.state.transcription}
               setTranscriptionProps={ this.setTranscription}
@@ -163,6 +166,7 @@ class FormContainer extends Component {
       case 4:
         return (
           <>
+          <Navigation />
             <Form4
               nextStep={this.nextStep}
               prevStep={this.prevStep}
@@ -181,6 +185,7 @@ class FormContainer extends Component {
       case 5:
         return (
           <>
+          <Navigation />
             <Success 
             nextStep={this.nextStep}
             prevStep={this.prevStep}

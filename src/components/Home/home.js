@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import './home.css'
-import axios from 'axios'
+import './home.css';
+import axios from 'axios';
+import Navigation from "../Navigation/navigation";
 
 // import { withAuthorization } from '../Session/session.js';
 
@@ -136,6 +137,7 @@ class HomePage extends Component {
       
       return (
           <>
+          <Navigation />
               <div className='Homepage Container'>
                 <div class="button-container">
               <Link class="centered" to='/complaint-form'>
