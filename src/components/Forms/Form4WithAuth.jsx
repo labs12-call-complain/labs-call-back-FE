@@ -58,15 +58,15 @@ class Form4WithAuth extends Component {
             .post(`https://call-complain.herokuapp.com/api/routes/makeatweet`, tweetdata)
             .then(res => {
               console.log("It worked 2:", res);
-              // this.props.history.push('/home')
+              this.props.history.push('/home')
             })
             .catch(err => {
                 console.log("It broke 1:", err)       
-                // this.props.history.push('/home')
+                this.props.history.push('/home')
             });
         })
         .catch(err => console.log("It broke 2:", err));
-        // this.props.history.push('/home')
+        this.props.history.push('/home')
   };
 
   render() {
