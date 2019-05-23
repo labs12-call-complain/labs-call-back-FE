@@ -133,8 +133,8 @@ class Form2 extends Component {
 
     return (
       <MuiThemeProvider>
-        <Fade in={this.state.fadeIn} tag="h5" className="mt-3" className="form-container">
-          <div className="recording-container">
+        <Fade in={this.state.fadeIn} tag="h5" className="mt-3">
+          <div className="recorder-container">
             <h1 className="recording-header">Record Complaint For {this.props.storeName}</h1>
             <br />
 
@@ -161,8 +161,8 @@ class Form2 extends Component {
             <div>
               {this.state.isRecordingLoading===false ? (this.props.audios.map((audioURL, i) => (
                 <Fade in={this.state.fadeIn} tag="h5" className="mt-3" key={i}>
-                  <h3>Listen To Or Download Your Audio File:</h3>
-                  <audio controls style={{ width: 400 }} src={audioURL} className="audio-controls"/>
+                  <h3>Want To Re-Record? Push Re-Record Button Below:</h3>
+                  {/* <audio controls style={{ width: 400 }} src={audioURL} className="audio-controls"/> */}
                     <RaisedButton onClick={() => this.deleteAudio(audioURL)} 
                     label="Record Again"
                     primary={true}

@@ -40,18 +40,19 @@ class SignInConfirmation extends Component {
                 status: `${this.props.StoreName}, your customer just complained about you on callandcomplain.com. We added you to our #worstcustomerservice leaderboard.`
               }
               console.log(tweetdata)
+              console.log(data)
               axios
                 .post(`https://call-complain.herokuapp.com/api/routes/makepost`, data)
                 .then(res => {
-                  console.log("response:", res);
+                  console.log("Working 1:", res);
                   axios
                     .post(`https://call-complain.herokuapp.com/api/routes/makeatweet`, tweetdata)
                     .then(res => {
-                      console.log("response:", res);
+                      console.log("Working 2:", res);
                     })
-                    .catch(err => console.log(err));
+                    .catch(err => console.log("Broken 1:", err));
                 })
-                .catch(err => console.log(err));
+                .catch(err => console.log("Broken 2:", err));
           }
 
         render() {
