@@ -87,6 +87,9 @@ class Form2 extends Component {
     
     axios
       .post(`https://brain.deepgram.com/v2/listen`, data, {
+        params: {
+          punctuate: true
+        },
         headers: dgheaders
       })
       .then(res => {
