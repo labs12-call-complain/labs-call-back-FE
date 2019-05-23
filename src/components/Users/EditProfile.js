@@ -71,7 +71,7 @@ class EditProfile extends Component {
 
         <div class="containerCenter">
           <div class="profileContainer">
-            <h2>Edit Profile</h2>
+            <h3 >Edit Profile</h3>
 
             <p>{this.state.showInput}</p>
 
@@ -106,13 +106,13 @@ class EditProfile extends Component {
                     onChange={this.changeHandler}
                     name="photoURL"
                   />
-                  <button class="text-centers"> UPDATE </button>
+                  <button class="text-centers"> Update Profile </button>
                 </form>
               </div>
             ) : null}
 
             <div class="deleteContainer">
-              <h3>Danger Zone</h3>
+              <h3 class="red">Danger Zone</h3>
               <p>WARNING</p>
               <p>Once you delete your account you can not go back</p>
               <button
