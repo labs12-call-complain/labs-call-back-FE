@@ -77,7 +77,7 @@ class Form1 extends Component {
       <MuiThemeProvider>
         <Fade tag="h5" className="mt-3">
           <h1>Search For A Company Below:</h1>
-            {/* <LocationSearch triggerUpdatePlaces={this.updateGooglePlaces}/> */}
+            <LocationSearch triggerUpdatePlaces={this.updateGooglePlaces}/>
           <br />
             <Map
               google={this.props.google}
