@@ -135,3 +135,9 @@ h1 {
     }
 
 }
+
+@media (max-width: 900px) {
+    .profileCard {
+        display: none;
+    }
+}

@@ -21,15 +21,17 @@ import MaterialIcon, {colorPalette} from 'material-icons-react';
                     <CardBody>
                         
                     <div>
+                        <div class="titleAddy">
                         <CardText className="cardTitle">{` ${this.props.card.StoreName}`}</CardText>
 
                         <CardText className="cardAddress">{`${this.props.card.StoreLocation}`}</CardText>
+                        </div>
 
                         <CardText className="complaintText"><strong>{`${this.props.card.DisplayName}:`}</strong>{` ${this.props.card.text}`}</CardText>
 
 
                         </div>
-                        
+
                     </CardBody>
                 </Card>
             </div>

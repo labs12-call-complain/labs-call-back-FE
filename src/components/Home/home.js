@@ -82,7 +82,7 @@ class HomePage extends Component {
                     </div>
 
                     <p>{this.user.displayName}</p>
-                    <p>{this.user.email}</p>
+                    <p>Total Upvotes:</p>
                     <button class="EditBtn" onClick={this.ProfilePush}>Edit Profile</button>
                   </div>
                   
