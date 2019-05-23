@@ -21,6 +21,11 @@ class Profile extends Component {
       this.complaints();
   
     }
+
+  ProfilePush = () => {
+    this.props.history.push(`/edit-profile`)
+  }
+
     
   complaints = () => {
     axios
