@@ -7,6 +7,7 @@ import RaisedButton from "material-ui/RaisedButton";
 import PlacesAutocomplete from 'react-places-autocomplete';
 import LocationSearch from './LocationSearchInput';
 import { Spinner, Fade } from 'reactstrap';
+import Map from './GoogleMaps';
 
 
 class Form1 extends Component {
@@ -66,7 +67,7 @@ class Form1 extends Component {
     if(this.state.isLoading===true) {
       return (
       <div className="recording-loader loader">
-        <h1>CALL COMPLAIN</h1>
+        <h1>Griipe</h1>
         <br />
         <Spinner style={{ width: '3rem', height: '3rem' }} />
       </div>)
@@ -75,9 +76,15 @@ class Form1 extends Component {
     return (
       <MuiThemeProvider>
         <Fade tag="h5" className="mt-3">
-          <h1>Form1</h1>
-            <LocationSearch triggerUpdatePlaces={this.updateGooglePlaces}/>
+          <h1>Search For A Company Below:</h1>
+            {/* <LocationSearch triggerUpdatePlaces={this.updateGooglePlaces}/> */}
           <br />
+            <Map
+              google={this.props.google}
+              center={{lat: 18.4655, lng: 66.1057}}
+              height='300px'
+              zoom={15}
+              />
           <RaisedButton
             label="Continue"
             primary={true}

@@ -10,7 +10,7 @@ class LocationSearchInput extends Component {
     this.state = {
       city: "",
       query: "",
-      url: `https://maps.googleapis.com/maps/api/js?key=AIzaSyCGj-DBAXyUUkqkvA7sbUNVw6x638bXg2w&libraries=places`
+      url: `https://maps.googleapis.com/maps/api/js?key=AIzaSyDl2xrjRfqLiy-JND1YpqEVDjItpXNDPYs&libraries=places`
     };
   }
 
