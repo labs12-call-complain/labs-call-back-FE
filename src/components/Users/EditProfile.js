@@ -15,17 +15,6 @@ class EditProfile extends Component {
     showInput: false
   };
 
-  updateEmailz = e => {
-    this.user
-      .updateEmail("jawad24700@gmail.com")
-      .then(function() {
-        console.log("email updated");
-      })
-      .catch(function(error) {
-        console.log("Email update fail");
-      });
-  };
-
   updateProf = e => {
     // e.preventDefault()
 
