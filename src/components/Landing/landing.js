@@ -2,8 +2,8 @@ import "./LandingPage.css";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "firebase";
 import React, { Component } from "react";
-import {Link} from 'react-router-dom';
-import Button from '@material-ui/core/Button';
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 // import firebase from '../Firebase/index.js'
 // import { LANDING } from "./config/routes";
 import { withAuthentication } from "../Session/session.js";
@@ -65,18 +65,26 @@ class LandingPage extends Component {
 
             <div className="startBox-container">
               <div className="startBox-two">
-                <img src={require("./imgs/Group10002.svg")} />
-              </div>
-              <div className="start-content">
-                <h2>Sign In</h2>
-                <br />
-                {/* <StyledFirebaseAuth
+                
+                <div className="start-content">
+                  <h2>Submit a Compaint</h2>
+                  <ul>
+                    <li>Search For The Business</li>
+                    <br />
+                    <li>Record Your Voice Message</li>
+                    <br />
+                    <li>Press Send</li>
+                  </ul>
+                  <br />
+                  {/* <StyledFirebaseAuth
                   uiConfig={this.uiConfig}
                   firebaseAuth={firebase.auth()}
                 /> */}
-                <Link to="/complaint-form">
-                  <Button>Get Started</Button>
-                </Link>
+                  <Link to="/complaint-form">
+                    <button className="start-btn">Get Started</button>
+                  </Link>
+                  {/* <img src={require("./imgs/Group10002.svg")} /> */}
+                </div>
               </div>
             </div>
           </div>
