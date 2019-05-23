@@ -45,7 +45,7 @@ const Navigation = () => (
       <div>
         <Navbar light expand="md">
           
-          <NavbarBrand href="/home">Call Complain</NavbarBrand>
+          <NavbarBrand href="/home">Griipe</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           
           <Collapse isOpen={this.state.isOpen} navbar>
@@ -83,7 +83,7 @@ const NavigationNonAuth = () => {
   return (
     <div>
       <Navbar color="light" light expand="md" className="navbar">
-        <NavbarBrand href="/">Call Complain</NavbarBrand>
+        <NavbarBrand href="/">Griipe</NavbarBrand>
         <NavbarToggler />
         <Collapse navbar>
           <Nav className="ml-auto" navbar>
