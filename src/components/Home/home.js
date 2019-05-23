@@ -9,6 +9,7 @@ import { withAuthorization } from '../Session/session.js';
 import Navigation from '../Navigation/navigation.js';
 
 import ComplaintCard from '../Feeds/ComplaintCard.js';
+import Chart from '../Chart/Chart.js'
 
 import MaterialIcon, {colorPalette} from 'material-icons-react';
 
@@ -16,28 +17,28 @@ import MaterialIcon, {colorPalette} from 'material-icons-react';
 
 class HomePage extends Component {
 
-  user = firebase.auth().currentUser
-
-  curUser = () => {
-    return firebase.auth().currentUser
-  }
-
   state = {
-      complaintFeed: []
+      complaintFeed: [],
+      
 
   }
-
 
   componentDidMount() {
     
     this.complaints();
     console.log('is this working?')
+
   }
+
+  user = firebase.auth().currentUser
 
   ProfilePush = () => {
       this.props.history.push(`/edit-profile`)
     }
 
+  StoreNamess = () => { return this.state.complaintFeed.map(item => {
+    return item.StoreName
+  }) }
 
 
   complaints = () => {
@@ -55,11 +56,15 @@ class HomePage extends Component {
 
 // >>>>>>> ef6ac5c97f12ef0314ff9a5fcf34b7d4c4232cdd
   render() {
-      console.log(firebase.auth().currentUser)
+      console.log(this.StoreNamess())
       console.log("ssdfsdf")
       return (
           <>
           <Navigation />
+
+          
+            
+
               <div className='Homepage Container'>
                 <div class="button-container">
               <Link class="centered" to='/complaint-form'>
@@ -76,24 +81,18 @@ class HomePage extends Component {
                   </h1>
 
                   <div class="HomeWrapper">
-                  <div class="profileCard">
-                    <div class="imgdiv">
-                    <img class="CardImg" src={`${this.user.photoURL}`}/>
-                    </div>
-
-                    <p>{this.user.displayName}</p>
-                    <p>Total Upvotes:</p>
-                    <button class="EditBtn" onClick={this.ProfilePush}>Edit Profile</button>
-                  </div>
-                  
 
                   <div>
                       
                       {this.state.complaintFeed.map((card, i) => {
-                         
                           return <ComplaintCard key={i} card={card}/> 
                       })}
                   </div>
+
+                  <div class="BarGraph" >
+                    <Chart StoreArray={this.StoreNamess()}/>
+                  </div>
+
                   </div>
               </div>
                

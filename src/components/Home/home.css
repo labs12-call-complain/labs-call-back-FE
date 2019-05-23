@@ -108,6 +108,12 @@ h1 {
     justify-content: center;
 }
 
+.BarGraph {
+    margin-left: 10px;
+    width: 450px;
+    
+}
+
 
 @media (max-width: 550px) {
 
@@ -121,7 +127,31 @@ h1 {
     
 }
 
+@media (max-width: 1115px) {
+
+    .HomeWrapper {
+    flex-direction: column-reverse;
+    }
+
+    .BarGraph {
+        margin: 10px auto;
+        width: 600px;
+        
+    }
+    
+}
+
+@media (max-width: 700px) {
+    .BarGraph {
+        
+        width: 90%;
+        
+    }
+}
+
 @media (max-width: 770px) {
+
+    
 
     .centered {
         margin: 1px;
