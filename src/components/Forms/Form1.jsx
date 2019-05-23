@@ -7,7 +7,7 @@ import RaisedButton from "material-ui/RaisedButton";
 import PlacesAutocomplete from 'react-places-autocomplete';
 import LocationSearch from './LocationSearchInput';
 import { Spinner, Fade } from 'reactstrap';
-import Map from './GoogleMaps';
+// import Map from './GoogleMaps';
 
 
 class Form1 extends Component {
@@ -79,12 +79,12 @@ class Form1 extends Component {
           <h1>Search For A Company Below:</h1>
             <LocationSearch triggerUpdatePlaces={this.updateGooglePlaces}/>
           <br />
-            <Map
+            {/* <Map
               google={this.props.google}
               center={{lat: 18.4655, lng: 66.1057}}
               height='300px'
               zoom={15}
-              />
+              /> */}
           <RaisedButton
             label="Continue"
             primary={true}
