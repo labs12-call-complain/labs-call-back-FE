@@ -51,25 +51,33 @@ class Form4WithoutAuth extends Component {
     return (
       <MuiThemeProvider>
         <Fade tag="h5" className="mt-3 form-container" >
-          <h1>Confirmation</h1>
+          <h1 className="form-container-header">Confirmation</h1>
           <div className="confirmation-container">
-          <CloudDoneIcon />
-            <p>{this.props.StoreName}</p>
+            <span className="confirmation-span">
+            <CloudDoneIcon color='error'/>
+            <p className="confirmation-input"><strong>Store:</strong> {this.props.StoreName}</p>
+            </span>
           </div>
           <div className="confirmation-container">
-          <CloudDoneIcon />            
-            <p>{this.props.StoreAddress}</p>
+            <span className="confirmation-span">
+              <CloudDoneIcon color='error'/>            
+              <p className="confirmation-input"><strong>Address:</strong> {this.props.StoreAddress}</p>
+            </span>
           </div>
           <div className="confirmation-container">
-          <CloudDoneIcon />          
-            <p>{this.props.confirmationTranscription}</p>
+            <span className="confirmation-span">
+              <CloudDoneIcon color='error'/>          
+              <p className="confirmation-input"><strong>Transcription:</strong> {this.props.confirmationTranscription}</p>
+            </span>
           </div>
-          <RaisedButton
-            label="Send Tweet"
-            primary={true}
-            style={styles.button}
-            onClick={this.continue}
-          />
+          <div className="confirmation-button">
+            <RaisedButton
+              label="Send Tweet"
+              primary={true}
+              style={styles.button}
+              onClick={this.continue}
+            />
+          </div>
         </Fade>
       </MuiThemeProvider>
     );
@@ -80,6 +88,7 @@ const styles = {
   button: {
     margin: 15
   }
+
 };
 
 export default Form4;
