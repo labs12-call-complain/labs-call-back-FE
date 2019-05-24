@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Bar} from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 
 
 const Chart = (props) => {
@@ -81,4 +81,4 @@ console.log("data: ", data)
     
 }
 
-export default Chart
+export default Chart;

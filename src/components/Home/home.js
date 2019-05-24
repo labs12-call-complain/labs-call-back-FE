@@ -9,25 +9,30 @@ import { withAuthorization } from '../Session/session.js';
 import Navigation from '../Navigation/navigation.js';
 
 import ComplaintCard from '../Feeds/ComplaintCard.js';
+import ComplaintCardNoAuth from '../Feeds/ComplaintCardNoAuth.js';
 import Chart from '../Chart/Chart.js'
 
 import MaterialIcon, {colorPalette} from 'material-icons-react';
 
+import { AuthUserContext } from '../Session/session.js';
 
 
-class HomePage extends Component {
+const HomePage = () => (
+  <AuthUserContext.Consumer>
+    {authUser =>
+      authUser ? <HomePageWithAuth /> : <HomePageNoAuth />
+    }
+  </AuthUserContext.Consumer>
+);
 
+class HomePageWithAuth extends Component {
   state = {
       complaintFeed: [],
-      
-
   }
 
   componentDidMount() {
-    
     this.complaints();
     console.log('is this working?')
-
   }
 
   user = firebase.auth().currentUser
@@ -52,19 +57,12 @@ class HomePage extends Component {
       });
   }
 
-
-
-// >>>>>>> ef6ac5c97f12ef0314ff9a5fcf34b7d4c4232cdd
   render() {
       console.log(this.StoreNamess())
       console.log("ssdfsdf")
       return (
           <>
           <Navigation />
-
-          
-            
-
               <div className='Homepage Container'>
                 <div class="button-container">
               <Link class="centered" to='/complaint-form'>
@@ -74,35 +72,94 @@ class HomePage extends Component {
                       <MaterialIcon icon="phone" />
                   </button>
               </Link>
-                </div>
-                 
+                </div>            
                   <h1 class="worstReviewed">
                       Lowest Reviewed Companies
                   </h1>
-
                   <div class="HomeWrapper">
-
-                  <div>
-                      
+                  <div>                    
                       {this.state.complaintFeed.map((card, i) => {
                           return <ComplaintCard key={i} card={card}/> 
                       })}
                   </div>
-
                   <div class="BarGraph" >
                     <Chart StoreArray={this.StoreNamess()}/>
                   </div>
-
                   </div>
               </div>
-               
           </>
       )
   }
-// >>>>>>> 000acc6ebae3bbac810db8f9948e7006c630e82c
 }
 
-const condition = authUser => !!authUser;
+class HomePageNoAuth extends Component {
+  state = {
+      complaintFeed: [],
+  }
 
-export default withAuthorization(condition)(HomePage);
-// export default HomePage;
+  componentDidMount() {
+    this.complaints();
+    console.log('is this working?')
+  }
+
+  user = firebase.auth().currentUser
+
+  ProfilePush = () => {
+      this.props.history.push(`/edit-profile`)
+    }
+
+  StoreNamess = () => { return this.state.complaintFeed.map(item => {
+    return item.StoreName
+  }) }
+
+
+  complaints = () => {
+      axios
+      .get("https://call-complain.herokuapp.com/api/routes/posts")
+      .then(response => {
+        this.setState({ complaintFeed: response.data });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
+  render() {
+      console.log(this.StoreNamess())
+      console.log("ssdfsdf")
+      return (
+          <>
+          <Navigation />
+              <div className='Homepage Container'>
+                <div class="button-container">
+              <Link class="centered" to='/complaint-form'>
+                  <button class="complaintButton">
+                      
+                      Call and Complain 
+                      <MaterialIcon icon="phone" />
+                  </button>
+              </Link>
+                </div>            
+                  <h1 class="worstReviewed">
+                      Lowest Reviewed Companies
+                  </h1>
+                  <div class="HomeWrapper">
+                  <div>                    
+                      {this.state.complaintFeed.map((card, i) => {
+                          return <ComplaintCardNoAuth key={i} card={card}/> 
+                      })}
+                  </div>
+                  <div class="BarGraph" >
+                    <Chart StoreArray={this.StoreNamess()}/>
+                  </div>
+                  </div>
+              </div>
+          </>
+      )
+  }
+}
+
+// const condition = authUser => !!authUser;
+
+// export default withAuthorization(condition)(HomePage);
+export default HomePage;

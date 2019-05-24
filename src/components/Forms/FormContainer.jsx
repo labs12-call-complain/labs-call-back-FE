@@ -6,8 +6,8 @@ import Form1 from "./Form1.jsx";
 import Form2 from "./Form2.jsx";
 import Form3 from "./Form3.jsx";
 import Form4 from "./Form4.jsx";
-import Form5 from "./SignIn.jsx";
-import Success from "./Form5.jsx";
+import SignInConfirmation from "./SignIn.jsx";
+import Form5 from "./Form5.jsx";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
 import TextField from "material-ui/TextField";
@@ -186,7 +186,7 @@ class FormContainer extends Component {
         case 5:
           return (
             <>
-              <Form5
+              <SignInConfirmation
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
                 handleChange={this.handleChange}
@@ -205,7 +205,7 @@ class FormContainer extends Component {
         return (
           <>
           <Navigation />
-            <Success 
+            <Form5 
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             handleChange={this.handleChange}

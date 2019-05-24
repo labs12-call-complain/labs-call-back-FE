@@ -33,14 +33,19 @@ class Form3 extends Component {
   };
 
   addTranscript = e => {
-    e.preventDefault();
+    // e.preventDefault();
     this.props.setTranscriptionProps(this.state.transcription);
-    this.props.nextStep();
+    // this.props.nextStep();
   };
 
   handleChange = e => {
     this.setState({ transcription: e.target.value });
+    console.log(this.state.transcription);
   };
+
+  componentWillUnmount() {
+    this.addTranscript();
+  }
 
   render() {
     const { values, handleChange } = this.props;
