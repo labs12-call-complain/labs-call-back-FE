@@ -72,6 +72,7 @@ header {
 }
 .login-btn-top {
     position: absolute;
+    margin-right: 15px;
     width: 75px;
     height: 35px;
     top: 55px;
