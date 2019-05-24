@@ -35,7 +35,7 @@
 
     justify-content: center;
     width: 50px;
-    background: #DA2C38;
+    background: #593C8F;
 }
 
 .upvote-container div p {
@@ -80,6 +80,10 @@
     align-items: baseline;
     justify-content: space-between;
     border-bottom: 1px solid lightgrey;
+}
+
+.fas.fa-chevron-up, .upvote, .fas.fa-chevron-down {
+    color: #E9F1F7 ;
 }
 
 
