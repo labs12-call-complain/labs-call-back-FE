@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 
 const SignOutButton = ({ firebase }) => (
-  <Link to="home">
+  <Link to="/">
   <button type="button" onClick={firebase.doSignOut}>
     Sign Out
   </button>

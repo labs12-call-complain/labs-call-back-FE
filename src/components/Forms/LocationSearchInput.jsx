@@ -35,11 +35,12 @@ class LocationSearchInput extends Component {
     let companyPhone = addressObject.formatted_phone_number;
     let companyWebsite = addressObject.website;
     let companyRating = addressObject.rating;
+
     
     if (address) {
       this.setState({
         city: address[0].long_name,
-        query: addressObject.formatted_address
+        query: addressObject.formatted_address,
       });
     }
     this.props.triggerUpdatePlaces(

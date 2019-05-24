@@ -76,7 +76,7 @@ class LandingPage extends Component {
                   <li>Send A Review</li>
                 </ul>
                 <br/>
-                <Link to="/complaint-form">
+                <Link to="/home">
                   <button className="start-btn">Get Started</button>
                 </Link>
               </div>
@@ -92,7 +92,9 @@ class LandingPage extends Component {
                   uiConfig={this.uiConfig}
                   firebaseAuth={firebase.auth()}
                 /> */}
-
+                  {/* <Link to="/home">
+                    <button className="start-btn">Get Started</button>
+                  </Link> */}
                   {/* <img src={require("./imgs/Group10002.svg")} /> */}
                 </div>
               </div>
