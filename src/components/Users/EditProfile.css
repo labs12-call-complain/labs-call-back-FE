@@ -1,7 +1,7 @@
 .containerCenter {
     display: flex;
     justify-content: center;
-    background-color: #fff8e8;
+    background-color: #E9F1F7;
    
  }
  
@@ -112,9 +112,7 @@
    
  }
  
- .textContainer button {
-    
- }
+
  
  
 @media (max-width: 770px) {
