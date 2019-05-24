@@ -42,7 +42,7 @@ class Form4WithoutAuth extends Component {
       if(this.state.isLoading===true) {
         return (
         <div className="recording-loader loader">
-          <h1>CALL COMPLAIN</h1>
+          <h1>Griipe</h1>
           <br />
           <Spinner style={{ width: '3rem', height: '3rem' }} />
         </div>)

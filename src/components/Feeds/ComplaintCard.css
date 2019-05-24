@@ -12,6 +12,10 @@
     overflow: hidden;
 }
 
+.card:hover {
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+}
+
 .playbuttons {
 
     padding-bottom: 5px;
@@ -77,6 +81,7 @@
     justify-content: space-between;
     border-bottom: 1px solid lightgrey;
 }
+
 
 
 @media (max-width: 700px) {
