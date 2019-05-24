@@ -87,6 +87,9 @@ class Form2 extends Component {
     
     axios
       .post(`https://brain.deepgram.com/v2/listen`, data, {
+        params: {
+          punctuate: true
+        },
         headers: dgheaders
       })
       .then(res => {
@@ -161,13 +164,18 @@ class Form2 extends Component {
             <div>
               {this.state.isRecordingLoading===false ? (this.props.audios.map((audioURL, i) => (
                 <Fade in={this.state.fadeIn} tag="h5" className="mt-3" key={i}>
-                  <h3>Want To Re-Record? Push Re-Record Button Below:</h3>
-                  {/* <audio controls style={{ width: 400 }} src={audioURL} className="audio-controls"/> */}
+                  <div>
+                    <h3>Listen To Recording:</h3>
+                    <audio controls style={{ width: 400 }} src={audioURL} className="audio-controls"/>
+                  </div>
+                    <h3 className="re-record-header">Want To Re-Record?:</h3>
                     <RaisedButton onClick={() => this.deleteAudio(audioURL)} 
                     label="Record Again"
                     primary={true}
                     style={styles.button}
+                    className="re-record-button"
                     />
+                    <hr className="hr-divider"/>
                   <div>
                     <RaisedButton
                       label="Back"
