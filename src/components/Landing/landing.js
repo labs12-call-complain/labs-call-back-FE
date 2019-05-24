@@ -56,7 +56,7 @@ class LandingPage extends Component {
           <Link to="/complaint-form">
             <button className="start-btn start-btn-top">Get Started</button>
           </Link>
-          <Link to="/complaint-form">
+          <Link to="/">
             <div className="login-btn-top">Login</div>
           </Link>
           <div class="topcontainer-wrapper">
