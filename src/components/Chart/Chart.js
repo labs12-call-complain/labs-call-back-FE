@@ -59,7 +59,7 @@ console.log("data: ", data)
                     options={{
                         title: {
                             display: true,
-                            text: "Most Reviewed Businesses"
+                            text: "Most Frequently Reviewed"
                         },
                         legend: {
                             display: false,

@@ -11,6 +11,7 @@ import Navigation from '../Navigation/navigation.js';
 import ComplaintCard from '../Feeds/ComplaintCard.js';
 import ComplaintCardNoAuth from '../Feeds/ComplaintCardNoAuth.js';
 import Chart from '../Chart/Chart.js'
+import { Spinner, Fade } from 'reactstrap';
 
 import MaterialIcon, {colorPalette} from 'material-icons-react';
 
@@ -28,6 +29,8 @@ const HomePage = () => (
 class HomePageWithAuth extends Component {
   state = {
       complaintFeed: [],
+      loading: true
+
   }
 
   componentDidMount() {
@@ -50,11 +53,13 @@ class HomePageWithAuth extends Component {
       axios
       .get("https://call-complain.herokuapp.com/api/routes/posts")
       .then(response => {
-        this.setState({ complaintFeed: response.data });
+        this.setState({ complaintFeed: response.data, loading: false });
       })
       .catch(error => {
         console.error(error);
       });
+
+      
   }
 
   render() {
@@ -62,14 +67,15 @@ class HomePageWithAuth extends Component {
       console.log("ssdfsdf")
       return (
           <>
+          {/* <Fade tag="h5" className="mt-3"> */}
           <Navigation />
               <div className='Homepage Container'>
                 <div class="button-container">
               <Link class="centered" to='/complaint-form'>
                   <button class="complaintButton">
                       
-                      Call and Complain 
-                      <MaterialIcon icon="phone" />
+                      Leave A Review 
+                      
                   </button>
               </Link>
                 </div>            
@@ -135,8 +141,8 @@ class HomePageNoAuth extends Component {
               <Link class="centered" to='/complaint-form'>
                   <button class="complaintButton">
                       
-                      Call and Complain 
-                      <MaterialIcon icon="phone" />
+                      Make A Complaint
+                      {/* <MaterialIcon icon="phone" /> */}
                   </button>
               </Link>
                 </div>            

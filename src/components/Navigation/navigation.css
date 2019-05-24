@@ -2,7 +2,7 @@
     display: flex;
     width: 100%;
     justify-content: space-evenly;
-    background: #DA2C38;
+    background: #593C8F !important;
     padding: 20px 10px;
 }
 
@@ -12,3 +12,20 @@
 
 }
 
+.navbar-brand img {
+    width: 5%;
+    align-items: left !important;
+}
+
+.navbar-brand {
+    align-items: left !important;
+    font-size: 2rem;
+}
+
+.navbar-light .navbar-brand {
+    color: #E9F1F7;
+}
+
+.dropdown-toggle.nav-link {
+    color: #E9F1F7 !important;
+}
