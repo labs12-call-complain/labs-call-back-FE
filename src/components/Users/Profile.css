@@ -5,3 +5,13 @@
   
   text-align: center;
 }
+
+.ProfileWrap {
+  display: flex;
+    justify-content: center;
+}
+
+.ProfileCardList {
+  display: flex;
+  flex-direction: column;
+}

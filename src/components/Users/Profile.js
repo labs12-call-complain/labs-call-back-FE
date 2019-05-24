@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios'
 import { withAuthorization } from '../Session/session.js';
 import ComplaintCard from '../Feeds/ComplaintCard.js';
+import { Spinner, Fade } from 'reactstrap';
 
 
 class Profile extends Component {
@@ -13,7 +14,9 @@ class Profile extends Component {
     user = firebase.auth().currentUser
 
     state = {
-      complaintById: []
+      complaintById: [],
+      loading: true
+
     }
 
     componentDidMount() {
@@ -31,7 +34,7 @@ class Profile extends Component {
     axios
     .get(`https://call-complain.herokuapp.com/api/routes/posts/${this.user.uid}`)
     .then(response => {
-      this.setState(() => ({ complaintById: response.data }));
+      this.setState(() => ({ complaintById: response.data, loading: false }));
     })
     .catch(error => {
       console.error(error);
@@ -43,12 +46,20 @@ class Profile extends Component {
     render() {
       console.log(this.user.uid)
     return (
+      
         
       <div>
       <Navigation />
+
+      {this.state.loading ? <div className="recording-loader loader">
+                <h1>Griipe</h1>
+                <br />
+                <Spinner style={{ width: '3rem', height: '3rem' }} />
+                </div> : 
+      <div>
       <h2>Your Complaint History</h2>
 
-      <div class="HomeWrapper">
+      <div class="ProfileWrap">
         
       <div class="profileCard">
         <div class="imgdiv">
@@ -62,12 +73,17 @@ class Profile extends Component {
 
       {this.state.complaintById[0] ? null : <h4 class="noReview">You have no reviews yet..</h4>}
 
+      <div class="ProfileCardList">
       {this.state.complaintById.map((card, i) => {
       //   return <ComplaintCard card={card} key={this.state.id}/> 
        return <ComplaintCard card={card}/> 
         })}
 
-      </div>
+        </div>
+        </div>
+
+      </div> }
+
       </div>
 
     )}
