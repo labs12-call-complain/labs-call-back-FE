@@ -141,7 +141,7 @@ class HomePageNoAuth extends Component {
               <Link class="centered" to='/complaint-form'>
                   <button class="complaintButton">
                       
-                      Make A Complaint
+                      Leave A Review 
                       {/* <MaterialIcon icon="phone" /> */}
                   </button>
               </Link>
