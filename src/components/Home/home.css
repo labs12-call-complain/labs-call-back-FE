@@ -47,6 +47,8 @@ h1 {
 
 .Homepage {
     background-color: #FFF8E8;
+    width: 85%;
+    margin: 0px auto;
 }
 
 .profileCard {

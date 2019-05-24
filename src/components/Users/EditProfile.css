@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;
     background-color: #fff8e8;
-   
+    width: 85%;
+    margin: 0px auto;
  }
  
  .profilePic {
@@ -16,6 +17,10 @@
  .profileText {
     font-size: 1.5rem;
     text-align: left;
+ }
+
+ .profileCard{
+    background: white;
  }
  
  .profileContainer {
