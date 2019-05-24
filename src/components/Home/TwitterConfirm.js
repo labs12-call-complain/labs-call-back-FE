@@ -56,7 +56,7 @@ class TwitterConfirm extends Component {
           <div className="confirmation-container">
             <span className="confirmation-span">
             <CloudDoneIcon color='error'/>
-            <p className="confirmation-input"><strong>Link:</strong> {this.props.StoreName}</p>
+            <p className="confirmation-input"><strong>Link: </strong> <a href="https://twitter.com/callcomplain1">https://twitter.com/callcomplain1</a></p>
             </span>
           </div>
           <div className="confirmation-container">
