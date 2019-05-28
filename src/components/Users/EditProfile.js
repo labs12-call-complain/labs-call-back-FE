@@ -6,6 +6,7 @@ import Navigation from "../Navigation/navigation";
 import { withAuthorization } from "../Session/session.js";
 
 class EditProfile extends Component {
+
   user = firebase.auth().currentUser;
 
   state = {
@@ -16,8 +17,6 @@ class EditProfile extends Component {
   };
 
   updateProf = e => {
-    // e.preventDefault()
-
     this.user
       .updateProfile({
         displayName: this.state.displayName,
@@ -28,22 +27,12 @@ class EditProfile extends Component {
       }).catch(function(error) {
         console.log(error)
       }) 
-    
-    
     }
-
-
-
-
-
-
 
     inputToggle = (e) => {
         e.preventDefault()
         this.setState({ showInput: !this.state.showInput })
     }
-
-
 
     changeHandler = e => {
         this.setState({
@@ -65,7 +54,7 @@ class EditProfile extends Component {
             <p>{this.state.showInput}</p>
 
             <div class="profile-div">
-              <img class="profilePic" src={`${this.user.photoURL}`} />
+              <img class="profilePic" src={ this.user.photoURL == null ||this.user.photoURL.length < 15 ? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png' : this.user.photoURL} />
 
               <div class="textContainer">
                 <p class="profileText">{`Name: ${this.user.displayName}`}</p>
@@ -89,12 +78,14 @@ class EditProfile extends Component {
                     name="displayName"
                   />
                   <p class="text-centers">URL:</p>
+                  
                   <input
                     placeholder={"Photo URL..."}
                     value={this.state.photoURL}
                     onChange={this.changeHandler}
                     name="photoURL"
                   />
+
                   <button class="text-centers"> Update Profile </button>
                 </form>
               </div>
@@ -114,8 +105,7 @@ class EditProfile extends Component {
                     .catch(function(error) {
                       console.log(error);
                     })
-                }
-              >
+                }>
                 {" "}
                 Delete Account{" "}
               </button>

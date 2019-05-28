@@ -63,32 +63,36 @@ class HomePageWithAuth extends Component {
   };
 
   render() {
-    console.log(this.StoreNamess());
-    console.log("ssdfsdf");
-    return (
-      <>
-        {/* <Fade tag="h5" className="mt-3"> */}
-        <Navigation />
-        <div className="Homepage Container">
-          <div class="button-container">
-            <Link class="centered" to="/complaint-form">
-              <button class="complaintButton">Leave A Review</button>
-            </Link>
-          </div>
-          <h1 class="worstReviewed">Lowest Reviewed Companies</h1>
-          <div class="HomeWrapper">
-            <div>
-              {this.state.complaintFeed.map((card, i) => {
-                return <ComplaintCard key={i} card={card} />;
-              })}
-            </div>
-            <div class="BarGraph">
-              <Chart StoreArray={this.StoreNamess()} />
-            </div>
-          </div>
-        </div>
-      </>
-    );
+      return (
+          <>
+          {/* <Fade tag="h5" className="mt-3"> */}
+          <Navigation />
+              <div className='Homepage Container'>
+                <div class="button-container">
+              <Link class="centered" to='/complaint-form'>
+                  <button class="complaintButton">
+                      
+                      Leave A Review 
+                      
+                  </button>
+              </Link>
+                </div>            
+                  <h1 class="worstReviewed">
+                      Lowest Reviewed Companies
+                  </h1>
+                  <div class="HomeWrapper">
+                  <div>                    
+                      {this.state.complaintFeed.map((card, i) => {
+                          return <ComplaintCard key={i} card={card}/> 
+                      })}
+                  </div>
+                  <div class="BarGraph" >
+                    <Chart StoreArray={this.StoreNamess()}/>
+                  </div>
+                  </div>
+              </div>
+          </>
+      )
   }
 }
 
