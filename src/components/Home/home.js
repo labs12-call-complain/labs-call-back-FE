@@ -54,6 +54,7 @@ class HomePageWithAuth extends Component {
       .get("https://call-complain.herokuapp.com/api/routes/posts")
       .then(response => {
         this.setState({ complaintFeed: response.data, loading: false });
+        console.log(response.data)
       })
       .catch(error => {
         console.error(error);
@@ -129,8 +130,7 @@ class HomePageNoAuth extends Component {
   }
 
   render() {
-      console.log(this.StoreNamess())
-      console.log("ssdfsdf")
+     
       return (
           <>
           <Navigation />
