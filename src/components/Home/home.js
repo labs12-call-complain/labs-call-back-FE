@@ -59,8 +59,6 @@ class HomePage extends Component {
 
 // >>>>>>> ef6ac5c97f12ef0314ff9a5fcf34b7d4c4232cdd
   render() {
-      console.log(this.StoreNamess())
-      console.log("ssdfsdf")
       return (
           <>
           {/* <Fade tag="h5" className="mt-3"> */}
@@ -98,6 +96,7 @@ class HomePage extends Component {
                       })}
                   </div>
 
+                      
                   <div class="BarGraph" >
                     <Chart StoreArray={this.StoreNamess()}/>
                   </div>
