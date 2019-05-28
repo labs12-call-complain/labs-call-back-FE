@@ -63,36 +63,30 @@ class HomePageWithAuth extends Component {
   };
 
   render() {
-      return (
-          <>
-          {/* <Fade tag="h5" className="mt-3"> */}
-          <Navigation />
-              <div className='Homepage Container'>
-                <div class="button-container">
-              <Link class="centered" to='/complaint-form'>
-                  <button class="complaintButton">
-                      
-                      Leave A Review 
-                      
-                  </button>
-              </Link>
-                </div>            
-                  <h1 class="worstReviewed">
-                      Lowest Reviewed Companies
-                  </h1>
-                  <div class="HomeWrapper">
-                  <div>                    
-                      {this.state.complaintFeed.map((card, i) => {
-                          return <ComplaintCard key={i} card={card}/> 
-                      })}
-                  </div>
-                  <div class="BarGraph" >
-                    <Chart StoreArray={this.StoreNamess()}/>
-                  </div>
-                  </div>
-              </div>
-          </>
-      )
+    return (
+      <>
+        {/* <Fade tag="h5" className="mt-3"> */}
+        <Navigation />
+        <div className="Homepage Container">
+          <div class="button-container">
+            <Link class="centered" to="/complaint-form">
+              <button class="complaintButton">Leave A Review</button>
+            </Link>
+          </div>
+          <h1 class="worstReviewed">Lowest Reviewed Companies</h1>
+          <div class="HomeWrapper">
+            <div>
+              {this.state.complaintFeed.map((card, i) => {
+                return <ComplaintCard key={i} card={card} />;
+              })}
+            </div>
+            <div class="BarGraph">
+              <Chart StoreArray={this.StoreNamess()} />
+            </div>
+          </div>
+        </div>
+      </>
+    );
   }
 }
 
@@ -152,9 +146,9 @@ class HomePageNoAuth extends Component {
               })}
               {console.log(this.state.complaintFeed)}
             </div>
-          </div>
-          <div class="BarGraph">
-            <Chart StoreArray={this.StoreNamess()} />
+            <div class="BarGraph">
+              <Chart StoreArray={this.StoreNamess()} />
+            </div>
           </div>
         </div>
       </>
