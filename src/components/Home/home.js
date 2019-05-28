@@ -63,8 +63,6 @@ class HomePageWithAuth extends Component {
   }
 
   render() {
-      console.log(this.StoreNamess())
-      console.log("ssdfsdf")
       return (
           <>
           {/* <Fade tag="h5" className="mt-3"> */}

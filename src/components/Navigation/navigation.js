@@ -52,7 +52,7 @@ const Navigation = () => (
             <Nav className="ml-auto" navbar>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  Options
+                  Profile
                 </DropdownToggle>
                 <DropdownMenu right>
                 <Link to="/profile">
