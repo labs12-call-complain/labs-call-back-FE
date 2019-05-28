@@ -3,6 +3,8 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import * as firebase from "firebase";
 import "../Landing/LandingPage.css";
 import axios from 'axios';
+import Navigation from '../Navigation/navigation.js';
+
 
 class SignInConfirmation extends Component {
     state = {
@@ -20,7 +22,7 @@ class SignInConfirmation extends Component {
             firebase.auth.TwitterAuthProvider.PROVIDER_ID,
             firebase.auth.EmailAuthProvider.PROVIDER_ID
           ],
-            signInSuccessUrl: '/home'
+            signInSuccessUrl: '/tweet-confirmation'
           }
           
           componentDidUpdate() {
@@ -57,12 +59,15 @@ class SignInConfirmation extends Component {
 
         render() {
             return (
+              <>
+                <Navigation />
                 <div class="signin">
                     <h2>Sign In</h2>
                     <StyledFirebaseAuth 
                     uiConfig={this.uiConfig} 
                     firebaseAuth={firebase.auth()} />
                 </div>
+              </>  
             );
           }
         }

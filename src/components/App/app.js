@@ -6,7 +6,8 @@ import LandingPage from '../Landing/landing.js';
 import HomePage from '../Home/home.js';
 import FormContainer from '../Forms/FormContainer';
 import EditProfile from '../Users/EditProfile.js';
-import Profile from '../Users/Profile.js'
+import Profile from '../Users/Profile.js';
+import TwitterConfirm from '../Home/TwitterConfirm.js';
 
 import './App.css'
 
@@ -24,6 +25,7 @@ const App = () => (
             <Route path={ROUTES.HOME} component={HomePage} />
             <Route path={ROUTES.FORM_CONTAINER} component={FormContainer} />
             <Route path={ROUTES.PROFILE} component={Profile} />
+            <Route path={ROUTES.TWEET_CONFIRM} component={TwitterConfirm} />
         </div>
     </Router>
 );
