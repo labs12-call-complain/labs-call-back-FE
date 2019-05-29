@@ -34,6 +34,5 @@ const App = () => (
 );
 
 
-  
 export default withAuthentication(App);
 // export default App;

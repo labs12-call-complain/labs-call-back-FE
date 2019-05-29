@@ -52,6 +52,21 @@
     margin: 8rem auto;
 }
 
+/********************
+    Map Form Styles 
+********************/
+#form-root, #map-form, #map {
+    height: 100%;
+}
+
+#state {
+    width: 200px;
+    float: left;
+}
+
+#map {
+    margin-left: 200px;
+}
 .form-input {
     width: 85%;
     text-align: left;
