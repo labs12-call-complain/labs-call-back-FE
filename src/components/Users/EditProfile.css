@@ -1,21 +1,28 @@
 .containerCenter {
     display: flex;
     justify-content: center;
-    background-color: #fff8e8;
+    background-color: #E9F1F7;
    
+    
+    width: 85%;
+    margin: 0px auto;
  }
  
  .profilePic {
     width: 200px;
     height: 200px;
     object-fit: cover;
-    border: 5px solid #DA2C38;;
+    border: 5px solid #593C8F;
     border-radius: 15px;
  }
  
  .profileText {
     font-size: 1.5rem;
     text-align: left;
+ }
+
+ .profileCard{
+    background: white;
  }
  
  .profileContainer {
@@ -112,9 +119,7 @@
    
  }
  
- .textContainer button {
-    
- }
+
  
  
 @media (max-width: 770px) {

@@ -11,10 +11,10 @@
     height: 40px;
     /* margin-bottom: 20px;
     margin-top: 20px; */
-    border-radius: 5px;
-    background-color: #DA2C38;
-    color: white;
-    border: 1px solid #FFD6D6;
+    
+    background-color: #9CE37D;
+    color: #593C8F ;
+    border: 1px solid #E9F1F7;
     text-decoration: none;
     z-index: 5;
     /* top: -80px; */
@@ -46,7 +46,10 @@ h1 {
 
 
 .Homepage {
-    background-color: #FFF8E8;
+    background-color: #E9F1F7;
+    
+    width: 85%;
+    margin: 0px auto;
 }
 
 .profileCard {
@@ -88,12 +91,12 @@ h1 {
     width: 100%;
     border-bottom: 1px solid lightgrey;
     margin-bottom: 10px;
-    background: #DA2C38;
+    background: #593C8F;
 }
 
 .EditBtn {
-    background: #DA2C38;
-    border: 1px solid #DA2C38;
+    background: #593C8F;
+    border: 1px solid #593C8F;
     width: 80%;
     height: 35px;
     border-radius: 2px;
@@ -106,6 +109,12 @@ h1 {
 .HomeWrapper {
     display: flex;
     justify-content: center;
+}
+
+.BarGraph {
+    margin-left: 10px;
+    width: 450px;
+    
 }
 
 
@@ -121,7 +130,31 @@ h1 {
     
 }
 
+@media (max-width: 1115px) {
+
+    .HomeWrapper {
+    flex-direction: column-reverse;
+    }
+
+    .BarGraph {
+        margin: 10px auto;
+        width: 600px;
+        
+    }
+    
+}
+
+@media (max-width: 700px) {
+    .BarGraph {
+        
+        width: 90%;
+        
+    }
+}
+
 @media (max-width: 770px) {
+
+    
 
     .centered {
         margin: 1px;

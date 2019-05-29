@@ -2,11 +2,12 @@ import "./LandingPage.css";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "firebase";
 import React, { Component } from "react";
-import {Link} from 'react-router-dom';
-import Button from '@material-ui/core/Button';
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 // import firebase from '../Firebase/index.js'
 // import { LANDING } from "./config/routes";
 import { withAuthentication } from "../Session/session.js";
+import axios from "axios";
 
 // about to add loader/spinner
 
@@ -33,6 +34,15 @@ class LandingPage extends Component {
     signInSuccessUrl: "/home"
   };
 
+  componentDidMount() {
+    axios
+      .get(`http://call-complain.heroku.com/`)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
     console.log(this.state);
     return (
@@ -41,8 +51,14 @@ class LandingPage extends Component {
           {/* <img className='logo' src={require("./imgs/cclogo.png")} /> */}
 
           <div className="logo-two">
-            <img src={require("./imgs/Group100.png")} />
+            <img src={require("./imgs/brandmark-designcoor.png")} />
           </div>
+          <Link to="/complaint-form">
+            <button className="start-btn start-btn-top">Get Started</button>
+          </Link>
+          <Link to="/">
+            <div className="login-btn-top">Login</div>
+          </Link>
           <div class="topcontainer-wrapper">
             <section class="toppage" />
 
@@ -51,32 +67,36 @@ class LandingPage extends Component {
                 {" "}
                 <h1> A Bad Experience Should Never Go Unchecked </h1>
                 <br />
-                <br />
-                <h5>
-                  With a single click of a button, CallComplain will send a text
-                  translated version of your complaint directly to the company
-                  email and corperate twitter so your voice can be heard
-                  worldwide
-                </h5>{" "}
+               
+                <ul>
+                  <li>Record</li>
+
+                  <li>Transcribe</li>
+
+                  <li>Send A Review</li>
+                </ul>
+                <br/>
+                <Link to="/home">
+                  <button className="start-btn">Get Started</button>
+                </Link>
               </div>
             </div>
 
-            <div class="vl" />
-
             <div className="startBox-container">
               <div className="startBox-two">
-                <img src={require("./imgs/Group10002.svg")} />
-              </div>
-              <div className="start-content">
-                <h2>Sign In</h2>
-                <br />
-                {/* <StyledFirebaseAuth
+                <div className="start-content">
+                  <img src={require("./imgs/mushroom.png")} />
+
+                  <br />
+                  {/* <StyledFirebaseAuth
                   uiConfig={this.uiConfig}
                   firebaseAuth={firebase.auth()}
                 /> */}
-                <Link to="/complaint-form">
-                  <Button>Get Started</Button>
-                </Link>
+                  {/* <Link to="/home">
+                    <button className="start-btn">Get Started</button>
+                  </Link> */}
+                  {/* <img src={require("./imgs/Group10002.svg")} /> */}
+                </div>
               </div>
             </div>
           </div>

@@ -6,6 +6,8 @@ import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import { Spinner, Fade } from 'reactstrap';
 
+import './FormContainer.css';
+
 
 class Form3 extends Component {
   constructor(props) {
@@ -31,21 +33,26 @@ class Form3 extends Component {
   };
 
   addTranscript = e => {
-    e.preventDefault();
+    // e.preventDefault();
     this.props.setTranscriptionProps(this.state.transcription);
-    this.props.nextStep();
+    // this.props.nextStep();
   };
 
   handleChange = e => {
     this.setState({ transcription: e.target.value });
+    console.log(this.state.transcription);
   };
+
+  componentWillUnmount() {
+    this.addTranscript();
+  }
 
   render() {
     const { values, handleChange } = this.props;
     if(this.state.isLoading===true) {
       return (
       <div className="recording-loader loader">
-        <h1>CALL COMPLAIN</h1>
+        <h1>Griipe</h1>
         <br />
         <Spinner style={{ width: '3rem', height: '3rem' }} />
       </div>)
@@ -53,8 +60,9 @@ class Form3 extends Component {
     return (
       <MuiThemeProvider>
         <Fade in={this.state.fadeIn} tag="h5" className="mt-3">
+        <div className="form-container">
           <h1>Transcription</h1>
-          <form onSubmit={this.addTranscript} >
+          <form onSubmit={this.addTranscript} className="text-input-container">
             <textarea
               className="form-input"
               type="text"
@@ -77,6 +85,7 @@ class Form3 extends Component {
             style={styles.button}
             onClick={this.continue}
           />
+        </div>
         </Fade>
       </MuiThemeProvider>
     );

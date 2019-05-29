@@ -3,6 +3,8 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import * as firebase from "firebase";
 import "../Landing/LandingPage.css";
 import axios from 'axios';
+import Navigation from '../Navigation/navigation.js';
+
 
 class SignInConfirmation extends Component {
     state = {
@@ -20,7 +22,7 @@ class SignInConfirmation extends Component {
             firebase.auth.TwitterAuthProvider.PROVIDER_ID,
             firebase.auth.EmailAuthProvider.PROVIDER_ID
           ],
-            signInSuccessUrl: '/home'
+            signInSuccessUrl: '/tweet-confirmation'
           }
           
           componentDidUpdate() {
@@ -40,28 +42,32 @@ class SignInConfirmation extends Component {
                 status: `${this.props.StoreName}, your customer just complained about you on callandcomplain.com. We added you to our #worstcustomerservice leaderboard.`
               }
               console.log(tweetdata)
+              console.log(data)
               axios
                 .post(`https://call-complain.herokuapp.com/api/routes/makepost`, data)
                 .then(res => {
-                  console.log("response:", res);
+                  console.log("Working 1:", res);
                   axios
                     .post(`https://call-complain.herokuapp.com/api/routes/makeatweet`, tweetdata)
                     .then(res => {
-                      console.log("response:", res);
+                      console.log("Working 2:", res);
                     })
-                    .catch(err => console.log(err));
+                    .catch(err => console.log("Broken 1:", err));
                 })
-                .catch(err => console.log(err));
+                .catch(err => console.log("Broken 2:", err));
           }
 
         render() {
             return (
+              <>
+                <Navigation />
                 <div class="signin">
                     <h2>Sign In</h2>
                     <StyledFirebaseAuth 
                     uiConfig={this.uiConfig} 
                     firebaseAuth={firebase.auth()} />
                 </div>
+              </>  
             );
           }
         }

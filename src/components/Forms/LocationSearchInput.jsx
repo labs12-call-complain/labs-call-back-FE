@@ -15,7 +15,7 @@ class LocationSearchInput extends Component {
       place_location: '',
       city: "",
       query: "",
-      url: `https://maps.googleapis.com/maps/api/js?key=AIzaSyCGj-DBAXyUUkqkvA7sbUNVw6x638bXg2w&libraries=places`
+      url: `https://maps.googleapis.com/maps/api/js?key=AIzaSyDl2xrjRfqLiy-JND1YpqEVDjItpXNDPYs&libraries=places`
     };
   }
 
@@ -67,23 +67,11 @@ class LocationSearchInput extends Component {
     let companyPhone = addressObject.formatted_phone_number;
     let companyWebsite = addressObject.website;
     let companyRating = addressObject.rating;
-    let location = addressObject.geometry.location;
     
     if (address) {
       this.setState({
         city: address[0].long_name,
         query: addressObject.formatted_address,
-        place_formatted: companyAddress,
-        place_id: addressObject.place_id,
-        place_location: location.toString()
-      });
-
-      /// Bring place into view on map
-      this.map.fitBounds(addressObject.geometry.viewport);
-      this.map.setCenter(location);
-      this.marker.setPlace({
-          placeId: addressObject.place_id,
-          location: location,
       });
     }
     this.props.triggerUpdatePlaces(
