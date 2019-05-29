@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import { withAuthentication } from "../Session/session.js";
 import axios from "axios";
 
+
 // about to add loader/spinner
 
 class LandingPage extends Component {
@@ -53,10 +54,10 @@ class LandingPage extends Component {
           <div className="logo-two">
             <img src={require("./imgs/brandmark-designcoor.png")} />
           </div>
-          <Link to="/complaint-form">
-            <button className="start-btn start-btn-top">Get Started</button>
+          <Link to="/home">
+            <button className="start-btn start-btn-top">Complaints</button>
           </Link>
-          <Link to="/">
+          <Link to="/login">
             <div className="login-btn-top">Login</div>
           </Link>
           <div class="topcontainer-wrapper">
@@ -76,7 +77,7 @@ class LandingPage extends Component {
                   <li>Send A Review</li>
                 </ul>
                 <br/>
-                <Link to="/home">
+                <Link to="/complaint-form">
                   <button className="start-btn">Get Started</button>
                 </Link>
               </div>
