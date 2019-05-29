@@ -14,6 +14,8 @@ import './App.css'
 import * as ROUTES from '../constants/routes.js';
 
 import { withAuthentication } from '../Session/session.js';
+import { SignInForm } from '../SignIn/signin.js';
+import  SignInConfirmation  from '../Landing/SignInLanding';
 
 const App = () => (
     <Router>
@@ -26,6 +28,7 @@ const App = () => (
             <Route path={ROUTES.FORM_CONTAINER} component={FormContainer} />
             <Route path={ROUTES.PROFILE} component={Profile} />
             <Route path={ROUTES.TWEET_CONFIRM} component={TwitterConfirm} />
+            <Route path={ROUTES.SIGN_IN} component={SignInConfirmation} />
         </div>
     </Router>
 );
