@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Form1 /> matches snapshot 1`] = `
+<div
+  className="recording-loader loader"
+>
+  <h1>
+    Griipe
+  </h1>
+  <br />
+  <div
+    className="spinner-border"
+    role="status"
+    style={
+      Object {
+        "height": "3rem",
+        "width": "3rem",
+      }
+    }
+  >
+    <span
+      className="sr-only"
+    >
+      Loading...
+    </span>
+  </div>
+</div>
+`;
+
+exports[`<Form2 /> matches snapshot 1`] = `
+<div
+  className="recording-loader loader"
+>
+  <h1>
+    Griipe
+  </h1>
+  <br />
+  <div
+    className="spinner-border"
+    role="status"
+    style={
+      Object {
+        "height": "3rem",
+        "width": "3rem",
+      }
+    }
+  >
+    <span
+      className="sr-only"
+    >
+      Loading...
+    </span>
+  </div>
+</div>
+`;

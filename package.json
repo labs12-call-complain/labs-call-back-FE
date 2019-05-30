@@ -29,6 +29,7 @@
     "react-places-autocomplete": "^7.2.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
+    
     "reactstrap": "^8.0.0",
     "recompose": "^0.30.0",
     "twitter": "^1.7.1"
@@ -53,5 +54,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-test-renderer": "^16.8.6"
   }
 }
