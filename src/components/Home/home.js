@@ -36,7 +36,7 @@ class HomePageWithAuth extends Component {
 
   componentDidMount() {
     this.complaints();
-    console.log("is this working?");
+    // console.log("is this working?");
   }
 
   user = firebase.auth().currentUser;
@@ -53,7 +53,7 @@ class HomePageWithAuth extends Component {
 
   complaints = () => {
     axios
-      .get("https://call-complain.herokuapp.com/api/routes/posts")
+      .get("https://griipe.herokuapp.com/api/routes/posts")
       .then(response => {
         this.setState({ complaintFeed: response.data, loading: false });
       })
@@ -114,7 +114,7 @@ class HomePageNoAuth extends Component {
 
   complaints = () => {
     axios
-      .get("https://call-complain.herokuapp.com/api/routes/posts")
+      .get("https://griipe.herokuapp.com/api/routes/posts")
       .then(response => {
         this.setState({ complaintFeed: response.data });
       })

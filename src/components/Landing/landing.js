@@ -37,7 +37,7 @@ class LandingPage extends Component {
 
   componentDidMount() {
     axios
-      .get(`http://call-complain.heroku.com/`)
+      .get(`https://griipe.herokuapp.com/`)
       .then(res => {
         console.log(res);
       })

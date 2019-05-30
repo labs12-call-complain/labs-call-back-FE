@@ -42,20 +42,20 @@ class Form4WithAuth extends Component {
       StorePhoneNumber: this.props.StorePhone,
       StoreGoogleRating: this.props.StoreGoogleRating,
       StoreWebsite: this.props.StoreWebsite,
-      text: this.props.confirmationTranscription,
+      tweet: this.props.confirmationTranscription,
       upVote: 0
       }
       let tweetdata = {
         status: `${this.props.StoreName}, your customer just complained about you on callandcomplain.com. We added you to our #worstcustomerservice leaderboard.`
       }
-      console.log(tweetdata)
-      console.log(data)
+      // console.log(tweetdata)
+      // console.log(data)
       axios
-        .post(`https://call-complain.herokuapp.com/api/routes/makepost`, data)
+        .post(`https://griipe.herokuapp.com/api/routes/makepost`, data)
         .then(res => {
           console.log("It worked 1:", res);
           axios
-            .post(`https://call-complain.herokuapp.com/api/routes/makeatweet`, tweetdata)
+            .post(`https://griipe.herokuapp.com/api/routes/makeatweet`, tweetdata)
             .then(res => {
               console.log("It worked 2:", res);
               this.props.history.push('/tweet-confirmation')
@@ -63,9 +63,9 @@ class Form4WithAuth extends Component {
             .catch(err => {
                 console.log("It broke 1:", err)       
                 this.props.history.push('/tweet-confirmation')
-            });
+            })
         })
-        .catch(err => console.log("It broke 2:", err));
+        .catch(err => console.log("It broke 2:", err))
         this.props.history.push('/tweet-confirmation')
   };
 

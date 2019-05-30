@@ -6,7 +6,7 @@ const Chart = (props) => {
 
 
 
-    console.log(props.StoreArray)
+    // console.log(props.StoreArray)
 
     const obj = {}
 
@@ -27,8 +27,8 @@ labels.push(item[0])
 data.push(item[1])
 })
 
-console.log("labels: ", labels)
-console.log("data: ", data)
+// console.log("labels: ", labels)
+// console.log("data: ", data)
 
 
 
