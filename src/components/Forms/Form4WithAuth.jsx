@@ -51,11 +51,11 @@ class Form4WithAuth extends Component {
       console.log(tweetdata)
       console.log(data)
       axios
-        .post(`https://call-complain.herokuapp.com/api/routes/makepost`, data)
+        .post(`https://griipe.herokuapp.com/api/routes/makepost`, data)
         .then(res => {
           console.log("It worked 1:", res);
           axios
-            .post(`https://call-complain.herokuapp.com/api/routes/makeatweet`, tweetdata)
+            .post(`https://griipe.herokuapp.com/api/routes/makeatweet`, tweetdata)
             .then(res => {
               console.log("It worked 2:", res);
               this.props.history.push('/tweet-confirmation')

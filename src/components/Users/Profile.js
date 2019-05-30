@@ -32,7 +32,7 @@ class Profile extends Component {
     
   complaints = () => {
     axios
-    .get(`https://call-complain.herokuapp.com/api/routes/posts/${this.user.uid}`)
+    .get(`https://griipe.herokuapp.com/api/routes/posts/${this.user.uid}`)
     .then(response => {
       this.setState(() => ({ complaintById: response.data, loading: false }));
     })

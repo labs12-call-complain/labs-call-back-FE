@@ -54,8 +54,8 @@ class LandingPage extends Component {
           <div className="logo-two">
             <img src={require("./imgs/brandmark-designcoor.png")} />
           </div>
-          <Link to="/complaint-form">
-            <button className="start-btn start-btn-top">Get Started</button>
+          <Link to="/home">
+            <button className="start-btn start-btn-top">Complaints</button>
           </Link>
           <Link to="/login">
             <div className="login-btn-top">Login</div>

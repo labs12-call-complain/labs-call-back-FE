@@ -44,11 +44,11 @@ class SignInConfirmation extends Component {
               console.log(tweetdata)
               console.log(data)
               axios
-                .post(`https://call-complain.herokuapp.com/api/routes/makepost`, data)
+                .post(`https://griipe.herokuapp.com/api/routes/makepost`, data)
                 .then(res => {
                   console.log("Working 1:", res);
                   axios
-                    .post(`https://call-complain.herokuapp.com/api/routes/makeatweet`, tweetdata)
+                    .post(`https://griipe.herokuapp.com/api/routes/makeatweet`, tweetdata)
                     .then(res => {
                       console.log("Working 2:", res);
                     })

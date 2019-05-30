@@ -7,43 +7,44 @@ import axios from 'axios';
 
   export default class ComplaintCard extends Component {
       state = {
-          votes: null
+          upvote: this.props.card.upVote + 1,
+          downvote: this.props.card.upVote - 1,
       }
       
 
     upvote = (e) => {
-        console.log(this.props.card)
-        // this.setState({votes: this.state.votes + 1})
 
-        // axios.put(`http://adasdasd/${this.props.card.id}`, {
-        //     DisplayName: this.props.card.DisplayName ,
-        //     Email: this.props.card.Email ,
-        //     UID: this.props.card.UID ,
-        //     StoreName: this.props.card.StoreName ,
-        //     StoreLocation: this.props.card.StoreLocation ,
-        //     text: this.props.card.text,
-        //     upvote: this.state.votes
-        // })
-        // .then(res => console.log(res.data))
-        // .catch(err => console.log(err))
-    }
-
-    downvote = (e) => {
-        console.log(this.props.card)
-        this.setState({votes: this.state.votes - 1})
-
-        axios.put(`http://adasdasd${this.props.card.id}`, {
+        axios.put(`https://griipe.herokuapp.com/api/routes/posts/${this.props.card.id}`, {
             DisplayName: this.props.card.DisplayName ,
             Email: this.props.card.Email ,
             UID: this.props.card.UID ,
             StoreName: this.props.card.StoreName ,
             StoreLocation: this.props.card.StoreLocation ,
-            text: this.props.card.text,
-            upvote: this.state.votes
+            tweet: this.props.card.tweet,
+            upVote: this.state.upvote
         })
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err))
+        .then(res => this.props.complaintsCall())
+        .catch(err => this.props.complaintsCall())
+
+        
     }
+
+    downvote = (e) => {
+        
+        axios.put(`https://griipe.herokuapp.com/api/routes/posts/${this.props.card.id}`, {
+            DisplayName: this.props.card.DisplayName ,
+            Email: this.props.card.Email ,
+            UID: this.props.card.UID ,
+            StoreName: this.props.card.StoreName ,
+            StoreLocation: this.props.card.StoreLocation ,
+            tweet: this.props.card.tweet,
+            upVote: this.state.downvote
+        })
+        .then(res => this.props.complaintsCall())
+        .catch(err => this.props.complaintsCall())
+    }
+
+    
 
 
     render() {
@@ -54,8 +55,8 @@ import axios from 'axios';
                         <div class="upvote-container">
                             <div>
                             <i class="fas fa-chevron-up" onClick={this.upvote}></i>
-                        <p class="upvote">0</p>
-                            <i class="fas fa-chevron-down"></i>
+                        <p class="upvote">{this.props.card.upVote}</p>
+                            <i class="fas fa-chevron-down" onClick={this.downvote}></i>
                             </div>
                         </div>
 
@@ -68,7 +69,7 @@ import axios from 'axios';
                         <CardText className="cardAddress">{`${this.props.card.StoreLocation}`}</CardText>
                         </div>
 
-                        <CardText className="complaintText"><strong>{`${this.props.card.DisplayName}:`}</strong>{` ${this.props.card.text}`}</CardText>
+                        <CardText className="complaintText"><strong>{`${this.props.card.DisplayName}:`}</strong>{` ${this.props.card.tweet}`}</CardText>
                         
 
                         </div>

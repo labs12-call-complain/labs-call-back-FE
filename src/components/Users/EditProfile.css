@@ -139,7 +139,7 @@
 
 .popup h4 {
    text-align: right;
-   background: #593C8F;
+   background: #ff2b2b;
    padding-right: 10px;
    color: lightgrey;
    cursor: pointer;
@@ -148,7 +148,7 @@
 .popup button {
    width: 100px; 
    margin: 10px;
-   background: #593C8F;
+   background: #ff2b2b;
    border: 1px solid lightgrey;
    padding: 5px;
    color: white;
