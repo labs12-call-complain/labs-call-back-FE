@@ -35,7 +35,7 @@ class HomePageWithAuth extends Component {
 
   componentDidMount() {
     this.complaints();
-    console.log("is this working?");
+    // console.log("is this working?");
   }
 
   componentDidUnmount(){

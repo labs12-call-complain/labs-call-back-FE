@@ -44,7 +44,7 @@ class Profile extends Component {
 
 
     render() {
-      console.log(this.user.uid)
+      // console.log(this.user.uid)
     return (
       
         

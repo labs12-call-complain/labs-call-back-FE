@@ -35,8 +35,9 @@ class SignInConfirmation extends Component {
               StorePhoneNumber: this.props.StorePhone,
               StoreGoogleRating: this.props.StoreGoogleRating,
               StoreWebsite: this.props.StoreWebsite,
-              text: this.props.confirmationTranscription,
-              upVote: 0
+              tweet: this.props.confirmationTranscription,
+              upVote: 0,
+              downVote: 0
               }
               let tweetdata = {
                 status: `${this.props.StoreName}, your customer just complained about you on callandcomplain.com. We added you to our #worstcustomerservice leaderboard.`
