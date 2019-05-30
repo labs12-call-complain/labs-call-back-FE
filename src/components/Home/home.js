@@ -28,7 +28,6 @@ class HomePageWithAuth extends Component {
     loading: true
   };
 
-  user = firebase.auth().currentUser;
 
   ProfilePush = () => {
     this.props.history.push(`/edit-profile`);
@@ -36,8 +35,98 @@ class HomePageWithAuth extends Component {
 
   componentDidMount() {
     this.complaints();
-    console.log("is this working?");
+    setTimeout(() => this.setState({isLoading: false}), 1000);
   }
+
+  componentDidUnmount(){
+    this.complaints();
+  }
+
+  user = firebase.auth().currentUser;
+
+
+  ProfilePush = () => {
+    this.props.history.push(`/edit-profile`);
+  };
+
+  StoreNamess = () => {
+    return this.state.complaintFeed.map(item => {
+      return item.StoreName;
+    });
+  };
+
+  complaints = () => {
+    axios
+      .get("https://griipe.herokuapp.com/api/routes/posts")
+      .then(response => {
+        this.setState({ complaintFeed: response.data, loading: false });
+        console.log(response.data)
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
+  render() {
+    if(this.state.isLoading===true) {
+      return (
+      <div className="recording-loader loader">
+        <h1>Griipe</h1>
+        <br />
+        <Spinner style={{ width: '3rem', height: '3rem' }} />
+      </div>)
+    };
+    return (
+      <>
+      
+        <Navigation />
+
+        {this.state.loading ? 
+        <div className="recording-loader loader">
+                <h1>Griipe</h1>
+                <br />
+                <Spinner style={{ width: '3rem', height: '3rem' }} />
+        </div> :
+
+        <div className="Homepage Container">
+          <div class="button-container">
+            <Link class="centered" to="/complaint-form">
+              <button class="complaintButton">Leave A Review</button>
+            </Link>
+          </div>
+          <h1 class="worstReviewed">Lowest Reviewed Businesses</h1>
+          <div class="HomeWrapper">
+            <div>
+              {this.state.complaintFeed.map((card, i) => {
+                return <ComplaintCard complaintsCall={this.complaints}  key={i} card={card} />;
+              })}
+            </div>
+            <div class="BarGraph">
+              <Chart StoreArray={this.StoreNamess()} />
+            </div>
+          </div>
+            </div> }
+
+
+      </>
+    );
+  }
+}
+
+class HomePageNoAuth extends Component {
+  state = {
+    complaintFeed: [],
+    loading: true
+  };
+
+  componentDidMount() {
+    this.complaints();
+    setTimeout(() => this.setState({isLoading: false}), 1000);
+  }
+
+  // componentDidUpdate(){
+  //   this.complaints();
+  // }
 
   user = firebase.auth().currentUser;
 
@@ -53,7 +142,7 @@ class HomePageWithAuth extends Component {
 
   complaints = () => {
     axios
-      .get("https://call-complain.herokuapp.com/api/routes/posts")
+      .get("https://griipe.herokuapp.com/api/routes/posts")
       .then(response => {
         this.setState({ complaintFeed: response.data, loading: false });
       })
@@ -63,96 +152,50 @@ class HomePageWithAuth extends Component {
   };
 
   render() {
-    return (
-      <>
-        {/* <Fade tag="h5" className="mt-3"> */}
-        <Navigation />
-        <div className="Homepage Container">
-          <div class="button-container">
-            <Link class="centered" to="/complaint-form">
-              <button class="complaintButton">Leave A Review</button>
-            </Link>
-          </div>
-          <h1 class="worstReviewed">Lowest Reviewed Companies</h1>
-          <div class="HomeWrapper">
-            <div>
-              {this.state.complaintFeed.map((card, i) => {
-                return <ComplaintCard key={i} card={card} />;
-              })}
-            </div>
-            <div class="BarGraph">
-              <Chart StoreArray={this.StoreNamess()} />
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  }
-}
+    if(this.state.isLoading===true) {
+      return (
+      <div className="recording-loader loader">
+        <h1>Griipe</h1>
+        <br />
+        <Spinner style={{ width: '3rem', height: '3rem' }} />
+      </div>)
+    };
+      return (
+          <>
+          <Navigation />
 
-class HomePageNoAuth extends Component {
-  state = {
-    complaintFeed: []
-  };
+          {this.state.loading ? <div className="recording-loader loader">
+                <h1>Griipe</h1>
+                <br />
+                <Spinner style={{ width: '3rem', height: '3rem' }} />
+                </div> :
 
-  componentDidMount() {
-    this.complaints();
-    console.log("is this working?");
-  }
-
-  user = firebase.auth().currentUser;
-
-  ProfilePush = () => {
-    this.props.history.push(`/edit-profile`);
-  };
-
-  StoreNamess = () => {
-    return this.state.complaintFeed.map(item => {
-      return item.StoreName;
-    });
-  };
-
-  complaints = () => {
-    axios
-      .get("https://call-complain.herokuapp.com/api/routes/posts")
-      .then(response => {
-        this.setState({ complaintFeed: response.data });
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  };
-
-  render() {
-    console.log(this.StoreNamess());
-    console.log("ssdfsdf");
-    return (
-      <>
-        <Navigation />
-        <div className="Homepage Container">
-          <div class="button-container">
-            <Link class="centered" to="/complaint-form">
-              <button class="complaintButton">
-                Leave A Review
-                {/* <MaterialIcon icon="phone" /> */}
-              </button>
-            </Link>
-          </div>
-          <h1 class="worstReviewed">Lowest Reviewed Companies</h1>
-          <div class="HomeWrapper">
-            <div>
-              {this.state.complaintFeed.map((card, i) => {
-                return <ComplaintCardNoAuth key={i} card={card} />;
-              })}
-              {console.log(this.state.complaintFeed)}
-            </div>
-            <div class="BarGraph">
-              <Chart StoreArray={this.StoreNamess()} />
-            </div>
-          </div>
-        </div>
-      </>
-    );
+              <div className='Homepage Container'>
+                <div class="button-container">
+              <Link class="centered" to='/complaint-form'>
+                  <button class="complaintButton">
+                      
+                      Leave A Review 
+                      {/* <MaterialIcon icon="phone" /> */}
+                  </button>
+              </Link>
+                </div>            
+                  <h1 class="worstReviewed">
+                      Lowest Reviewed Businesses
+                  </h1>
+                  <div class="HomeWrapper">
+                  <div>                    
+                      {this.state.complaintFeed.map((card, i) => {
+                          return <ComplaintCardNoAuth key={i} card={card}/> 
+                      })}
+                  </div>
+                  <div class="BarGraph" >
+                    <Chart StoreArray={this.StoreNamess()}/>
+                  </div>
+                  </div>
+                    </div> }
+          </>
+      )
   }
 }
 

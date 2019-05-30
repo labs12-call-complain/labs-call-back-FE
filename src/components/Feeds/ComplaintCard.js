@@ -3,8 +3,50 @@ import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 import './ComplaintCard.css';
 import MaterialIcon, {colorPalette} from 'material-icons-react';
+import axios from 'axios';
 
   export default class ComplaintCard extends Component {
+      state = {
+          upvote: this.props.card.upVote + 1,
+          downvote: this.props.card.upVote - 1,
+      }
+      
+
+    upvote = (e) => {
+
+        axios.put(`https://griipe.herokuapp.com/api/routes/posts/${this.props.card.id}`, {
+            DisplayName: this.props.card.DisplayName ,
+            Email: this.props.card.Email ,
+            UID: this.props.card.UID ,
+            StoreName: this.props.card.StoreName ,
+            StoreLocation: this.props.card.StoreLocation ,
+            tweet: this.props.card.tweet,
+            upVote: this.state.upvote
+        })
+        .then(res => this.props.complaintsCall())
+        .catch(err => this.props.complaintsCall())
+
+        
+    }
+
+    downvote = (e) => {
+        
+        axios.put(`https://griipe.herokuapp.com/api/routes/posts/${this.props.card.id}`, {
+            DisplayName: this.props.card.DisplayName ,
+            Email: this.props.card.Email ,
+            UID: this.props.card.UID ,
+            StoreName: this.props.card.StoreName ,
+            StoreLocation: this.props.card.StoreLocation ,
+            tweet: this.props.card.tweet,
+            upVote: this.state.downvote
+        })
+        .then(res => this.props.complaintsCall())
+        .catch(err => this.props.complaintsCall())
+    }
+
+    
+
+
     render() {
         return (
             <div>
@@ -12,9 +54,9 @@ import MaterialIcon, {colorPalette} from 'material-icons-react';
 
                         <div class="upvote-container">
                             <div>
-                            <i class="fas fa-chevron-up"></i>
-                        <p class="upvote">0</p>
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-up" onClick={this.upvote}></i>
+                        <p class="upvote">{this.props.card.upVote}</p>
+                            <i class="fas fa-chevron-down" onClick={this.downvote}></i>
                             </div>
                         </div>
 
@@ -27,8 +69,8 @@ import MaterialIcon, {colorPalette} from 'material-icons-react';
                         <CardText className="cardAddress">{`${this.props.card.StoreLocation}`}</CardText>
                         </div>
 
-                        <CardText className="complaintText"><strong>{`${this.props.card.DisplayName}:`}</strong>{` ${this.props.card.text}`}</CardText>
-
+                        <CardText className="complaintText"><strong>{`${this.props.card.DisplayName}:`}</strong>{` ${this.props.card.tweet}`}</CardText>
+                        
 
                         </div>
 
