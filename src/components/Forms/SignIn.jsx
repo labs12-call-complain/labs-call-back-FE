@@ -35,8 +35,9 @@ class SignInConfirmation extends Component {
               StorePhoneNumber: this.props.StorePhone,
               StoreGoogleRating: this.props.StoreGoogleRating,
               StoreWebsite: this.props.StoreWebsite,
-              text: this.props.confirmationTranscription,
-              upVote: 0
+              tweet: this.props.confirmationTranscription,
+              upVote: 0,
+              downVote: 0
               }
               let tweetdata = {
                 status: `${this.props.StoreName}, your customer just complained about you on callandcomplain.com. We added you to our #worstcustomerservice leaderboard.`
@@ -44,11 +45,11 @@ class SignInConfirmation extends Component {
               console.log(tweetdata)
               console.log(data)
               axios
-                .post(`https://call-complain.herokuapp.com/api/routes/makepost`, data)
+                .post(`https://griipe.herokuapp.com/api/routes/makepost`, data)
                 .then(res => {
                   console.log("Working 1:", res);
                   axios
-                    .post(`https://call-complain.herokuapp.com/api/routes/makeatweet`, tweetdata)
+                    .post(`https://griipe.herokuapp.com/api/routes/makeatweet`, tweetdata)
                     .then(res => {
                       console.log("Working 2:", res);
                     })
