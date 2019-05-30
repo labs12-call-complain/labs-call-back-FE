@@ -5,3 +5,12 @@
     padding: 0;
     height: 100%;
 }
+
+button {
+    outline: none !important;
+    
+}
+
+button:hover {
+    filter: brightness(90%) !important;
+}

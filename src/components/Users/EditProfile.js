@@ -13,7 +13,8 @@ class EditProfile extends Component {
     displayName: this.user.displayName,
     photoURL: this.user.photoURL,
     email: this.user.email,
-    showInput: false
+    showInput: false,
+    popup: false
   };
 
   updateProf = e => {
@@ -48,6 +49,24 @@ class EditProfile extends Component {
         <Navigation />
 
         <div class="containerCenter">
+
+          {this.state.popup ? 
+          <div class="popup">
+            <h4 onClick={(e) => this.setState({popup: false})} >x</h4>
+              <p>Are you sure you want to delete your account?</p>
+              <button onClick={(e) => this.setState({popup: false})} >No</button>
+              <button onClick={() =>
+                  this.user
+                    .delete()
+                    .then(function() {
+                      console.log("user deleted");
+                    })
+                    .catch(function(error) {
+                      console.log(error);
+                    })}>Yes</button>
+            </div> : null}
+
+
           <div class="profileContainer">
             <h3 >Edit Profile</h3>
 
@@ -57,6 +76,7 @@ class EditProfile extends Component {
               <img class="profilePic" src={ this.user.photoURL == null ||this.user.photoURL.length < 15 ? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png' : this.user.photoURL} />
 
               <div class="textContainer">
+                
                 <p class="profileText">{`Name: ${this.user.displayName}`}</p>
                 <p class="profileText">{`Email: ${this.user.email}`}</p>
                 <p class="profileText">{`Phone Number: ${
@@ -64,8 +84,15 @@ class EditProfile extends Component {
                 }`}</p>
 
                 <button onClick={this.inputToggle}> Edit Profile </button>
+
+               
+
               </div>
+
+              
+
             </div>
+
 
             {this.state.showInput ? (
               <div class="hidden">
@@ -96,16 +123,7 @@ class EditProfile extends Component {
               <p>WARNING</p>
               <p>Once you delete your account you can not go back</p>
               <button
-                onClick={() =>
-                  this.user
-                    .delete()
-                    .then(function() {
-                      console.log("user deleted");
-                    })
-                    .catch(function(error) {
-                      console.log(error);
-                    })
-                }>
+                onClick={(e) => this.setState({popup: true})}>
                 {" "}
                 Delete Account{" "}
               </button>

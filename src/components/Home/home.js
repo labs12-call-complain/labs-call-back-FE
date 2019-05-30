@@ -28,7 +28,6 @@ class HomePageWithAuth extends Component {
     loading: true
   };
 
-  user = firebase.auth().currentUser;
 
   ProfilePush = () => {
     this.props.history.push(`/edit-profile`);
@@ -38,6 +37,89 @@ class HomePageWithAuth extends Component {
     this.complaints();
     // console.log("is this working?");
   }
+
+  componentDidUnmount(){
+    this.complaints();
+    console.log("is this updating?");
+  }
+
+  user = firebase.auth().currentUser;
+
+
+  ProfilePush = () => {
+    this.props.history.push(`/edit-profile`);
+  };
+
+  StoreNamess = () => {
+    return this.state.complaintFeed.map(item => {
+      return item.StoreName;
+    });
+  };
+
+  complaints = () => {
+    axios
+      .get("https://griipe.herokuapp.com/api/routes/posts")
+      .then(response => {
+        this.setState({ complaintFeed: response.data, loading: false });
+        console.log(response.data)
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
+  render() {
+    return (
+      <>
+      
+        <Navigation />
+
+        {this.state.loading ? 
+        <div className="recording-loader loader">
+                <h1>Griipe</h1>
+                <br />
+                <Spinner style={{ width: '3rem', height: '3rem' }} />
+        </div> :
+
+        <div className="Homepage Container">
+          <div class="button-container">
+            <Link class="centered" to="/complaint-form">
+              <button class="complaintButton">Leave A Review</button>
+            </Link>
+          </div>
+          <h1 class="worstReviewed">Lowest Reviewed Businesses</h1>
+          <div class="HomeWrapper">
+            <div>
+              {this.state.complaintFeed.map((card, i) => {
+                return <ComplaintCard complaintsCall={this.complaints}  key={i} card={card} />;
+              })}
+            </div>
+            <div class="BarGraph">
+              <Chart StoreArray={this.StoreNamess()} />
+            </div>
+          </div>
+            </div> }
+
+
+      </>
+    );
+  }
+}
+
+class HomePageNoAuth extends Component {
+  state = {
+    complaintFeed: [],
+    loading: true
+  };
+
+  componentDidMount() {
+    this.complaints();
+    console.log("is this working?");
+  }
+
+  // componentDidUpdate(){
+  //   this.complaints();
+  // }
 
   user = firebase.auth().currentUser;
 
@@ -63,96 +145,43 @@ class HomePageWithAuth extends Component {
   };
 
   render() {
-    return (
-      <>
-        {/* <Fade tag="h5" className="mt-3"> */}
-        <Navigation />
-        <div className="Homepage Container">
-          <div class="button-container">
-            <Link class="centered" to="/complaint-form">
-              <button class="complaintButton">Leave A Review</button>
-            </Link>
-          </div>
-          <h1 class="worstReviewed">Lowest Reviewed Companies</h1>
-          <div class="HomeWrapper">
-            <div>
-              {this.state.complaintFeed.map((card, i) => {
-                return <ComplaintCard key={i} card={card} />;
-              })}
-            </div>
-            <div class="BarGraph">
-              <Chart StoreArray={this.StoreNamess()} />
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  }
-}
+     
+      return (
+          <>
+          <Navigation />
 
-class HomePageNoAuth extends Component {
-  state = {
-    complaintFeed: []
-  };
+          {this.state.loading ? <div className="recording-loader loader">
+                <h1>Griipe</h1>
+                <br />
+                <Spinner style={{ width: '3rem', height: '3rem' }} />
+                </div> :
 
-  componentDidMount() {
-    this.complaints();
-    console.log("is this working?");
-  }
-
-  user = firebase.auth().currentUser;
-
-  ProfilePush = () => {
-    this.props.history.push(`/edit-profile`);
-  };
-
-  StoreNamess = () => {
-    return this.state.complaintFeed.map(item => {
-      return item.StoreName;
-    });
-  };
-
-  complaints = () => {
-    axios
-      .get("https://griipe.herokuapp.com/api/routes/posts")
-      .then(response => {
-        this.setState({ complaintFeed: response.data });
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  };
-
-  render() {
-    console.log(this.StoreNamess());
-    console.log("ssdfsdf");
-    return (
-      <>
-        <Navigation />
-        <div className="Homepage Container">
-          <div class="button-container">
-            <Link class="centered" to="/complaint-form">
-              <button class="complaintButton">
-                Leave A Review
-                {/* <MaterialIcon icon="phone" /> */}
-              </button>
-            </Link>
-          </div>
-          <h1 class="worstReviewed">Lowest Reviewed Companies</h1>
-          <div class="HomeWrapper">
-            <div>
-              {this.state.complaintFeed.map((card, i) => {
-                return <ComplaintCardNoAuth key={i} card={card} />;
-              })}
-              {console.log(this.state.complaintFeed)}
-            </div>
-            <div class="BarGraph">
-              <Chart StoreArray={this.StoreNamess()} />
-            </div>
-          </div>
-        </div>
-      </>
-    );
+              <div className='Homepage Container'>
+                <div class="button-container">
+              <Link class="centered" to='/complaint-form'>
+                  <button class="complaintButton">
+                      
+                      Leave A Review 
+                      {/* <MaterialIcon icon="phone" /> */}
+                  </button>
+              </Link>
+                </div>            
+                  <h1 class="worstReviewed">
+                      Lowest Reviewed Businesses
+                  </h1>
+                  <div class="HomeWrapper">
+                  <div>                    
+                      {this.state.complaintFeed.map((card, i) => {
+                          return <ComplaintCardNoAuth key={i} card={card}/> 
+                      })}
+                  </div>
+                  <div class="BarGraph" >
+                    <Chart StoreArray={this.StoreNamess()}/>
+                  </div>
+                  </div>
+                    </div> }
+          </>
+      )
   }
 }
 

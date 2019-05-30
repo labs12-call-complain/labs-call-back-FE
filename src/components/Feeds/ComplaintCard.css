@@ -87,6 +87,10 @@
 }
 
 
+.fas.fa-chevron-up:hover , .fas.fa-chevron-down:hover {
+    color: grey;
+}
+
 
 @media (max-width: 700px) {
     .card-container{
