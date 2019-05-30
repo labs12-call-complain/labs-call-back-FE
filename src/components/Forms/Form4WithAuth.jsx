@@ -43,13 +43,12 @@ class Form4WithAuth extends Component {
       StoreGoogleRating: this.props.StoreGoogleRating,
       StoreWebsite: this.props.StoreWebsite,
       tweet: this.props.confirmationTranscription,
-      upVote: 0
+      upVote: 0,
+      downvote: 0
       }
       let tweetdata = {
         status: `${this.props.StoreName}, your customer just complained about you on callandcomplain.com. We added you to our #worstcustomerservice leaderboard.`
       }
-      // console.log(tweetdata)
-      // console.log(data)
       axios
         .post(`https://griipe.herokuapp.com/api/routes/makepost`, data)
         .then(res => {
@@ -58,7 +57,10 @@ class Form4WithAuth extends Component {
             .post(`https://griipe.herokuapp.com/api/routes/makeatweet`, tweetdata)
             .then(res => {
               console.log("It worked 2:", res);
-              this.props.history.push('/tweet-confirmation')
+              this.props.history.push({
+                pathname: '/home',
+                state: {tweetdata}
+              })
             })
             .catch(err => {
                 console.log("It broke 1:", err)       
