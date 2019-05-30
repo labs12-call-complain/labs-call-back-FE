@@ -40,6 +40,7 @@ const Navigation = () => (
       isOpen: !this.state.isOpen
     });
   }
+  
   render() {
     return (
       <div>

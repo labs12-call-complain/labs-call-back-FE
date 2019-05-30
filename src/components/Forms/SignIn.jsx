@@ -31,7 +31,7 @@ class SignInConfirmation extends Component {
             setTimeout(() => this.setState({isLoading: false}), 1000);
           }
           
-          componentDidUnmount() {
+          componentDidUpdate() {
             let data = {
               DisplayName: firebase.auth().currentUser.displayName,
               Email: firebase.auth().currentUser.email,
