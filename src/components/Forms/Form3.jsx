@@ -40,7 +40,6 @@ class Form3 extends Component {
 
   handleChange = e => {
     this.setState({ transcription: e.target.value });
-    console.log(this.state.transcription);
   };
 
   componentWillUnmount() {

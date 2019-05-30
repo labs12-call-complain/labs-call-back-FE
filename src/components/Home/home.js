@@ -35,12 +35,11 @@ class HomePageWithAuth extends Component {
 
   componentDidMount() {
     this.complaints();
-    // console.log("is this working?");
+    setTimeout(() => this.setState({isLoading: false}), 1000);
   }
 
   componentDidUnmount(){
     this.complaints();
-    console.log("is this updating?");
   }
 
   user = firebase.auth().currentUser;
@@ -69,6 +68,14 @@ class HomePageWithAuth extends Component {
   };
 
   render() {
+    if(this.state.isLoading===true) {
+      return (
+      <div className="recording-loader loader">
+        <h1>Griipe</h1>
+        <br />
+        <Spinner style={{ width: '3rem', height: '3rem' }} />
+      </div>)
+    };
     return (
       <>
       
@@ -114,7 +121,7 @@ class HomePageNoAuth extends Component {
 
   componentDidMount() {
     this.complaints();
-    console.log("is this working?");
+    setTimeout(() => this.setState({isLoading: false}), 1000);
   }
 
   // componentDidUpdate(){
@@ -145,7 +152,14 @@ class HomePageNoAuth extends Component {
   };
 
   render() {
-     
+    if(this.state.isLoading===true) {
+      return (
+      <div className="recording-loader loader">
+        <h1>Griipe</h1>
+        <br />
+        <Spinner style={{ width: '3rem', height: '3rem' }} />
+      </div>)
+    };
       return (
           <>
           <Navigation />

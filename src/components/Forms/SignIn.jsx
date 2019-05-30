@@ -4,11 +4,13 @@ import * as firebase from "firebase";
 import "../Landing/LandingPage.css";
 import axios from 'axios';
 import Navigation from '../Navigation/navigation.js';
+import { Spinner, Fade } from 'reactstrap';
 
 
 class SignInConfirmation extends Component {
     state = {
-        docid: null
+        docid: null,
+        isLoading: true
       };
     
         docid = this.state.docid //may have to move back to app
@@ -23,6 +25,10 @@ class SignInConfirmation extends Component {
             firebase.auth.EmailAuthProvider.PROVIDER_ID
           ],
             signInSuccessUrl: '/tweet-confirmation'
+          }
+
+          componentDidMount() {
+            setTimeout(() => this.setState({isLoading: false}), 1000);
           }
           
           componentDidUpdate() {
@@ -42,8 +48,6 @@ class SignInConfirmation extends Component {
               let tweetdata = {
                 status: `${this.props.StoreName}, your customer just complained about you on callandcomplain.com. We added you to our #worstcustomerservice leaderboard.`
               }
-              console.log(tweetdata)
-              console.log(data)
               axios
                 .post(`https://griipe.herokuapp.com/api/routes/makepost`, data)
                 .then(res => {
@@ -52,6 +56,10 @@ class SignInConfirmation extends Component {
                     .post(`https://griipe.herokuapp.com/api/routes/makeatweet`, tweetdata)
                     .then(res => {
                       console.log("Working 2:", res);
+                      this.props.history.push({
+                        pathname: '/tweet-confirmation',
+                        state: {tweetdata}
+                      })
                     })
                     .catch(err => console.log("Broken 1:", err));
                 })
@@ -59,6 +67,14 @@ class SignInConfirmation extends Component {
           }
 
         render() {
+          if(this.state.isLoading===true) {
+            return (
+            <div className="recording-loader loader">
+              <h1>Griipe</h1>
+              <br />
+              <Spinner style={{ width: '3rem', height: '3rem' }} />
+            </div>)
+          };
             return (
               <>
                 <Navigation />

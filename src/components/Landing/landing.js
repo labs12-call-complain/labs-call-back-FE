@@ -38,17 +38,27 @@ class LandingPage extends Component {
 
   componentDidMount() {
     setTimeout(() => this.setState({loading: false}), 1000);
-
     axios
-      .get(`https://griipe.herokuapp.com/`)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => console.log(err));
+    .get(`https://griipe.herokuapp.com/`)
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => console.log(err));
   }
 
+  componentWillUnmount() {
+    window.location.reload();
+  }
+  
   render() {
-    console.log(this.state);
+    if(this.state.isLoading===true) {
+      return (
+      <div className="recording-loader loader">
+        <h1>Griipe</h1>
+        <br />
+        <Spinner style={{ width: '3rem', height: '3rem' }} />
+      </div>)
+    };
     return (
       <div className="main-cont">
 
@@ -100,14 +110,6 @@ class LandingPage extends Component {
                   <img src={require("./imgs/mushroom.png")} />
 
                   <br />
-                  {/* <StyledFirebaseAuth
-                  uiConfig={this.uiConfig}
-                  firebaseAuth={firebase.auth()}
-                /> */}
-                  {/* <Link to="/home">
-                    <button className="start-btn">Get Started</button>
-                  </Link> */}
-                  {/* <img src={require("./imgs/Group10002.svg")} /> */}
                 </div>
               </div>
             </div>

@@ -61,8 +61,6 @@ class Form1 extends Component {
 
 
   render() {
-    console.log(this.props)
-    console.log(this.state)
     const { values, handleChange } = this.props;
     if(this.state.isLoading===true) {
       return (
