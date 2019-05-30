@@ -56,8 +56,7 @@ class EditProfile extends Component {
               <p>Are you sure you want to delete your account?</p>
               <button onClick={(e) => this.setState({popup: false})} >No</button>
               <button onClick={() =>
-                  this.user
-                    .delete()
+                  this.user.delete()
                     .then(function() {
                       console.log("user deleted");
                     })

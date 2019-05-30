@@ -13,7 +13,7 @@ import MaterialIcon, {colorPalette} from 'material-icons-react';
                         <div class="upvote-container">
                             <div>
                             <i class="fas fa-chevron-up"></i>
-                        <p class="upvote">0</p>
+                        <p class="upvote">{this.props.card.upVote}</p>
                             <i class="fas fa-chevron-down"></i>
                             </div>
                         </div>
