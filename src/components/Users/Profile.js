@@ -67,7 +67,7 @@ class Profile extends Component {
       </div>
 
         <p>{this.user.displayName}</p>
-          <p>Total Upvotes:</p>
+          <p>Total Upvotes: 0</p>
           <button class="EditBtn" onClick={this.ProfilePush}>Edit Profile</button>
         </div>
 

@@ -102,9 +102,7 @@ h1 {
     border-radius: 2px;
 }
 
-.EditBtn:hover {
-    background: #c12631;
-}
+
 
 .HomeWrapper {
     display: flex;
@@ -117,6 +115,64 @@ h1 {
     
 }
 
+.profileCard {
+    box-sizing: border-box;
+    width: 210px;
+    height: 320px;
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-right: 20px;
+    overflow: hidden;
+}
+
+.profileCard img {
+    width: 208px;
+    height: 150px;
+    object-fit: cover;
+    margin-top: 20px;
+}
+
+.profileCard p {
+    font-size: 1rem;
+    font-family: Lato,sans-serif; 
+    font-weight: 700;
+}
+
+.CardImg {
+    
+    width: 100%;
+
+}
+
+.imgdiv {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid lightgrey;
+    margin-bottom: 10px;
+    background: #DA2C38;
+}
+
+.EditBtn {
+    background: #DA2C38;
+    border: 1px solid #DA2C38;
+    width: 80%;
+    height: 35px;
+    border-radius: 2px;
+}
+
+.EditBtn:hover {
+    background: #c12631;
+}
+
+.HomeWrapper {
+    display: flex;
+    justify-content: center;
+}
 
 @media (max-width: 550px) {
 

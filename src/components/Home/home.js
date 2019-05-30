@@ -1,56 +1,58 @@
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "./home.css";
+import axios from "axios";
+import * as firebase from "firebase";
 
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import './home.css'
-import axios from 'axios'
-import * as firebase from 'firebase';
+import { withAuthorization } from "../Session/session.js";
+import Navigation from "../Navigation/navigation.js";
 
-import { withAuthorization } from '../Session/session.js';
-import Navigation from '../Navigation/navigation.js';
+import ComplaintCard from "../Feeds/ComplaintCard.js";
+import ComplaintCardNoAuth from "../Feeds/ComplaintCardNoAuth.js";
+import Chart from "../Chart/Chart.js";
+import { Spinner, Fade } from "reactstrap";
 
-import ComplaintCard from '../Feeds/ComplaintCard.js';
-import ComplaintCardNoAuth from '../Feeds/ComplaintCardNoAuth.js';
-import Chart from '../Chart/Chart.js'
-import { Spinner, Fade } from 'reactstrap';
+import MaterialIcon, { colorPalette } from "material-icons-react";
 
-import MaterialIcon, {colorPalette} from 'material-icons-react';
-
-import { AuthUserContext } from '../Session/session.js';
-
+import { AuthUserContext } from "../Session/session.js";
 
 const HomePage = () => (
   <AuthUserContext.Consumer>
-    {authUser =>
-      authUser ? <HomePageWithAuth /> : <HomePageNoAuth />
-    }
+    {authUser => (authUser ? <HomePageWithAuth /> : <HomePageNoAuth />)}
   </AuthUserContext.Consumer>
 );
 
 class HomePageWithAuth extends Component {
   state = {
-      complaintFeed: [],
-      loading: true
+    complaintFeed: [],
+    loading: true
+  };
 
-  }
+  user = firebase.auth().currentUser;
+
+  ProfilePush = () => {
+    this.props.history.push(`/edit-profile`);
+  };
 
   componentDidMount() {
     this.complaints();
-    console.log('is this working?')
+    console.log("is this working?");
   }
 
-  user = firebase.auth().currentUser
+  user = firebase.auth().currentUser;
 
   ProfilePush = () => {
-      this.props.history.push(`/edit-profile`)
-    }
+    this.props.history.push(`/edit-profile`);
+  };
 
-  StoreNamess = () => { return this.state.complaintFeed.map(item => {
-    return item.StoreName
-  }) }
-
+  StoreNamess = () => {
+    return this.state.complaintFeed.map(item => {
+      return item.StoreName;
+    });
+  };
 
   complaints = () => {
-      axios
+    axios
       .get("https://call-complain.herokuapp.com/api/routes/posts")
       .then(response => {
         this.setState({ complaintFeed: response.data, loading: false });
@@ -59,9 +61,7 @@ class HomePageWithAuth extends Component {
       .catch(error => {
         console.error(error);
       });
-
-      
-  }
+  };
 
   render() {
       return (
@@ -99,27 +99,28 @@ class HomePageWithAuth extends Component {
 
 class HomePageNoAuth extends Component {
   state = {
-      complaintFeed: [],
-  }
+    complaintFeed: []
+  };
 
   componentDidMount() {
     this.complaints();
-    console.log('is this working?')
+    console.log("is this working?");
   }
 
-  user = firebase.auth().currentUser
+  user = firebase.auth().currentUser;
 
   ProfilePush = () => {
-      this.props.history.push(`/edit-profile`)
-    }
+    this.props.history.push(`/edit-profile`);
+  };
 
-  StoreNamess = () => { return this.state.complaintFeed.map(item => {
-    return item.StoreName
-  }) }
-
+  StoreNamess = () => {
+    return this.state.complaintFeed.map(item => {
+      return item.StoreName;
+    });
+  };
 
   complaints = () => {
-      axios
+    axios
       .get("https://call-complain.herokuapp.com/api/routes/posts")
       .then(response => {
         this.setState({ complaintFeed: response.data });
@@ -127,7 +128,7 @@ class HomePageNoAuth extends Component {
       .catch(error => {
         console.error(error);
       });
-  }
+  };
 
   render() {
      

@@ -4,6 +4,7 @@
     justify-content: space-evenly;
     background: #593C8F !important;
     padding: 20px 10px;
+    
 }
 
 .centered {
@@ -28,4 +29,11 @@
 
 .dropdown-toggle.nav-link {
     color: #E9F1F7 !important;
+}
+
+.signout-button {
+    background: #593C8F;
+    border: 1px solid #593C8F;
+    width: 100%;
+    color: white;
 }
