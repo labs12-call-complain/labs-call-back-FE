@@ -4,10 +4,9 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
-import { Spinner, Fade } from 'reactstrap';
+import { Spinner, Fade } from "reactstrap";
 
-import './FormContainer.css';
-
+import "./FormContainer.css";
 
 class Form3 extends Component {
   constructor(props) {
@@ -19,7 +18,7 @@ class Form3 extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({isLoading: false}), 1000);
+    setTimeout(() => this.setState({ isLoading: false }), 1000);
   }
 
   continue = e => {
@@ -48,43 +47,51 @@ class Form3 extends Component {
 
   render() {
     const { values, handleChange } = this.props;
-    if(this.state.isLoading===true) {
+    if (this.state.isLoading === true) {
       return (
-      <div className="recording-loader loader">
-        <h1>Griipe</h1>
-        <br />
-        <Spinner style={{ width: '3rem', height: '3rem' }} />
-      </div>)
-    };
+        <div className="recording-loader loader">
+          <h1>Griipe</h1>
+          <br />
+          <Spinner style={{ width: "3rem", height: "3rem" }} />
+        </div>
+      );
+    }
     return (
       <MuiThemeProvider>
         <Fade in={this.state.fadeIn} tag="h5" className="mt-3">
-        <div className="form-container">
-          <h1>Transcription</h1>
-          <form onSubmit={this.addTranscript} className="text-input-container">
-            <textarea
-              className="form-input"
-              type="text"
-              value={this.state.transcription}
-              onChange={this.handleChange}
-            />
-          </form>
+          <div className="form1-cont">
+            <div className="form-container">
+              <h1>Transcription</h1>
+              <form
+                onSubmit={this.addTranscript}
+                className="text-input-container"
+              >
+                <textarea
+                  className="form-input"
+                  type="text"
+                  value={this.state.transcription}
+                  onChange={this.handleChange}
+                />
+              </form>
 
-          <br />
-          <RaisedButton
-            label="Back"
-            primary={false}
-            style={styles.button}
-            onClick={this.back}
-          />
+              <br />
+              <div className='form3-buttons'>
+              <RaisedButton
+                label="Back"
+                primary={false}
+                style={styles.button}
+                onClick={this.back}
+              />
 
-          <RaisedButton
-            label="Continue"
-            primary={true}
-            style={styles.button}
-            onClick={this.continue}
-          />
-        </div>
+              <RaisedButton
+                label="Continue"
+                primary={true}
+                style={styles.button}
+                onClick={this.continue}
+              />
+              </div>
+            </div>
+          </div>
         </Fade>
       </MuiThemeProvider>
     );

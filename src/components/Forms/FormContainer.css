@@ -1,8 +1,25 @@
 .form-container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
     margin-left: 20%;
     background-color: #E9F1F7;
     margin-right: 20%;
     text-align: left;
+    width: 75%;
+}
+
+.form-container2 {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    margin-left: 20%;
+    background-color: #E9F1F7;
+    margin-right: 20%;
+    text-align: left;
+    
 }
 
 .form-container-header {
@@ -50,7 +67,11 @@
    
 }
 
-.mt-3.fade.show {
+.searchbar-container {
+    
+}
+
+.form1-cont {
     display: flex;
     flex-direction: column;
     
@@ -113,7 +134,11 @@ margin-bottom: 2%;
 }
 
 .text-input-container {
-    margin-left: -8%;
+    width: 75%;
+}
+
+.conf-align {
+    width: 75%;
 }
 
 .re-record-header {
