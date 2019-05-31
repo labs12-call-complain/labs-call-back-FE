@@ -288,6 +288,7 @@ header {
     justify-content: center;
     width: 100%;
     bottom: 10%;
+    margin-top: 50px;
 
   }
   
@@ -307,8 +308,34 @@ header {
     margin: 0;
   }
 
-  .vl {
+  .start-btn-top {
+    position: absolute;
+    top: 55px;
+    left: 75%;
+    width: 100px !important;
+}
+.login-btn-top {
+    position: absolute;
+    margin-right: 15px;
+    width: 75px;
+    height: 35px;
+    top: 55px;
+    left: 60%;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 5px;
+    color: #E9F1F7;
+    border: #E9F1F7 solid 1px;
+}
 
-    visibility: hidden;
-  }
+.logo-two {
+  position: absolute;
+  
+  width: 35vw;
+  
+  padding: 12px 9px 9px 6px;
+  margin-left: 5%;
+}
+
+
 }

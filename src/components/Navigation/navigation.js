@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -11,44 +11,44 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem } from 'reactstrap';
-import 'bootstrap/dist/css/bootstrap.css';
-import './navigation.css'
+  DropdownItem
+} from "reactstrap";
+import "bootstrap/dist/css/bootstrap.css";
+import "./navigation.css";
 
-import SignOutButton from '../SignOut/signout.js';
-import * as ROUTES from '../constants/routes.js';
-import { AuthUserContext } from '../Session/session.js';
-
-
-
+import SignOutButton from "../SignOut/signout.js";
+import * as ROUTES from "../constants/routes.js";
+import { AuthUserContext } from "../Session/session.js";
 
 const Navigation = () => (
-    <AuthUserContext.Consumer>
-      {authUser =>
-        authUser ? <NavigationAuth /> : <NavigationNonAuth />
-      }
-    </AuthUserContext.Consumer>
-  );
-  
-  class NavigationAuth extends Component {
-    toggle = this.toggle.bind(this);
-    state = {
-      isOpen: false
-    };
+  <AuthUserContext.Consumer>
+    {authUser => (authUser ? <NavigationAuth /> : <NavigationNonAuth />)}
+  </AuthUserContext.Consumer>
+);
+
+class NavigationAuth extends Component {
+  toggle = this.toggle.bind(this);
+  state = {
+    isOpen: false
+  };
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
-  
+
   render() {
     return (
       <div>
         <Navbar light expand="md">
-          
-          <NavbarBrand href="/home"><i>Griipe</i></NavbarBrand>
+          <NavbarBrand href="/home">
+            {" "}
+            <div className="logo-nav">
+              <img src={require("../Landing/imgs/brandmark-designcoor.png")} />
+            </div>
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
-          
+
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <UncontrolledDropdown nav inNavbar>
@@ -56,15 +56,11 @@ const Navigation = () => (
                   Profile
                 </DropdownToggle>
                 <DropdownMenu right>
-                <Link to="/profile">
-                  <DropdownItem>
-                    View Complaint History
-                  </DropdownItem>
+                  <Link to="/profile">
+                    <DropdownItem>View Complaint History</DropdownItem>
                   </Link>
                   <Link to="/edit-profile">
-                    <DropdownItem>
-                      Edit Profile
-                    </DropdownItem>
+                    <DropdownItem>Edit Profile</DropdownItem>
                   </Link>
                   <DropdownItem divider />
                   <DropdownItem>
@@ -84,15 +80,18 @@ const NavigationNonAuth = () => {
   return (
     <div>
       <Navbar color="light" light expand="md" className="navbar">
-        <NavbarBrand href="/"><i>Griipe</i></NavbarBrand>
+        <NavbarBrand href="/">
+          <div className="logo-nav">
+            <img src={require("../Landing/imgs/brandmark-designcoor.png")} />
+          </div>
+        </NavbarBrand>
         <NavbarToggler />
         <Collapse navbar>
-          <Nav className="ml-auto" navbar>
-          </Nav>
+          <Nav className="ml-auto" navbar />
         </Collapse>
       </Navbar>
     </div>
   );
-}
+};
 
 export default Navigation;
