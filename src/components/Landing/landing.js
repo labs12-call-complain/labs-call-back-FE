@@ -108,4 +108,5 @@ class LandingPage extends Component {
     );
   }
 }
-export default withAuthentication(LandingPage);
+
+export default LandingPage
