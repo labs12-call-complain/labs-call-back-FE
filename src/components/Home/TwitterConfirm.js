@@ -28,7 +28,7 @@ class TwitterConfirm extends Component {
 
 
   render() {
-    // console.log(this.data)
+    console.log(this.props)
     const { values, handleChange } = this.props;
     if(this.state.isLoading===true) {
       return (
@@ -38,21 +38,11 @@ class TwitterConfirm extends Component {
         <Spinner style={{ width: '3rem', height: '3rem' }} />
       </div>)
     };
-    // console.log(firebase.auth().currentUser.displayName,
-    // firebase.auth().currentUser.email,
-    // firebase.auth().currentUser.uid,
-    // this.props.StoreName,
-    // this.props.StoreAddress,
-    // this.props.StorePhone,
-    // this.props.StoreGoogleRating,
-    // this.props.StoreWebsite,
-    // this.props.confirmationTranscription,
-    // 0)
     return (
       <MuiThemeProvider>
         <Navigation />
         <Fade in={this.state.fadeIn} tag="h5" className="mt-3 form-container" >
-        <h1 className="form-container-header">Your Tweet Has Been Sent</h1>
+    {this.props.history.location.state !== undefined ? <h1 className="form-container-header">Your Tweet Has Been Sent</h1> : <h1 className="form-container-header">There was an error sending the tweet</h1> }
           <div className="confirmation-container">
             <span className="confirmation-span">
             <CloudDoneIcon color='error'/>
@@ -62,7 +52,7 @@ class TwitterConfirm extends Component {
           <div className="confirmation-container">
             <span className="confirmation-span">
               <CloudDoneIcon color='error'/>            
-              <p className="confirmation-input"><strong>Tweet:</strong> {this.props.StoreAddress}</p>
+              {this.props.history.location.state !== undefined ? (<p className="confirmation-input"><strong>Tweet:</strong> " {this.props.history.location.state.status} "</p>) : (<p className="confirmation-input"><strong>Tweet:</strong> " We're sorry, but the tweet didn't send because Twitter has one of the most unusable API's we've ever seen"</p>)}
             </span>
           </div>
           <Link to="/home" >

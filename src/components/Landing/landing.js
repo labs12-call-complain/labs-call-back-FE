@@ -76,7 +76,7 @@ class LandingPage extends Component {
             <img src={require("./imgs/brandmark-designcoor.png")} />
           </div>
           <Link to="/home">
-            <button className="start-btn start-btn-top">Complaints</button>
+            <button className="start-btn start-btn-top" onClick={this.handleClick}>Complaints</button>
           </Link>
           <Link to="/login">
             <div className="login-btn-top">Login</div>
