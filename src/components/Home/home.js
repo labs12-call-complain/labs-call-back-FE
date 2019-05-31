@@ -124,12 +124,6 @@ class HomePageNoAuth extends Component {
     setTimeout(() => this.setState({isLoading: false}), 1000);
   }
 
-  // componentDidUpdate(){
-  //   this.complaints();
-  // }
-
-  user = firebase.auth().currentUser;
-
   ProfilePush = () => {
     this.props.history.push(`/edit-profile`);
   };

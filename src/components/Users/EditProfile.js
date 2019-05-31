@@ -83,13 +83,7 @@ class EditProfile extends Component {
                 }`}</p>
 
                 <button onClick={this.inputToggle}> Edit Profile </button>
-
-               
-
               </div>
-
-              
-
             </div>
 
 
