@@ -73,20 +73,21 @@ class Form1 extends Component {
     
     return (
       <MuiThemeProvider>
+        <div class="searchbar-container">
         <Fade tag="h5" className="mt-3">
-          <h1>Search For A Company Below:</h1>
-            <LocationSearch triggerUpdatePlaces={this.updateGooglePlaces}/>
+          <h1 class="searchTitle">Search For A Company Below:</h1>
+            <LocationSearch className="locationSearcher" triggerUpdatePlaces={this.updateGooglePlaces}/>
           <br />
-            {/* <MapContainer
-              mapsProps={...state}
-              /> */}
+            
           <RaisedButton
+            className="search-Button"
             label="Continue"
             primary={true}
             style={styles.button}
             onClick={this.continue}
           />
         </Fade>
+        </div>
       </MuiThemeProvider>
     );
   }
