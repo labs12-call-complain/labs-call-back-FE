@@ -66,6 +66,10 @@ class HomePageWithAuth extends Component {
       });
   };
 
+  compareVotes = ( a, b ) => { if ( a.upVote < b.upVote ){ return -1;} if ( a.upVote > b.upVote ){return 1;} return 0;}
+
+  sortedArray = () => {return this.state.complaintFeed.map((card, i) => {return <ComplaintCard complaintsCall={this.complaints}  key={i} card={card} />;}) }
+
   render() {
     if(this.state.isLoading===true) {
       return (
@@ -85,8 +89,8 @@ class HomePageWithAuth extends Component {
                 <h1>Griipe</h1>
                 <br />
                 <Spinner style={{ width: '3rem', height: '3rem' }} />
-        </div> :
-
+        </div> 
+        :
         <div className="Homepage Container">
           <div class="button-container">
             <Link class="centered" to="/complaint-form">
@@ -96,9 +100,7 @@ class HomePageWithAuth extends Component {
           <h1 class="worstReviewed">Lowest Reviewed Businesses</h1>
           <div class="HomeWrapper">
             <div>
-              {this.state.complaintFeed.map((card, i) => {
-                return <ComplaintCard complaintsCall={this.complaints}  key={i} card={card} />;
-              })}
+              {this.sortedArray().reverse()}
             </div>
             <div class="BarGraph">
               <Chart StoreArray={this.StoreNamess()} />
@@ -106,7 +108,7 @@ class HomePageWithAuth extends Component {
           </div>
             </div> }
 
-
+              
       </>
     );
   }

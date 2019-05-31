@@ -1,15 +1,35 @@
 .form-container {
-    margin-left: 10%;
+    margin-left: 20%;
     background-color: #E9F1F7;
     margin-right: 20%;
     text-align: left;
 }
 
 .form-container-header {
-    text-align: left;
-    /* margin-left: 2%; */
+    text-align: center;
+    
     margin-bottom: 6%;
 }
+
+/* .searchbar-container {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .searchTitle {
+    margin-bottom: 50px;
+  }
+   */
+  .search-Button {
+    margin-top: 50px;
+  }
+  
+  .re-record-header {
+    margin-top: 33px;
+  }
+  
 
 .confirmation-container {
     text-align: left;
@@ -26,8 +46,8 @@
 }
 
 .confirmation-button {
-    text-align: left;
-    margin-left: 8%;
+    text-align: center;
+   
 }
 
 .mt-3.fade.show {
@@ -118,3 +138,26 @@ margin-bottom: 2%;
 .hr-divider {
     width: 60%;
 }
+
+.signin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    
+    
+}
+
+.signin h2 {
+    background: #9CE37D;
+    margin: 0px;
+    overflow: hidden;
+    border-bottom: 1px solid lightgrey;
+    border-top: 1px solid lightgrey;
+    padding: 10px 0;
+    color: #343434;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
