@@ -60,21 +60,21 @@ class Profile extends Component {
       <div>
       <h2>Your Complaint History</h2>
 
-      <div class="ProfileWrap">
+      <div className="ProfileWrap">
         
-      <div class="profileCard">
-        <div class="imgdiv">
-        <img class="CardImg" src={`${this.user.photoURL}`}/>
+      <div className="profileCard">
+        <div className="imgdiv">
+        <img className="CardImg" src={`${this.user.photoURL}`}/>
       </div>
 
         <p>{this.user.displayName}</p>
           <p>Total Upvotes: 0</p>
-          <button class="EditBtn" onClick={this.ProfilePush}>Edit Profile</button>
+          <button className="EditBtn" onClick={this.ProfilePush}>Edit Profile</button>
         </div>
 
-      {this.state.complaintById[0] ? null : <h4 class="noReview">You have no reviews yet..</h4>}
+      {this.state.complaintById[0] ? null : <h4 className="noReview">You have no reviews yet..</h4>}
 
-      <div class="ProfileCardList">
+      <div className="ProfileCardList">
       {this.state.complaintById.map((card, i) => {
       //   return <ComplaintCard card={card} key={this.state.id}/> 
        return <ComplaintCard card={card}/> 

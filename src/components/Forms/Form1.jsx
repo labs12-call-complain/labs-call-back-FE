@@ -4,11 +4,10 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
-import PlacesAutocomplete from 'react-places-autocomplete';
-import LocationSearch from './LocationSearchInput';
-import { Spinner, Fade } from 'reactstrap';
-import MapContainer from './GoogleMaps';
-
+import PlacesAutocomplete from "react-places-autocomplete";
+import LocationSearch from "./LocationSearchInput";
+import { Spinner, Fade } from "reactstrap";
+// import MapContainer from './GoogleMaps';
 
 class Form1 extends Component {
   state = {
@@ -17,11 +16,11 @@ class Form1 extends Component {
     StorePhone: "",
     StoreWebsite: "",
     StoreGoogleRating: "",
-    isLoading: true,
-  }
+    isLoading: true
+  };
 
   componentDidMount() {
-    setTimeout(() => this.setState({isLoading: false}), 1000);
+    setTimeout(() => this.setState({ isLoading: false }), 1000);
   }
 
   continue = e => {
@@ -35,45 +34,49 @@ class Form1 extends Component {
     this.props.prevStep();
   };
 
-  
   someFn = () => {
     // let name = 'kabanas'
     this.props.triggerStoreUpdate(
-      this.state.StoreName, 
-      this.state.StoreAddress, 
+      this.state.StoreName,
+      this.state.StoreAddress,
       this.state.StorePhone,
       this.state.StoreWebsite,
       this.state.StoreGoogleRating
-      );
-  }
+    );
+  };
 
-  updateGooglePlaces = (StoreNameFromPlaces, StoreAddressFromPlaces, StorePhoneFromPlaces, StoreWebsiteFromPlaces, StoreRatingFromPlaces) => {
+  updateGooglePlaces = (
+    StoreNameFromPlaces,
+    StoreAddressFromPlaces,
+    StorePhoneFromPlaces,
+    StoreWebsiteFromPlaces,
+    StoreRatingFromPlaces
+  ) => {
     this.setState({
       StoreName: StoreNameFromPlaces,
       StoreAddress: StoreAddressFromPlaces,
       StorePhone: StorePhoneFromPlaces,
       StoreWebsite: StoreWebsiteFromPlaces,
       StoreGoogleRating: StoreRatingFromPlaces
-    })
-  }
-  
-
-
+    });
+  };
 
   render() {
     const { values, handleChange } = this.props;
-    if(this.state.isLoading===true) {
+    if (this.state.isLoading === true) {
       return (
-      <div className="recording-loader loader">
-        <h1>Griipe</h1>
-        <br />
-        <Spinner style={{ width: '3rem', height: '3rem' }} />
-      </div>)
-    };
-    
+        <div className="recording-loader loader">
+          <h1>Griipe</h1>
+          <br />
+          <Spinner style={{ width: "3rem", height: "3rem" }} />
+        </div>
+      );
+    }
+
     return (
       <MuiThemeProvider>
         <div class="searchbar-container">
+          
         <Fade tag="h5" className="mt-3">
           <h1 class="searchTitle">Search For A Company Below:</h1>
             <LocationSearch className="locationSearcher" triggerUpdatePlaces={this.updateGooglePlaces}/>
@@ -85,8 +88,10 @@ class Form1 extends Component {
             primary={true}
             style={styles.button}
             onClick={this.continue}
+            className="continue-btn"
           />
         </Fade>
+          
         </div>
       </MuiThemeProvider>
     );

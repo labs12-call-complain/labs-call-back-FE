@@ -35,40 +35,43 @@ class LocationSearchInput extends Component {
     let companyWebsite = addressObject.website;
     let companyRating = addressObject.rating;
 
-    
     if (address) {
       this.setState({
         city: address[0].long_name,
-        query: addressObject.formatted_address,
+        query: addressObject.formatted_address
       });
     }
     this.props.triggerUpdatePlaces(
-      establishmentName, 
+      establishmentName,
       companyAddress,
       companyPhone,
       companyWebsite,
       companyRating
-      )
+    );
   };
-
-
 
   render() {
     return (
-      <div>
+      <div style={{
+        width: '75%'
+      }}>
         <Script url={this.state.url} onLoad={this.handleScriptLoad} />
+
         <SearchBar
           id="autocomplete"
-          onRequestSearch={console.log('searching')}
+          onRequestSearch={console.log("searching")}
           placeholder=""
           hintText="Search Establishment"
           value={this.state.query}
           style={{
-            margin: "0 auto",
-            maxWidth: 800
+            width: '75%',
+            margin: "0 auto 53vh auto",
+            maxWidth: 1000
           }}
           onChange={() => this.handlePlaceSelect}
         />
+
+        <hr className="hr-divider" />
       </div>
     );
   }

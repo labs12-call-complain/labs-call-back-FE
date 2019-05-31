@@ -31,7 +31,7 @@ After completing the TDD for our project we thought we had a good grasp of what 
 
 🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
-# 1️⃣ Title of project goes here
+# 1️⃣ Griipe
 
 1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
 
@@ -111,25 +111,23 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 # APIs 
 
 
-
-## Google Firebase
-
-
 ## Google Places
 
 In order to grab business data, we used the google places api to pull business name, address, phone, website and rating.
 
 ## Twitter
 
+We're using twitter to tweet out customer complaints at the end of the form.
 
 ## DeepGram
+
+We used deepgram to transcribe the audio messages to text. We set deepgram up to transcribe and punctuate the review.
 
 
 # 3️⃣ Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-🚫These are just examples, replace them with the specifics for your app
 
     *  REACT_APP_apiKey - this is your Google API key, which can be generated in the Google Cloud Console
     *  REACT_APP_authDomain - when you set up your Firebase project, this information will be in the dashboard
@@ -137,10 +135,9 @@ In order for the app to function correctly, the user must set up their own envir
     *  REACT_APP_projectID - in the Firebase dashboard
     *  REACT_APP_storageBucket - in the Firebase dashboard
     *  REACT_APP_messagingSenderId - in the Firebase dashboard
-    *  REACT_APP_stripe_API - this is your public Stripe API key, generated in the Stripe dashboard
-    *  REACT_APP_backendURL - optional for your local development server
-    *  REACT_APP_clientid - this is the Stripe_connect clientID, generated in Stripe_connect settings
-    *  REACT_APP_stripe_plan - this is the ID for a second Stripe subscription plan, generated under Stripe products
+    *  GOOGLE_PLACES_URL
+    *  GOOGLE_API_KEY
+    *  DEEPGRAM_BASE64
 
 # 5️⃣ Content Licenses
 
@@ -153,7 +150,7 @@ In order for the app to function correctly, the user must set up their own envir
 
 # 4️⃣ Testing
 
-🚫Document what you used for testing and why
+For the front end, we used react testing library
 
 # 4️⃣ Installation Instructions
 

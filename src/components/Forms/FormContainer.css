@@ -11,7 +11,7 @@
     margin-bottom: 6%;
 }
 
-.searchbar-container {
+/* .searchbar-container {
     height: 500px;
     display: flex;
     flex-direction: column;
@@ -21,7 +21,7 @@
   .searchTitle {
     margin-bottom: 50px;
   }
-  
+   */
   .search-Button {
     margin-top: 50px;
   }
@@ -48,6 +48,22 @@
 .confirmation-button {
     text-align: center;
    
+}
+
+.mt-3.fade.show {
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+    align-items: center;
+}
+
+.mt-3.fade.show h1 {
+margin-bottom: 2%;
+}
+
+.google-search {
+    width: 1000px;
 }
 
 .audio-analyser {

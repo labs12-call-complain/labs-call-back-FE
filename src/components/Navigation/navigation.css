@@ -13,8 +13,26 @@
 
 }
 
+.logo-nav {
+    display: flex;
+    justify-content: left;
+    
+  
+    width: 250px;
+    
+    padding: 0px;
+    margin-left: 5%;
+  }
+
+  .logo-nav img {
+    width: 50%;
+    height: 10%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
 .navbar-brand img {
-    width: 5%;
+    /* width: 5%; */
     align-items: left !important;
 }
 
@@ -36,4 +54,10 @@
     border: 1px solid #593C8F;
     width: 100%;
     color: white;
+    text-align: center;
+}
+
+.signout-button:hover {
+    color: white;
+    text-decoration: none;
 }
