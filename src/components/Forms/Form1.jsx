@@ -7,7 +7,7 @@ import RaisedButton from "material-ui/RaisedButton";
 import PlacesAutocomplete from 'react-places-autocomplete';
 import LocationSearch from './LocationSearchInput';
 import { Spinner, Fade } from 'reactstrap';
-import MapContainer from './GoogleMaps';
+// import MapContainer from './GoogleMaps';
 
 
 class Form1 extends Component {

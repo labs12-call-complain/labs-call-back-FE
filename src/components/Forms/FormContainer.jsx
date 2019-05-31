@@ -1,21 +1,21 @@
 import React, { Component } from "react";
-import * as firebase from "firebase";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
-import fire from "../Firebase/firebase";
+// import * as firebase from "firebase";
+// import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+// import fire from "../Firebase/firebase";
 import Form1 from "./Form1.jsx";
 import Form2 from "./Form2.jsx";
 import Form3 from "./Form3.jsx";
 import Form4 from "./Form4.jsx";
 import SignInConfirmation from "./SignIn.jsx";
 import Form5 from "./Form5.jsx";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import AppBar from "material-ui/AppBar";
-import TextField from "material-ui/TextField";
-import RaisedButton from "material-ui/RaisedButton";
+// import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+// import AppBar from "material-ui/AppBar";
+// import TextField from "material-ui/TextField";
+// import RaisedButton from "material-ui/RaisedButton";
 import Navigation from "../Navigation/navigation";
-import axios from "axios";
+// import axios from "axios";
 
-const audioType = "audio/wav";
+// const audioType = "audio/wav";
 
 class FormContainer extends Component {
   constructor() {
