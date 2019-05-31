@@ -60,7 +60,6 @@ class HomePageWithAuth extends Component {
       .get("https://griipe.herokuapp.com/api/routes/posts")
       .then(response => {
         this.setState({ complaintFeed: response.data, loading: false });
-        console.log(response.data)
       })
       .catch(error => {
         console.error(error);
@@ -176,7 +175,7 @@ class HomePageNoAuth extends Component {
                   <button class="complaintButton">
                       
                       Leave A Review 
-                      {/* <MaterialIcon icon="phone" /> */}
+
                   </button>
               </Link>
                 </div>            
