@@ -106,7 +106,6 @@ class Form2 extends Component {
   };
 
   deleteAudio(audioURL) {
-    // filter out current videoURL from the list of saved videos
     const audios = this.props.audios.filter(a => a !== audioURL);
     this.props.setAudiosProp(audios);
     this.setState({

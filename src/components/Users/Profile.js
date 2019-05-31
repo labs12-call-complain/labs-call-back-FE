@@ -19,6 +19,7 @@ class Profile extends Component {
 
     }
 
+    
     componentDidMount() {
     
       this.complaints();

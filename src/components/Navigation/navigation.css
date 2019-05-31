@@ -13,8 +13,26 @@
 
 }
 
+.logo-nav {
+    display: flex;
+    justify-content: left;
+    
+  
+    width: 15vw;
+    
+    padding: 0px;
+    margin-left: 5%;
+  }
+
+  .logo-nav img {
+    width: 50%;
+    height: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
 .navbar-brand img {
-    width: 5%;
+    /* width: 5%; */
     align-items: left !important;
 }
 
