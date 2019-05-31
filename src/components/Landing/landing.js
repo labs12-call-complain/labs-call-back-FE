@@ -69,7 +69,7 @@ class LandingPage extends Component {
                 <Spinner style={{ width: '3rem', height: '3rem' }} />
         </div> :
 
-        <div class="topcontainer">
+        <div className="topcontainer">
           
 
           <div className="logo-two">
@@ -81,8 +81,8 @@ class LandingPage extends Component {
           <Link to="/login">
             <div className="login-btn-top">Login</div>
           </Link>
-          <div class="topcontainer-wrapper">
-            <section class="toppage" />
+          <div className="topcontainer-wrapper">
+            <section className="toppage" />
 
             <div className="startBox-container">
               <div className="startBox">
