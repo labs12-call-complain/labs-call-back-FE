@@ -7,7 +7,7 @@ const SignOutButton = ({ firebase }) => (
   <Link to="/" className="signout-button" type="button" onClick={firebase.doSignOut}>
   {/* <button className="signout-button" type="button" onClick={firebase.doSignOut}> */}
     Sign Out
-  {/* </button> */}
+  {/* </button>sr */}
   </Link>
 );
 
