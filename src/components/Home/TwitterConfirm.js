@@ -28,7 +28,7 @@ class TwitterConfirm extends Component {
 
 
   render() {
-    // console.log(this.data)
+    console.log(this.props)
     const { values, handleChange } = this.props;
     if(this.state.isLoading===true) {
       return (
@@ -38,16 +38,6 @@ class TwitterConfirm extends Component {
         <Spinner style={{ width: '3rem', height: '3rem' }} />
       </div>)
     };
-    // console.log(firebase.auth().currentUser.displayName,
-    // firebase.auth().currentUser.email,
-    // firebase.auth().currentUser.uid,
-    // this.props.StoreName,
-    // this.props.StoreAddress,
-    // this.props.StorePhone,
-    // this.props.StoreGoogleRating,
-    // this.props.StoreWebsite,
-    // this.props.confirmationTranscription,
-    // 0)
     return (
       <MuiThemeProvider>
         <Navigation />
@@ -62,7 +52,7 @@ class TwitterConfirm extends Component {
           <div className="confirmation-container">
             <span className="confirmation-span">
               <CloudDoneIcon color='error'/>            
-              <p className="confirmation-input"><strong>Tweet:</strong> {this.props.StoreAddress}</p>
+              <p className="confirmation-input"><strong>Tweet:</strong> " {this.props.history.location.state.status} "</p>
             </span>
           </div>
           <Link to="/home" >
