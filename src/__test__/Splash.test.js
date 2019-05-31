@@ -12,3 +12,4 @@ describe("<Landing />", () => {
     expect(tree.toJSON()).toMatchSnapshot();
   });
 });
+

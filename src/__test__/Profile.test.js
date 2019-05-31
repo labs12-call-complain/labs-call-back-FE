@@ -11,3 +11,4 @@ describe("<Profile />", () => {
     expect(tree.toJSON()).toMatchSnapshot();
   });
 });
+
