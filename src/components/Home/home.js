@@ -60,7 +60,6 @@ class HomePageWithAuth extends Component {
       .get("https://griipe.herokuapp.com/api/routes/posts")
       .then(response => {
         this.setState({ complaintFeed: response.data, loading: false });
-        console.log(response.data)
       })
       .catch(error => {
         console.error(error);
@@ -124,12 +123,6 @@ class HomePageNoAuth extends Component {
     setTimeout(() => this.setState({isLoading: false}), 1000);
   }
 
-  // componentDidUpdate(){
-  //   this.complaints();
-  // }
-
-  user = firebase.auth().currentUser;
-
   ProfilePush = () => {
     this.props.history.push(`/edit-profile`);
   };
@@ -176,7 +169,7 @@ class HomePageNoAuth extends Component {
                   <button class="complaintButton">
                       
                       Leave A Review 
-                      {/* <MaterialIcon icon="phone" /> */}
+
                   </button>
               </Link>
                 </div>            

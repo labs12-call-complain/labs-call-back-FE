@@ -34,10 +34,10 @@ data.push(item[1])
 
     
         const chartData = {
-            labels: labels,
+            labels: labels.slice(0, 5),
             datasets: [{
                 // label: false,
-                data: data,
+                data: data.slice(0, 5),
                 backgroundColor: [
                     'rgba(242, 125, 125, 1)',
                     'rgba(239, 206, 97, 1)',

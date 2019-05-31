@@ -1,16 +1,11 @@
-import "./LandingPage.css";
-import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import firebase from "firebase";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-// import firebase from '../Firebase/index.js'
-// import { LANDING } from "./config/routes";
-import { withAuthentication } from "../Session/session.js";
+import firebase from "firebase";
 import axios from "axios";
-import { Spinner, Fade } from "reactstrap";
+import { withAuthentication } from "../Session/session.js";
+import { Spinner } from "reactstrap";
 
-// about to add loader/spinner
+import "./LandingPage.css";
 
 class LandingPage extends Component {
   state = {
@@ -18,7 +13,7 @@ class LandingPage extends Component {
     loading: true
   };
 
-  docid = this.state.docid; //may have to move back to app
+  docid = this.state.docid; 
 
   uiConfig = {
     signInFlow: "popup",
@@ -27,12 +22,6 @@ class LandingPage extends Component {
       firebase.auth.TwitterAuthProvider.PROVIDER_ID,
       firebase.auth.EmailAuthProvider.PROVIDER_ID
     ],
-    // signInSuccessUrl: function(currentUser, credential, redirectUrl) {
-    //     const userId = currentUser.uid;
-    //     window.location.assign(`/home/${userId}`);
-    //     return true;
-    //     // "/home"
-    // }
     signInSuccessUrl: "/home"
   };
 
@@ -41,7 +30,7 @@ class LandingPage extends Component {
     axios
     .get(`https://griipe.herokuapp.com/`)
     .then(res => {
-      console.log(res);
+      return res;
     })
     .catch(err => console.log(err));
   }
@@ -76,7 +65,7 @@ class LandingPage extends Component {
             <img src={require("./imgs/brandmark-designcoor.png")} />
           </div>
           <Link to="/home">
-            <button className="start-btn start-btn-top">Complaints</button>
+            <button className="start-btn start-btn-top" onClick={this.handleClick}>Complaints</button>
           </Link>
           <Link to="/login">
             <div className="login-btn-top">Login</div>
@@ -119,4 +108,5 @@ class LandingPage extends Component {
     );
   }
 }
-export default withAuthentication(LandingPage);
+
+export default LandingPage
