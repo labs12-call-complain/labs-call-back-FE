@@ -1,16 +1,12 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import AppBar from "material-ui/AppBar";
-import TextField from "material-ui/TextField";
-import RaisedButton from "material-ui/RaisedButton";
-import MaterialIcon, {colorPalette} from 'material-icons-react';
 import * as firebase from "firebase";
 import axios from 'axios';
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import RaisedButton from "material-ui/RaisedButton";
 import { Spinner, Fade, NavLink } from 'reactstrap';
 import CloudDoneIcon from '@material-ui/icons/CloudDone';
-import { AuthUserContext } from '../Session/session.js';
+
 
 class Form4WithAuth extends Component {
   state = {
@@ -21,18 +17,7 @@ class Form4WithAuth extends Component {
     setTimeout(() => this.setState({isLoading: false}), 1000);
   }
 
-  tweetAndRoute = e => {
-    e.preventDefault();
-    console.log(firebase.auth().currentUser.displayName,
-    firebase.auth().currentUser.email,
-    firebase.auth().currentUser.uid,
-    this.props.StoreName,
-    this.props.StoreAddress,
-    this.props.StorePhone,
-    this.props.StoreGoogleRating,
-    this.props.StoreWebsite,
-    this.props.confirmationTranscription,
-    0);
+  tweetAndRoute = async() => {
     let data = {
       DisplayName: firebase.auth().currentUser.displayName,
       Email: firebase.auth().currentUser.email,
@@ -44,32 +29,28 @@ class Form4WithAuth extends Component {
       StoreWebsite: this.props.StoreWebsite,
       tweet: this.props.confirmationTranscription,
       upVote: 0,
-      downvote: 0
+      downVote: 0
       }
+      let time = new Date();
       let tweetdata = {
-        status: `${this.props.StoreName}, your customer just complained about you on griipe.me  We added you to our #worstcustomerservice leaderboard.`
+        status: `${this.props.StoreName}, your customer just complained about you on griipe.me  We added you to our #worstcustomerservice leaderboard at ${time}`
       }
-      axios
-        .post(`https://griipe.herokuapp.com/api/routes/makepost`, data)
-        .then(res => {
-          console.log("It worked 1:", res);
-          axios
-            .post(`https://griipe.herokuapp.com/api/routes/makeatweet`, tweetdata)
-            .then(res => {
-              console.log("It worked 2:", res);
-              this.props.history.push('/tweet-confirmation', tweetdata)
-            })
-            .catch(err => {
-                console.log("It broke 1:", err)       
-                this.props.history.push('/tweet-confirmation')
-            })
-        })
-        .catch(err => console.log("It broke 2:", err))
+      try {
+        let { data: post } = await axios.post(`https://griipe.herokuapp.com/api/routes/makeatweet`, tweetdata);
+      } catch {
         this.props.history.push('/tweet-confirmation')
+      }
+      
+      axios
+      .post(`https://griipe.herokuapp.com/api/routes/makepost`, data)
+      .then(res => {
+        console.log("It worked 1:", res);
+      })
+      .catch(err => console.log("It broke 2:", err))
+      this.props.history.push('/tweet-confirmation', tweetdata)
   };
 
   render() {
-    console.log(this.data)
     const { values, handleChange } = this.props;
     if(this.state.isLoading===true) {
       return (
@@ -79,16 +60,6 @@ class Form4WithAuth extends Component {
         <Spinner style={{ width: '3rem', height: '3rem' }} />
       </div>)
     };
-    console.log(firebase.auth().currentUser.displayName,
-    firebase.auth().currentUser.email,
-    firebase.auth().currentUser.uid,
-    this.props.StoreName,
-    this.props.StoreAddress,
-    this.props.StorePhone,
-    this.props.StoreGoogleRating,
-    this.props.StoreWebsite,
-    this.props.confirmationTranscription,
-    0)
     return (
       <MuiThemeProvider>
         <Fade in={this.state.fadeIn} tag="h5" className="mt-3 form-container" >

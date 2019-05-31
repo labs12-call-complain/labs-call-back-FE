@@ -49,6 +49,14 @@ class LandingPage extends Component {
   componentWillUnmount() {
     window.location.reload();
   }
+
+  // handleClick = async () => {
+  //   let time = new Date()
+  //   let tweetdata = {
+  //     status: `${time}, your customer just complained about you on griipe.me  We added you to our #worstcustomerservice leaderboard.`
+  //   }
+  //   let { data: post } = await axios.post(`https://griipe.herokuapp.com/api/routes/makeatweet`, tweetdata)
+  // }
   
   render() {
     if(this.state.isLoading===true) {
