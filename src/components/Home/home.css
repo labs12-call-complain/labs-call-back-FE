@@ -2,6 +2,7 @@
 .worstReviewed {
     text-align: center;
     margin-bottom: 30px;
+    font-family: 'Alegreya Sans SC';
 }
 
 .complaintButton {
@@ -10,12 +11,13 @@
     height: 40px;
     /* margin-bottom: 20px;
     margin-top: 20px; */
-    
+    font-family: 'Didact Gothic';
     background-color: #9CE37D;
     color: #593C8F ;
     border: 1px solid #E9F1F7;
     text-decoration: none;
     z-index: 5;
+    color: black;
     /* top: -80px; */
 }
 

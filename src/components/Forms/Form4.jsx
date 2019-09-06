@@ -55,7 +55,7 @@ class Form4WithoutAuth extends Component {
               <span className="confirmation-span">
                 <CloudDoneIcon color="error" />
                 <p className="confirmation-input">
-                  <strong>Store:</strong> {this.props.StoreName}
+                  <strong>Business:</strong> {this.props.StoreName}
                 </p>
               </span>
             </div>

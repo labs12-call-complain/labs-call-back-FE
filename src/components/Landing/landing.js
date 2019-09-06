@@ -62,33 +62,37 @@ class LandingPage extends Component {
           
 
           <div className="logo-two">
-            <img src={require("./imgs/brandmark-designcoor.png")} />
+            <img className='GriipeLogo' src={require("./imgs/brandmark-designcoor.png")} />
           </div>
-          <Link to="/home">
-            <button className="start-btn start-btn-top" onClick={this.handleClick}>Complaints</button>
-          </Link>
-          <Link to="/login">
-            <div className="login-btn-top">Login</div>
-          </Link>
+
+          <div className="doubleButton">
+       
+            <button className="doubleButtonSingle2 RTSlist" onClick={e => {this.props.history.push("/home")}}>Complaints</button>
+        
+
+            <button className="doubleButtonSingle RTSlist" onClick={e => {this.props.history.push("/login")}}>Login</button>
+    
+          </div>
+
           <div className="topcontainer-wrapper">
             <section className="toppage" />
 
             <div className="startBox-container">
               <div className="startBox">
                 {" "}
-                <h1> A Bad Experience Should Never Go Unchecked </h1>
+                <h1 class="landingSlogan"> A Bad Experience Should Never Go Unchecked </h1>
                 <br />
                
                 <ul>
-                  <li>Record</li>
+                  <li class="RTSlist" >- Record</li>
 
-                  <li>Transcribe</li>
+                  <li class="RTSlist" >- Transcribe</li>
 
-                  <li>Send A Review</li>
+                  <li class="RTSlist" >- Send A Review</li>
                 </ul>
                 <br/>
                 <Link to="/complaint-form">
-                  <button className="start-btn">Get Started</button>
+                  <button class="start-btn RTSlist">Get Started</button>
                 </Link>
               </div>
             </div>

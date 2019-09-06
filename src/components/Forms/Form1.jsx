@@ -78,15 +78,15 @@ class Form1 extends Component {
         <div class="searchbar-container">
           <Fade tag="h5" className="mt-3">
             <div className="form1-cont">
-              <h1 class="searchTitle">Search For A Company Below:</h1>
+              <h1 class="searchTitle RTSlist">Search For A Company Below:</h1>
               <LocationSearch
-                className="locationSearcher"
+                className="locationSearcher RTSlist"
                 triggerUpdatePlaces={this.updateGooglePlaces}
               />
               <br />
 
               <RaisedButton
-                className="search-Button"
+                className="search-Button RTSlist"
                 label="Continue"
                 primary={true}
                 style={styles.button}
