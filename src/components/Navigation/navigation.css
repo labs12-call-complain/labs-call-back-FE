@@ -13,6 +13,11 @@
 
 }
 
+.fontchange2 {
+    font-family: 'Didact Gothic';
+    font-size: 1.2rem;
+}
+
 .logo-nav {
     display: flex;
     justify-content: left;

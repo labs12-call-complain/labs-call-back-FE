@@ -80,9 +80,13 @@ class Form1 extends Component {
             <div className="form1-cont">
               <h1 class="searchTitle RTSlist">Search For A Company Below:</h1>
               <LocationSearch
-                className="locationSearcher RTSlist"
+                className="locationSearcher RTSlist marginzero"
                 triggerUpdatePlaces={this.updateGooglePlaces}
               />
+              
+
+              <div className="form1image"/>
+
               <br />
 
               <RaisedButton

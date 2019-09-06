@@ -49,7 +49,7 @@ class Form4WithoutAuth extends Component {
     return (
       <MuiThemeProvider>
         <Fade tag="h5" className="mt-3 form-container2">
-          <h1 className="form-container-header">Confirmation</h1>
+          <h1 className="form-container-header fontchange1">Confirmation</h1>
           <div className="conf-align">
             <div className="confirmation-container">
               <span className="confirmation-span">

@@ -27,7 +27,7 @@ import MaterialIcon, {colorPalette} from 'material-icons-react';
                         <CardText className="cardAddress">{`${this.props.card.StoreLocation}`}</CardText>
                         </div>
 
-                        <CardText className="complaintText"><strong>Anonymous:</strong>{` ${this.props.card.tweet}`}</CardText>
+                        <CardText className="complaintText"><strong>{`${this.props.card.DisplayName}:`}</strong>{` ${this.props.card.tweet}`}</CardText>
 
 
                         </div>
