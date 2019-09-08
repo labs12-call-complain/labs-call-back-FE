@@ -12,9 +12,9 @@ import MaterialIcon, {colorPalette} from 'material-icons-react';
 
                         <div class="upvote-container">
                             <div>
-                            <i class="fas fa-chevron-up"></i>
+                            <i class="fas fa-chevron-up cardClicker"></i>
                         <p class="upvote">{this.props.card.upVote}</p>
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-down cardClicker"></i>
                             </div>
                         </div>
 

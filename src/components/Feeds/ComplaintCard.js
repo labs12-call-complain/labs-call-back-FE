@@ -54,9 +54,9 @@ import axios from 'axios';
 
                         <div class="upvote-container">
                             <div>
-                            <i class="fas fa-chevron-up" onClick={this.upvote}></i>
+                            <i class="fas fa-chevron-up cardClicker" onClick={this.upvote}></i>
                         <p class="upvote">{this.props.card.upVote}</p>
-                            <i class="fas fa-chevron-down" onClick={this.downvote}></i>
+                            <i class="fas fa-chevron-down cardClicker" onClick={this.downvote}></i>
                             </div>
                         </div>
 
