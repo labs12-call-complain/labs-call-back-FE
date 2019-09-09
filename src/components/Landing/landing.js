@@ -26,7 +26,7 @@ class LandingPage extends Component {
   };
 
   componentDidMount() {
-    setTimeout(() => this.setState({loading: false}), 1000);
+    setTimeout(() => this.setState({loading: false}), 0);
     axios
     .get(`https://griipe.herokuapp.com/`)
     .then(res => {
@@ -45,7 +45,9 @@ class LandingPage extends Component {
       <div className="recording-loader loader">
         <h1>Griipe</h1>
         <br />
+        
         <Spinner style={{ width: '3rem', height: '3rem' }} />
+        
       </div>)
     };
     return (
@@ -53,9 +55,11 @@ class LandingPage extends Component {
 
         {this.state.loading ? 
         <div className="recording-loader loader">
-                <h1>Griipe</h1>
+
                 <br />
-                <Spinner style={{ width: '3rem', height: '3rem' }} />
+                <div className="centerSpinner">
+                <Spinner style={{ width: '2.5rem', height: '2.5rem' }} />
+                </div>
         </div> :
 
         <div className="topcontainer">

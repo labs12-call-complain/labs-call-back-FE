@@ -22,6 +22,8 @@ const HomePage = () => (
   </AuthUserContext.Consumer>
 );
 
+const hostURL = "http://localhost:5000/api/routes/posts"
+
 class HomePageWithAuth extends Component {
   state = {
     complaintFeed: [],
@@ -57,7 +59,7 @@ class HomePageWithAuth extends Component {
 
   complaints = () => {
     axios
-      .get("https://griipe.herokuapp.com/api/routes/posts")
+      .get(hostURL)
       .then(response => {
         this.setState({ complaintFeed: response.data, loading: false });
       })
@@ -74,9 +76,10 @@ class HomePageWithAuth extends Component {
     if(this.state.isLoading===true) {
       return (
       <div className="recording-loader loader">
-        <h1>Griipe</h1>
         <br />
-        <Spinner style={{ width: '3rem', height: '3rem' }} />
+        <div className="centerSpinner">
+                <Spinner style={{ width: '2.5rem', height: '2.5rem' }} />
+                </div>
       </div>)
     };
     return (
@@ -86,9 +89,11 @@ class HomePageWithAuth extends Component {
 
         {this.state.loading ? 
         <div className="recording-loader loader">
-                <h1>Griipe</h1>
+                
                 <br />
-                <Spinner style={{ width: '3rem', height: '3rem' }} />
+                <div className="centerSpinner">
+                <Spinner style={{ width: '2.5rem', height: '2.5rem' }} />
+                </div>
         </div> 
         :
         <div className="Homepage Container">
@@ -137,7 +142,7 @@ class HomePageNoAuth extends Component {
 
   complaints = () => {
     axios
-      .get("https://griipe.herokuapp.com/api/routes/posts")
+      .get(hostURL)
       .then(response => {
         this.setState({ complaintFeed: response.data, loading: false });
       })
@@ -150,9 +155,11 @@ class HomePageNoAuth extends Component {
     if(this.state.isLoading===true) {
       return (
       <div className="recording-loader loader">
-        <h1>Griipe</h1>
+  
         <br />
-        <Spinner style={{ width: '3rem', height: '3rem' }} />
+        <div className="centerSpinner">
+                <Spinner style={{ width: '2.5rem', height: '2.5rem' }} />
+                </div>
       </div>)
     };
       return (
@@ -160,9 +167,11 @@ class HomePageNoAuth extends Component {
           <Navigation />
 
           {this.state.loading ? <div className="recording-loader loader">
-                <h1>Griipe</h1>
+            
                 <br />
-                <Spinner style={{ width: '3rem', height: '3rem' }} />
+                <div className="centerSpinner">
+                <Spinner style={{ width: '2.5rem', height: '2.5rem' }} />
+                </div>
                 </div> :
 
               <div className='Homepage Container'>

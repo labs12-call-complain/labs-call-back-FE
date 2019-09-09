@@ -24,8 +24,9 @@
 
 .form-container-header {
     text-align: center;
-    
-    margin-bottom: 6%;
+    margin-right: 20%;
+    margin-bottom: 20px;
+    font-family: 'Alegreya Sans SC';
 }
 
 /* .searchbar-container {
@@ -213,4 +214,8 @@ margin-bottom: 2%;
 .tweetsendcontainer {
     display: flex;
     flex-direction: column;
+    width: 1000px;
+    background: white;
+    padding: 20px;
+    margin-right: 20%;
 }

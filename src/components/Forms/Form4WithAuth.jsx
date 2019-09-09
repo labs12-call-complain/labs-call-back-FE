@@ -59,16 +59,18 @@ class Form4WithAuth extends Component {
     if (this.state.isLoading === true) {
       return (
         <div className="recording-loader loader">
-          <h1>Griipe</h1>
+
           <br />
-          <Spinner style={{ width: "3rem", height: "3rem" }} />
+          <div className="centerSpinner">
+                <Spinner style={{ width: '2.5rem', height: '2.5rem' }} />
+                </div>
         </div>
       );
     }
     return (
       <MuiThemeProvider>
         <Fade in={this.state.fadeIn} tag="h5" className="mt-3 form-container2">
-          <h1 className="form-container-header fontchange1s">Confirmation</h1>
+          <h1 className="form-container-header fontchange1">Confirmation</h1>
           <div className="conf-align">
             <div className="confirmation-container">
               <span className="confirmation-span">
