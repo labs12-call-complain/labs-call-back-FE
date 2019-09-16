@@ -116,9 +116,19 @@ h1 {
 
 .BarGraph {
     margin-left: 10px;
-    width: 450px;
-    
+    width: 450px;  
 }
+
+.LoadMoreFeed {
+    width: 40rem;
+    color: white;
+    border: 1px solid #593C8F;
+    background: #593C8F;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: 'Didact Gothic';
+}
+
 
 
 @media (max-width: 550px) {

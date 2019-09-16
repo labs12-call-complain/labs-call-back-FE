@@ -80,7 +80,7 @@ class Form1 extends Component {
         <div class="searchbar-container">
           <Fade tag="h5" className="mt-3">
             <div className="form1-cont">
-              <h1 class="searchTitle RTSlist">Search For A Company Below:</h1>
+              <h1 id="searchTextMobile" class="searchTitle RTSlist ">Search For A Company Below:</h1>
               <LocationSearch
                 className="locationSearcher RTSlist marginzero"
                 triggerUpdatePlaces={this.updateGooglePlaces}

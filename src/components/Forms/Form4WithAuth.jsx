@@ -7,6 +7,8 @@ import RaisedButton from "material-ui/RaisedButton";
 import { Spinner, Fade, NavLink } from "reactstrap";
 import CloudDoneIcon from "@material-ui/icons/CloudDone";
 
+var siteURL = "http://localhost:5000/api/routes"
+
 class Form4WithAuth extends Component {
   state = {
     isLoading: true
@@ -26,9 +28,8 @@ class Form4WithAuth extends Component {
       StorePhoneNumber: this.props.StorePhone,
       StoreGoogleRating: this.props.StoreGoogleRating,
       StoreWebsite: this.props.StoreWebsite,
-      tweet: this.props.confirmationTranscription,
-      upVote: 0,
-      downVote: 0
+      text: this.props.confirmationTranscription,
+      upVote: 0
     };
     let time = new Date();
     let tweetdata = {
@@ -46,7 +47,7 @@ class Form4WithAuth extends Component {
     }
 
     axios
-      .post(`https://griipe.herokuapp.com/api/routes/makepost`, data)
+      .post(`${siteURL}/makepost`, data)
       .then(res => {
         console.log("It worked 1:", res);
       })

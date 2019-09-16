@@ -29,7 +29,8 @@ const hostURL = "http://localhost:5000/api/routes/posts"
 class HomePageWithAuth extends Component {
   state = {
     complaintFeed: [],
-    loading: true
+    loading: true,
+    cardLoader: 6
   };
 
 
@@ -46,6 +47,8 @@ class HomePageWithAuth extends Component {
   // componentDidUnmount(){
   //   this.complaints();
   // }
+
+
 
   user = firebase.auth().currentUser;
 
@@ -108,9 +111,10 @@ class HomePageWithAuth extends Component {
           <h1 class="worstReviewed">Lowest Reviewed Businesses</h1>
           <div class="HomeWrapper">
             <div>
-              {this.sortedArray().reverse()}
-              {/* .sort((a, b) => (a.upVote > b.upVote) ? 1 : -1) */}
+              {this.sortedArray().reverse().slice(0, this.state.cardLoader)}
+              {this.state.cardLoader > this.state.complaintFeed.length ? null : <button onClick={() => {this.setState({cardLoader: this.state.cardLoader + 5})}} className="LoadMoreFeed" >Load More</button> }
             </div>
+
             <div class="BarGraph">
               <Chart StoreArray={this.StoreNamess()} />
             </div>
@@ -126,7 +130,8 @@ class HomePageWithAuth extends Component {
 class HomePageNoAuth extends Component {
   state = {
     complaintFeed: [],
-    loading: true
+    loading: true,
+    cardLoader: 6
   };
 
   componentDidMount() {
@@ -197,7 +202,8 @@ class HomePageNoAuth extends Component {
                   <div>                    
                       {this.state.complaintFeed.map((card, i) => {
                           return <ComplaintCardNoAuth key={i} card={card}/> 
-                      })}
+                      }).slice(0, this.state.cardLoader)}
+                      {this.state.cardLoader > this.state.complaintFeed.length ? null : <button onClick={() => {this.setState({cardLoader: this.state.cardLoader + 5})}} className="LoadMoreFeed" >Load More</button> }
                   </div>
                   <div class="BarGraph" >
                     <Chart StoreArray={this.StoreNamess()}/>
