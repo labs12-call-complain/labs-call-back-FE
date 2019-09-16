@@ -4,6 +4,8 @@ import { Card, CardImg, CardText, CardBody,
 import './ComplaintCard.css';
 import MaterialIcon, {colorPalette} from 'material-icons-react';
 
+const baseURL = "http://localhost:5000/api/routes/posts/"
+
   export default class ComplaintCard extends Component {
     render() {
         return (

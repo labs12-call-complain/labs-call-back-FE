@@ -24,6 +24,8 @@ const HomePage = () => (
 
 const hostURL = "http://localhost:5000/api/routes/posts"
 
+
+
 class HomePageWithAuth extends Component {
   state = {
     complaintFeed: [],
@@ -36,13 +38,14 @@ class HomePageWithAuth extends Component {
   };
 
   componentDidMount() {
+    // setTimeout(() => this.setState({isLoading: false}), 1000);
     this.complaints();
-    setTimeout(() => this.setState({isLoading: false}), 1000);
+
   }
 
-  componentDidUnmount(){
-    this.complaints();
-  }
+  // componentDidUnmount(){
+  //   this.complaints();
+  // }
 
   user = firebase.auth().currentUser;
 
@@ -73,6 +76,7 @@ class HomePageWithAuth extends Component {
   sortedArray = () => {return this.state.complaintFeed.map((card, i) => {return <ComplaintCard complaintsCall={this.complaints}  key={i} card={card} />;}) }
 
   render() {
+
     if(this.state.isLoading===true) {
       return (
       <div className="recording-loader loader">
@@ -87,8 +91,7 @@ class HomePageWithAuth extends Component {
       
         <Navigation />
 
-        {this.state.loading ? 
-        <div className="recording-loader loader">
+        {this.state.loading ? <div className="recording-loader loader">
                 
                 <br />
                 <div className="centerSpinner">
@@ -106,6 +109,7 @@ class HomePageWithAuth extends Component {
           <div class="HomeWrapper">
             <div>
               {this.sortedArray().reverse()}
+              {/* .sort((a, b) => (a.upVote > b.upVote) ? 1 : -1) */}
             </div>
             <div class="BarGraph">
               <Chart StoreArray={this.StoreNamess()} />
@@ -126,8 +130,9 @@ class HomePageNoAuth extends Component {
   };
 
   componentDidMount() {
-    this.complaints();
-    setTimeout(() => this.setState({isLoading: false}), 1000);
+
+    // this.complaints();
+    setTimeout(() => this.complaints(), 1000);
   }
 
   ProfilePush = () => {
@@ -141,6 +146,7 @@ class HomePageNoAuth extends Component {
   };
 
   complaints = () => {
+    setTimeout(() => this.setState({isLoading: false}), 1000);
     axios
       .get(hostURL)
       .then(response => {

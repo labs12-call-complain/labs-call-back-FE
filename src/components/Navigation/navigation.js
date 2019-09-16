@@ -52,7 +52,7 @@ class NavigationAuth extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto fontchange2" navbar>
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle className="fontchange2" nav caret>
+                <DropdownToggle className="fontchange3" nav caret>
                   Profile
                 </DropdownToggle>
                 <DropdownMenu right>

@@ -10,7 +10,7 @@ import "./LandingPage.css";
 class LandingPage extends Component {
   state = {
     docid: null,
-    loading: true
+    loading: false
   };
 
   docid = this.state.docid; 
